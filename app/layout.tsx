@@ -6,6 +6,7 @@ import { getDomainConfig } from "@/lib/domain-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { publicEnv } from "@/lib/site-env/public";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 import { generateSiteOrganizationGraph } from "@/lib/seo/organization-schema";
@@ -43,7 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const host = headers().get("host");
   const baseUrl = getSiteUrlFromHost(host);
   const orgGraph = await generateSiteOrganizationGraph(baseUrl);
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+  const gaMeasurementId = publicEnv.gaMeasurementId;
 
   return (
     <html lang="en" className={GeistSans.className}>

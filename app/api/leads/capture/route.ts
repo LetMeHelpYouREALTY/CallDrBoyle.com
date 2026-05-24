@@ -11,6 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { FollowUpBossClient } from '@/lib/fub/client';
+import { serverEnv } from '@/lib/site-env/server';
 import { leadFormLimiter, getClientId, checkRateLimit, getRateLimitHeaders } from '@/lib/rate-limit';
 
 export interface LeadCaptureRequest {
@@ -134,8 +135,8 @@ export async function POST(request: NextRequest) {
 
     // Initialize FUB client
     const fub = new FollowUpBossClient({
-      apiKey: process.env.FUB_API_KEY || '',
-      systemKey: process.env.FUB_SYSTEM_KEY,
+      apiKey: serverEnv.fubApiKey || '',
+      systemKey: serverEnv.fubSystemKey,
     });
 
     // Check for existing lead (deduplication)
@@ -147,12 +148,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Prepare person data
+    const assignedUserId = serverEnv.followUpBossAgentId
+      ? Number.parseInt(serverEnv.followUpBossAgentId, 10)
+      : undefined;
+
     const personData: any = {
       name: data.name || `${data.firstName || ''} ${data.lastName || ''}`.trim(),
       emails: data.email ? [{ value: data.email }] : undefined,
       phones: data.phone ? [{ value: data.phone }] : undefined,
       source: enrichSource(data.source, request),
       stage: data.stage || 'New Lead',
+      ...(Number.isFinite(assignedUserId) ? { assignedUserId } : {}),
       customFields: {
         ...data.customFields,
         propertyType: data.propertyType,

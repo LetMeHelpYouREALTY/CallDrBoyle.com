@@ -7,6 +7,7 @@ import {
   janDuffyLicense,
   type JanDuffyLicenseDetails,
 } from "./agent-jan-duffy";
+import { getGoogleMapsEmbedUrl, publicEnv } from "./site-env/public";
 
 const boyleOffice = getBoyleOfficeAddressParts();
 
@@ -19,7 +20,7 @@ export const siteConfig = {
     "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
   brandName: "Berkshire Hathaway HomeServices",
   shortName: "BHHS",
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.calldrboyle.com",
+  url: publicEnv.siteUrl.replace(/\/$/, ""),
   description:
     "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
 };
@@ -51,7 +52,7 @@ const officeMapQuery = encodeURIComponent(officeInfo.address.full);
 
 /** Google Maps URLs for embed, directions, and external links */
 export const officeMapUrls = {
-  embed: `https://maps.google.com/maps?q=${officeMapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`,
+  embed: getGoogleMapsEmbedUrl(officeInfo.address.full),
   directions: `https://www.google.com/maps/dir//${officeMapQuery}`,
   view: `https://maps.google.com/?q=${officeMapQuery}`,
 };

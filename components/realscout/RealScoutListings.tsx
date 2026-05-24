@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { publicEnv } from "@/lib/site-env/public";
 
 export default function RealScoutListings() {
+  const agentId = publicEnv.realScoutAgentEncodedId;
+
   return (
     <section className="py-16 md:py-24 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -17,15 +19,16 @@ export default function RealScoutListings() {
             </p>
           </div>
           <Button asChild variant="outline" className="mt-4 md:mt-0">
-            <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer">View All Properties</a>
+            <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer">
+              View All Properties
+            </a>
           </Button>
         </div>
 
-        {/* RealScout Widget - using dangerouslySetInnerHTML per rules */}
         <div
           dangerouslySetInnerHTML={{
             __html: `<realscout-office-listings 
-              agent-encoded-id="QWdlbnQtMjI1MDUw" 
+              agent-encoded-id="${agentId}" 
               sort-order="NEWEST" 
               listing-status="For Sale" 
               property-types=",SFR,MF,TC" 

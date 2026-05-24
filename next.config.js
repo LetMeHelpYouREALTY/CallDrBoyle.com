@@ -1,7 +1,24 @@
+const cloudinaryCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Standalone output for Docker/Vercel optimization
   output: 'standalone',
+
+  // Bridge Vercel env names into client bundles at build time
+  env: {
+    NEXT_PUBLIC_REALSCOUT_AGENT_ENCODED_ID:
+      process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ENCODED_ID ||
+      (process.env.FOLLOW_UP_BOSS_AGENT_ID &&
+      !/^\d+$/.test(process.env.FOLLOW_UP_BOSS_AGENT_ID)
+        ? process.env.FOLLOW_UP_BOSS_AGENT_ID
+        : undefined) ||
+      'QWdlbnQtMjI1MDUw',
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+      process.env.VITE_GOOGLE_MAPS_API_KEY,
+    NEXT_PUBLIC_CLOUDINARY_FOLDER: process.env.CLOUDINARY_FOLDER || process.env.NEXT_PUBLIC_CLOUDINARY_FOLDER,
+  },
 
   // Image optimization
   images: {
@@ -12,6 +29,15 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: cloudinaryCloudName
+      ? [
+          {
+            protocol: 'https',
+            hostname: 'res.cloudinary.com',
+            pathname: `/${cloudinaryCloudName}/**`,
+          },
+        ]
+      : [],
   },
 
   // Compression

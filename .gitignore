@@ -94,7 +94,7 @@ __pycache__
 *$py.class
 .Python
 venv/
-ENV/
+/ENV/
 
 # ===================
 # Vercel

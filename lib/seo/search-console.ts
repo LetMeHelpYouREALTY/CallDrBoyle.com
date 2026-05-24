@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { serverEnv } from "@/lib/site-env/server";
 
 /**
  * Google Search Console + related webmaster verification tokens.
  * Set env vars in Vercel — paste the content value only (not the full HTML meta tag).
  */
 export function getSearchConsoleVerificationMetadata(): Pick<Metadata, "verification"> {
-  const google = process.env.GOOGLE_SITE_VERIFICATION?.trim();
-  const bing = process.env.BING_SITE_VERIFICATION?.trim();
+  const google = serverEnv.googleSiteVerification;
+  const bing = serverEnv.bingSiteVerification;
 
   if (!google && !bing) return {};
 
