@@ -6,7 +6,7 @@
  */
 
 import edgeCache from './edge-cache';
-import securityHeaders from './security-headers';
+import { applySecurityHeaders } from './security-headers';
 import imageOptimizer from './image-optimizer';
 import analytics from './analytics';
 
@@ -26,12 +26,7 @@ export default {
         response = await edgeCache.fetch(request, env, ctx);
       }
       
-      // Apply security headers to all responses
-      response = await securityHeaders.fetch(
-        new Request(request, { signal: request.signal }),
-        env,
-        ctx
-      );
+      response = applySecurityHeaders(response);
       
       // Send analytics (non-blocking)
       ctx.waitUntil(

@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import "./types";
 
 interface CalendlyButtonProps {
@@ -20,26 +19,20 @@ export default function CalendlyButton({
     e.preventDefault();
     if (window.Calendly) {
       window.Calendly.initPopupWidget({ url });
+      return;
     }
+    window.addEventListener(
+      "calendly-loaded",
+      () => {
+        window.Calendly?.initPopupWidget({ url });
+      },
+      { once: true }
+    );
   };
 
   return (
-    <>
-      <link
-        href="https://assets.calendly.com/assets/external/widget.css"
-        rel="stylesheet"
-      />
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
-      />
-      <a
-        href=""
-        onClick={handleClick}
-        className={className}
-      >
-        {children || text}
-      </a>
-    </>
+    <button type="button" onClick={handleClick} className={className} aria-label={text}>
+      {children || text}
+    </button>
   );
 }

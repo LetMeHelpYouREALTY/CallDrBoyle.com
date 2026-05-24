@@ -1,6 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
@@ -91,11 +90,10 @@ export default async function SecondHomeLasVegasPage() {
               ))}
             </ul>
           </section>
-
-          <RealScoutListings />
         </div>
       </main>
       <Footer />
     </>
   );
 }
+

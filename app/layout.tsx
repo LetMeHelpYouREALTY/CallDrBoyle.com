@@ -6,6 +6,9 @@ import { getDomainConfig } from "@/lib/domain-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import CalendlyScripts from "@/components/calendly/CalendlyScripts";
+import CalendlyBadge from "@/components/calendly/CalendlyBadge";
+import RealScoutScript from "@/components/realscout/RealScoutScript";
 import { publicEnv } from "@/lib/site-env/public";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
@@ -65,7 +68,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         `}</Script>
       </head>
       <body>
+        <RealScoutScript />
+        <CalendlyScripts />
         {children}
+        <CalendlyBadge text="Schedule a consultation" />
         {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
         <Analytics />
       </body>
