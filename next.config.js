@@ -20,18 +20,19 @@ const nextConfig = {
   // Performance optimizations
   swcMinify: true,
 
-  // Redirect non-www to www
+  // Redirect non-www to www (legacy BHHS domains)
   async redirects() {
     return [
       {
         source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'heyberkshire.com',
-          },
-        ],
+        has: [{ type: 'host', value: 'heyberkshire.com' }],
         destination: 'https://www.heyberkshire.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'calldrboyle.com' }],
+        destination: 'https://www.calldrboyle.com/:path*',
         permanent: true,
       },
     ]

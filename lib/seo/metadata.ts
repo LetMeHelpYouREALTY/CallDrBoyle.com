@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { absoluteUrl, getSiteUrlFromHost } from "./site-url";
+import { getSearchConsoleVerificationMetadata } from "./search-console";
 
 export type PageMetadataInput = {
   host?: string | null;
@@ -14,6 +15,7 @@ export type PageMetadataInput = {
 export function buildPageMetadata(input: PageMetadataInput): Metadata {
   const baseUrl = getSiteUrlFromHost(input.host);
   const canonical = absoluteUrl(input.path, baseUrl);
+  const verification = getSearchConsoleVerificationMetadata();
 
   return {
     title: input.title,
@@ -35,5 +37,6 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
       description: input.ogDescription ?? input.description,
     },
     robots: { index: true, follow: true },
+    ...verification,
   };
 }

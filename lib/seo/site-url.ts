@@ -2,7 +2,9 @@
  * Canonical origin helpers — use host header in production, env fallback locally.
  */
 
-const DEFAULT_SITE_URL = "https://calldrboyle.com";
+import { getCanonicalOrigin, getCanonicalHostname } from "./canonical-host";
+
+const DEFAULT_SITE_URL = "https://www.calldrboyle.com";
 
 export function normalizeHost(host: string | null | undefined): string {
   if (!host) return "";
@@ -10,10 +12,24 @@ export function normalizeHost(host: string | null | undefined): string {
 }
 
 export function getSiteUrlFromHost(host: string | null | undefined): string {
-  const normalized = normalizeHost(host);
-  if (normalized && normalized !== "localhost" && !normalized.startsWith("127.0.0.1")) {
-    return `https://${normalized}`;
+  const canonicalOrigin = getCanonicalOrigin();
+  const canonicalBare = normalizeHost(getCanonicalHostname());
+  const requestBare = normalizeHost(host);
+
+  if (
+    requestBare &&
+    requestBare !== "localhost" &&
+    !requestBare.startsWith("127.0.0.1") &&
+    requestBare === canonicalBare
+  ) {
+    return canonicalOrigin;
   }
+
+  if (requestBare && requestBare !== "localhost" && !requestBare.startsWith("127.0.0.1")) {
+    const requestHost = host?.split(":")[0]?.toLowerCase();
+    if (requestHost) return `https://${requestHost}`;
+  }
+
   const env = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
   return env || DEFAULT_SITE_URL;
 }
