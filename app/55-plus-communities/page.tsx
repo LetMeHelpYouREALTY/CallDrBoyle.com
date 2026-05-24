@@ -22,6 +22,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
@@ -112,7 +113,7 @@ const localBusinessSchema = {
   description:
     "55+ community specialist helping active adults find their perfect Las Vegas retirement home",
   telephone: "(702) 500-1942",
-  url: "https://heyberkshire.com/55-plus-communities",
+  url: `${siteConfig.url}/55-plus-communities`,
   areaServed: {
     "@type": "City",
     name: "Las Vegas",

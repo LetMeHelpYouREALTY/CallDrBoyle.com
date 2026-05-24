@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
-import { getOfficePostalAddressSchema } from "@/lib/site-config";
+import { getOfficePostalAddressSchema, siteConfig } from "@/lib/site-config";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
@@ -89,7 +89,7 @@ const realEstateAgentSchema = {
   "@type": "RealEstateAgent",
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
   telephone: "+17025001942",
-  url: "https://heyberkshire.com/buyers/california-relocator",
+  url: `${siteConfig.url}/buyers/california-relocator`,
   address: getOfficePostalAddressSchema(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin", "North Las Vegas"],
   priceRange: "$350,000 - $10,000,000+",

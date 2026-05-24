@@ -18,6 +18,8 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest run --reporter=verbose",
+    "gsc:audit": "node scripts/gsc-audit.mjs --live",
+    "gsc:audit:local": "node scripts/gsc-audit.mjs",
     "test:watch": "vitest watch",
     "analyze": "ANALYZE=true npm run build",
     "lighthouse": "lhci autorun",

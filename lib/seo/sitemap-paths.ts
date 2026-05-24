@@ -12,6 +12,7 @@ export const SITEMAP_PATHS: { path: string; priority: number; changeFrequency: "
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.85, changeFrequency: "monthly" },
   { path: "/google-business", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/security-policy", priority: 0.3, changeFrequency: "monthly" },
   { path: "/buyers/california-relocator", priority: 0.9, changeFrequency: "monthly" },
   { path: "/buyers/second-home-las-vegas", priority: 0.9, changeFrequency: "monthly" },
   { path: "/buyers/first-time-buyers", priority: 0.8, changeFrequency: "monthly" },

@@ -8,6 +8,14 @@
  */
 
 import { combineSchemas, schemaToJsonLd } from "@/lib/schema";
+import { siteConfig } from "@/lib/site-config";
+
+function schemaAbsoluteUrl(pathOrUrl: string): string {
+  if (pathOrUrl.startsWith("http")) return pathOrUrl;
+  const base = siteConfig.url.replace(/\/$/, "");
+  const path = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
+  return `${base}${path}`;
+}
 
 interface SchemaScriptProps {
   /** Single schema object */
@@ -62,9 +70,7 @@ export function BreadcrumbSchema({
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url.startsWith("http")
-        ? item.url
-        : `https://heyberkshire.com${item.url}`,
+      item: schemaAbsoluteUrl(item.url),
     })),
   };
 
@@ -118,7 +124,7 @@ export function ReviewSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com#organization",
+    "@id": `${siteConfig.url}#organization`,
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
   };
 
@@ -174,7 +180,7 @@ export function NeighborhoodSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Place",
-    "@id": `https://heyberkshire.com/neighborhoods/${slug}#place`,
+    "@id": schemaAbsoluteUrl(`/neighborhoods/${slug}#place`),
     name: `${name}, Las Vegas`,
     description,
     address: {

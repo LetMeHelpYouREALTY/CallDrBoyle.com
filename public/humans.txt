@@ -1,9 +1,9 @@
 # humanstxt.org
 
 /* TEAM */
-Agent: Dr. Jan Duffy
+Agent: Dr. Gene Boyle & Dr. Jan Duffy
 License: 197614 (Nevada Salesperson, ACTIVE)
-Site: https://heyberkshire.com
+Site: https://www.calldrboyle.com
 Location: Las Vegas, Nevada, USA
 Phone: (702) 500-1942
 
