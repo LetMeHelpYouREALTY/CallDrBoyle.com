@@ -88,7 +88,7 @@ const sellingProcess = [
   {
     step: 3,
     title: "Professional Marketing",
-    description: "Your home is photographed professionally, with virtual tours and drone video. It's listed on the MLS and syndicated to 100+ websites, plus promoted through BHHS's global network and targeted digital advertising.",
+    description: "Your home is photographed professionally, with virtual tours and drone video. It's listed for sale online and syndicated to 100+ websites, plus promoted through BHHS's global network and targeted digital advertising.",
   },
   {
     step: 4,
@@ -111,7 +111,7 @@ const includedServices = [
   "Professional photography & virtual tour",
   "Drone video for properties with views or large lots",
   "Comprehensive market analysis & pricing strategy",
-  "MLS listing syndicated to 100+ websites",
+  "Listed on Zillow, Realtor.com, and 100+ home search sites",
   "Berkshire Hathaway global network exposure",
   "Social media marketing campaign",
   "Targeted digital advertising",
@@ -353,7 +353,7 @@ export default function SellersPage() {
               <div>
                 <h2 className="text-3xl font-bold mb-4">What's Your Home Worth?</h2>
                 <p className="text-blue-100 mb-6">
-                  Get a free, no-obligation home valuation from Dr. Jan Duffy. Using current MLS
+                  Get a free, no-obligation home valuation from Dr. Jan Duffy. Using current local listing
                   data and expertise serving Las Vegas since 2008, you'll know exactly what your 
                   home could sell for in today's market. No algorithms—just real analysis from 
                   a local expert.
@@ -395,7 +395,7 @@ export default function SellersPage() {
                 },
                 {
                   q: "How does Berkshire Hathaway market my home?",
-                  a: "Your home gets professional photography, virtual tours, drone video (when appropriate), MLS syndication to 100+ websites, BHHS global network exposure, social media promotion, and targeted digital advertising. It's the most comprehensive marketing available in Las Vegas real estate.",
+                  a: "Your home gets professional photography, virtual tours, drone video (when appropriate), listing on Zillow, Realtor.com, and 100+ home search sites, BHHS global network exposure, social media promotion, and targeted digital advertising. It's the most comprehensive marketing available in Las Vegas real estate.",
                 },
                 {
                   q: "What are your commission rates?",

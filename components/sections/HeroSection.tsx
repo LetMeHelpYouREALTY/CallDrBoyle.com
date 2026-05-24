@@ -63,7 +63,7 @@ export default function HeroSection() {
           selling, and investing in Southern Nevada.
         </p>
 
-        {/* RealScout Search Widget */}
+        {/* Home search widget */}
         <div className="realscout-wrapper mb-4">
           <div
             dangerouslySetInnerHTML={{

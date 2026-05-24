@@ -122,7 +122,7 @@ export default function HomeValuationPage() {
                 <p className="text-slate-300 mb-6">
                   Online estimators like Zillow's "Zestimate" can be off by 10% or more—that's
                   $45,000+ on a typical Las Vegas home. Dr. Jan Duffy provides a comprehensive
-                  market analysis using current MLS data, recent comparable sales, and her expertise
+                  market analysis using current local listing data, recent comparable sales, and her expertise
                   serving Las Vegas since 2008. The result? Accurate pricing that helps you sell
                   faster and for more money.
                 </p>
@@ -447,7 +447,7 @@ export default function HomeValuationPage() {
                 },
                 {
                   q: "Do I need to have my home ready to show for a valuation?",
-                  a: "Not necessarily. Dr. Jan can provide an initial valuation based on property records, MLS data, and information you provide. However, a brief walk-through helps identify features and upgrades that add value. There's no need to stage or prepare extensively.",
+                  a: "Not necessarily. Dr. Jan can provide an initial valuation based on property records, local listing data, and information you provide. However, a brief walk-through helps identify features and upgrades that add value. There's no need to stage or prepare extensively.",
                 },
               ].map((faq, index) => (
                 <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">

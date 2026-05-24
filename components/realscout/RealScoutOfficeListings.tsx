@@ -19,7 +19,7 @@ export default function RealScoutOfficeListings() {
               Featured Properties
             </h2>
             <p className="text-lg text-slate-600">
-              Browse Las Vegas and Henderson homes — search powered by RealScout
+              Browse Las Vegas and Henderson homes for sale — listings updated daily
             </p>
           </div>
           <a

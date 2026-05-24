@@ -431,7 +431,7 @@ export default function MarketUpdatePage() {
           </section>
         </div>
         <div className="text-center text-sm text-slate-500 mt-12">
-          Last Updated: January 24, 2026 | Data Source: Las Vegas REALTORS® MLS
+          Last Updated: January 24, 2026 | Data source: Las Vegas area home listing records
         </div>
       </main>
       <Footer />

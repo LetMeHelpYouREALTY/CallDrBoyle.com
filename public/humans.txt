@@ -30,7 +30,7 @@ IDE: Cursor / VS Code
 
 /* INTEGRATIONS */
 CRM: Follow Up Boss
-IDX/MLS: RealScout
+Property search: live home listings
 Scheduling: Calendly
 AI: Claude 3.5 Sonnet (Anthropic)
 

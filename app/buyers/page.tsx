@@ -59,7 +59,7 @@ const buyingSteps = [
     icon: Search,
     title: "Define Your Priorities & Search",
     description:
-      "Dr. Jan provides access to all MLS listings, off-market opportunities, and new construction. She'll help you identify which Las Vegas neighborhoods match your lifestyle while setting up automated alerts so you never miss a new listing.",
+      "Dr. Jan provides access to all current homes for sale, off-market opportunities, and new construction. She'll help you identify which Las Vegas neighborhoods match your lifestyle while setting up automated alerts so you never miss a new listing.",
   },
   {
     icon: FileText,
@@ -115,7 +115,7 @@ export default function BuyersPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Free Buyer Representation</span>
-              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Full MLS Access</span>
+              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Search All Homes for Sale</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Expert Negotiation</span>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function BuyersPage() {
                 </p>
                 <ul className="space-y-2">
                   {[
-                    "Full MLS access + off-market opportunities",
+                    "Search all homes for sale + off-market opportunities",
                     "Expert negotiation on your behalf",
                     "Contract and disclosure review",
                     "Inspection coordination and repair negotiation",

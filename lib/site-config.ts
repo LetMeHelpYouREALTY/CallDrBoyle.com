@@ -306,7 +306,7 @@ export const commonFAQs = {
     {
       question: "What is my home worth in today's Las Vegas market?",
       answer:
-        "Home values depend on location, condition, size, and recent comparable sales. Dr. Jan provides free, comprehensive home valuations using current MLS data and her expertise serving Las Vegas since 2008.",
+        "Home values depend on location, condition, size, and recent comparable sales. Dr. Jan provides free, comprehensive home valuations using current local listing data and her expertise serving Las Vegas since 2008.",
     },
     {
       question: "How long will it take to sell my home?",

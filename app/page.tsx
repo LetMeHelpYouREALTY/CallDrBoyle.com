@@ -124,7 +124,7 @@ export default async function Home() {
               {config.heroSubheadline}
             </p>
 
-            {/* RealScout Search Widget */}
+            {/* Home search widget */}
             <div className="mb-8 flex justify-center">
               <div
                 dangerouslySetInnerHTML={{

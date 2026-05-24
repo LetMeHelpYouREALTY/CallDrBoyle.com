@@ -21,13 +21,13 @@ import type { Metadata } from "next";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Homes for Sale | MLS Property Search | Berkshire Hathaway HomeServices",
+  title: "Las Vegas Homes for Sale | Home Search | Berkshire Hathaway HomeServices",
   description:
-    "Browse all Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 500-1942.",
+    "Browse all Las Vegas and Henderson homes for sale with live home listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 500-1942.",
   keywords: [
     "Las Vegas homes for sale",
     "Henderson real estate",
-    "MLS listings Las Vegas",
+    "Las Vegas homes for sale",
     "Summerlin homes",
     "houses for sale Las Vegas",
     "Berkshire Hathaway listings",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 const listingsSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateListing",
-  name: "Las Vegas MLS Property Listings",
-  description: "Live MLS property listings for Las Vegas, Henderson, and Summerlin homes for sale",
+  name: "Las Vegas Homes for Sale",
+  description: "Live home listings for Las Vegas, Henderson, and Summerlin — updated daily",
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
@@ -126,12 +126,12 @@ export default function ListingsPage() {
               Las Vegas Homes for Sale
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Search thousands of Las Vegas, Henderson, and Summerlin properties with live MLS 
-              listings updated every 15 minutes. Find your dream home with expert guidance from 
+              Search thousands of Las Vegas, Henderson, and Summerlin properties with live home
+              listings updated every 15 minutes. Find your dream home with expert guidance from
               Dr. Jan Duffy at <strong>Berkshire Hathaway HomeServices</strong>.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
-              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Live MLS Data</span>
+              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Updated Listings Daily</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Updated Every 15 Min</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> 5,000+ Active Listings</span>
             </div>
@@ -139,7 +139,7 @@ export default function ListingsPage() {
 
       <RealScoutOfficeListings />
 
-          {/* RealScout Widget - Live MLS Listings */}
+          {/* Live home listings */}
           <section className="mb-16">
             <div className="max-w-7xl mx-auto">
               <div
@@ -272,7 +272,7 @@ export default function ListingsPage() {
                 </div>
                 <h3 className="font-bold mb-2">Off-Market Access</h3>
                 <p className="text-slate-400 text-sm">
-                  See listings before they hit the MLS through our network of 50,000+ agents
+                  See listings before they appear on public home search sites through our network of 50,000+ agents
                 </p>
               </div>
               <div className="text-center">
@@ -370,7 +370,7 @@ export default function ListingsPage() {
                   <p className="text-slate-600 text-sm">
                     Location, size, features, and budget all factor into your search. Dr. Jan helps 
                     you identify which Las Vegas neighborhoods match your lifestyle while setting 
-                    up automated MLS alerts so you never miss a new listing.
+                    up automated new home alerts so you never miss a new listing.
                   </p>
                 </div>
               </div>

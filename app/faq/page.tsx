@@ -84,7 +84,7 @@ const faqCategories = [
     faqs: [
       {
         q: "What is my home worth in today's market?",
-        a: "Home values depend on location, condition, size, and recent comparable sales. Dr. Jan provides free, comprehensive home valuations using current MLS data and her expertise serving Las Vegas since 2008.",
+        a: "Home values depend on location, condition, size, and recent comparable sales. Dr. Jan provides free, comprehensive home valuations using current local listing data and her expertise serving Las Vegas since 2008.",
       },
       {
         q: "How long will it take to sell my home?",
@@ -96,7 +96,7 @@ const faqCategories = [
       },
       {
         q: "How does Berkshire Hathaway market my home?",
-        a: "BHHS provides world-class marketing including professional photography, virtual tours, MLS syndication to 100+ websites, social media promotion, the BHHS global network exposure, and targeted digital advertising.",
+        a: "BHHS provides world-class marketing including professional photography, virtual tours, listing on Zillow, Realtor.com, and 100+ home search sites, social media promotion, the BHHS global network exposure, and targeted digital advertising.",
       },
       {
         q: "Should I wait for prices to go higher?",

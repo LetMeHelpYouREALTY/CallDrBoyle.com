@@ -55,7 +55,7 @@ const coreServices = [
     slug: "buyers",
     description:
       "Expert guidance through every step of the home buying process. Free buyer representation—the seller pays the commission, so you get professional advocacy at no cost to you.",
-    highlights: ["Full MLS access", "Expert negotiation", "Contract protection", "Closing coordination"],
+    highlights: ["Search all homes for sale", "Expert negotiation", "Contract protection", "Closing coordination"],
     stats: { label: "Buyers Helped", value: "300+" },
   },
   {
@@ -117,7 +117,7 @@ const specializedServices = [
     title: "Home Valuation Services",
     slug: "home-valuation",
     description:
-      "Free, no-obligation home valuations using current MLS data, recent comparable sales, and deep local market knowledge from serving Las Vegas since 2008.",
+      "Free, no-obligation home valuations using current local listing data, recent comparable sales, and deep local market knowledge from serving Las Vegas since 2008.",
     highlights: ["Accurate pricing", "No obligation", "Detailed analysis", "Market trends"],
   },
 ];
@@ -341,7 +341,7 @@ export default function ServicesPage() {
               Services for Every Type of Seller
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Selling a home involves more than just listing it on the MLS. Your situation—whether 
+              Selling a home involves more than just listing your home online. Your situation—whether 
               you're upgrading, downsizing, dealing with a life change, or relocating—determines 
               the best strategy. Dr. Jan provides customized selling solutions that address your 
               specific timeline, financial goals, and circumstances.
