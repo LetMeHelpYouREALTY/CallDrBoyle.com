@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/locations/irvine-california",
+  return generateMarketingMetadata("/locations/irvine-california", {
     title: "Irvine, California Office | Dr. Gene Boyle",
     description:
       "Plan your move from Irvine, California to Las Vegas with Dr. Gene Boyle at 320 Junco, Irvine, CA 92618.",

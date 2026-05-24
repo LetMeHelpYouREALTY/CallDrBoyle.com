@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { agentInfo } from "@/lib/site-config";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import Link from "next/link";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/locations/las-vegas-nevada",
+  return generateMarketingMetadata("/locations/las-vegas-nevada", {
     title: "Las Vegas, Nevada | Local Market Partner",
     description:
       "Las Vegas tours, contracts, and closing support from Dr. Jan Duffy, BHHS Nevada Properties — coordinated with Dr. Gene Boyle in Irvine.",

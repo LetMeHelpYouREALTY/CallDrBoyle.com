@@ -4,6 +4,7 @@ import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
@@ -11,7 +12,8 @@ import {
   generateRelocationServiceSchema,
 } from "@/lib/boyle-schema";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/buyers/second-home-las-vegas", {
   title: "Las Vegas Second Home | California Buyers",
   description:
     "Buy a Las Vegas second home with guidance from Dr. Gene Boyle in Irvine, CA, and on-the-ground support from Dr. Jan Duffy in Las Vegas.",
@@ -21,9 +23,8 @@ export const metadata: Metadata = {
     "vacation home Las Vegas",
     "second home buyer Las Vegas",
   ],
-};
-
-const secondHomeTopics = [
+});
+}const secondHomeTopics = [
   "Neighborhood fit for part-time residency",
   "HOA rules and rental restrictions",
   "Coordinating remote showings from California",

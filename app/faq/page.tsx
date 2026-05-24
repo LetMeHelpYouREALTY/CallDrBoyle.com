@@ -2,6 +2,7 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import SchemaScript from "@/components/SchemaScript";
 import {
   generateBreadcrumbSchema,
@@ -13,7 +14,8 @@ import { agentInfo } from "@/lib/site-config";
 import { CallDrBoyle, RELOCATION_SCHEDULE_PATH } from "@/lib/CallDrBoyle";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/faq", {
   title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
   description:
     "Frequently asked questions about Las Vegas real estate, Berkshire Hathaway HomeServices, buying, selling, and working with Dr. Jan Duffy at BHHS Nevada Properties.",
@@ -24,9 +26,8 @@ export const metadata: Metadata = {
     "selling a home Henderson",
     "BHHS agent questions",
   ],
-};
-
-// Breadcrumb items
+});
+}// Breadcrumb items
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "FAQ", url: "/faq" },

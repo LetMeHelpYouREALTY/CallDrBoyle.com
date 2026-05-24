@@ -3,9 +3,11 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/neighborhoods", {
   title: "Las Vegas Neighborhoods | Berkshire Hathaway HomeServices",
   description:
     "Explore Las Vegas and Henderson neighborhoods with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Summerlin, Henderson, The Ridges, Southern Highlands & more.",
@@ -16,9 +18,8 @@ export const metadata: Metadata = {
     "best neighborhoods Las Vegas",
     "where to live Las Vegas",
   ],
-};
-
-const neighborhoods = [
+});
+}const neighborhoods = [
   {
     name: "Summerlin",
     slug: "summerlin",

@@ -18,9 +18,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/buyers", {
   title: "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 500-1942.",
@@ -33,9 +35,8 @@ export const metadata: Metadata = {
     "California relocation Las Vegas",
     "55+ communities Las Vegas",
   ],
-};
-
-const buyerSchema = {
+});
+}const buyerSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Home Buying Services Las Vegas",

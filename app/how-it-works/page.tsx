@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
@@ -7,15 +6,12 @@ import { AeoFaqSection } from "@/lib/seo/aeo-sections";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import { generateFAQSchema } from "@/lib/schema";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import Link from "next/link";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/how-it-works",
+  return generateMarketingMetadata("/how-it-works", {
     title: "How It Works | Irvine to Las Vegas Relocation",
     description:
       "How Dr. Gene Boyle in Irvine and Dr. Jan Duffy in Las Vegas work together on your move from California to Nevada.",

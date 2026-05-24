@@ -17,9 +17,11 @@ import {
   Award,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/sellers", {
   title: "Sell Your Las Vegas Home | Berkshire Hathaway HomeServices",
   description:
     "Sell your Las Vegas or Henderson home for top dollar with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free home valuation. World-class marketing. Call (702) 500-1942.",
@@ -32,9 +34,8 @@ export const metadata: Metadata = {
     "Las Vegas real estate agent",
     "Summerlin home selling",
   ],
-};
-
-const sellerSchema = {
+});
+}const sellerSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Home Selling Services Las Vegas",

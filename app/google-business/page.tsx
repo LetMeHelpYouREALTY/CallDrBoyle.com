@@ -18,8 +18,7 @@ import {
   Heart,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
   businessInfo,
@@ -30,10 +29,7 @@ import {
 } from "@/lib/gbp-schema";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/google-business",
+  return generateMarketingMetadata("/google-business", {
     title: "Dr. Jan Duffy, REALTOR® Las Vegas | Berkshire Hathaway HomeServices",
     description:
       "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 500-1942.",

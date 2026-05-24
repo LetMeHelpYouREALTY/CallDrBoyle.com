@@ -17,9 +17,11 @@ import {
   Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/luxury-homes", {
   title: "Las Vegas Luxury Homes for Sale | Berkshire Hathaway HomeServices",
   description:
     "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 500-1942.",
@@ -33,9 +35,8 @@ export const metadata: Metadata = {
     "MacDonald Highlands Henderson",
     "luxury real estate agent Las Vegas",
   ],
-};
-
-const luxurySchema = {
+});
+}const luxurySchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Las Vegas Luxury Home Services",

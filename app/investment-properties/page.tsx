@@ -3,17 +3,13 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, TrendingUp, DollarSign, Building, BarChart, CheckCircle, Calculator } from "lucide-react";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
 import { generateFAQSchema } from "@/lib/schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/investment-properties",
+  return generateMarketingMetadata("/investment-properties", {
     title: "Las Vegas Investment Properties | Rental & ROI",
     description:
       "Las Vegas investment property guidance: rental analysis, neighborhoods, and coordination for California buyers investing in Nevada.",

@@ -18,6 +18,7 @@ import {
   Globe,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
@@ -26,7 +27,8 @@ import {
   generateRelocationServiceSchema,
 } from "@/lib/boyle-schema";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/relocation", {
   title: "Irvine to Las Vegas Relocation | Dr. Gene Boyle",
   description:
     "Dr. Gene Boyle helps people move to Las Vegas from Irvine, California, with on-the-ground support from Dr. Jan Duffy in Las Vegas.",
@@ -37,9 +39,8 @@ export const metadata: Metadata = {
     "Las Vegas relocation Irvine",
     "Dr Gene Boyle Irvine",
   ],
-};
-
-const popularRelocationAreas = [
+});
+}const popularRelocationAreas = [
   {
     name: "Summerlin",
     best: "Families, professionals",

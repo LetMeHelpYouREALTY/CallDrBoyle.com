@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, MapPin, TreePine, Mountain, GraduationCap, ShoppingBag } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import SchemaScript from "@/components/SchemaScript";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
@@ -12,7 +13,8 @@ import {
   combineSchemas,
 } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/neighborhoods/summerlin", {
   title: "Berkshire Hathaway HomeServices Summerlin | Las Vegas Luxury Real Estate",
   description:
     "Find Summerlin homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy offers expert guidance in Las Vegas's premier master-planned community. Median price $625K. Call (702) 500-1942.",
@@ -23,9 +25,8 @@ export const metadata: Metadata = {
     "Summerlin Las Vegas",
     "luxury homes Summerlin",
   ],
-};
-
-// Breadcrumb items for this page
+});
+}// Breadcrumb items for this page
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Neighborhoods", url: "/neighborhoods" },

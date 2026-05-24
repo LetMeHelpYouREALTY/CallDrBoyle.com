@@ -16,13 +16,15 @@ import {
   TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { getOfficePostalAddressSchema } from "@/lib/site-config";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/buyers/california-relocator", {
   title: "California to Las Vegas Relocation | Second Homes",
   description:
     "Dr. Gene Boyle guides California buyers relocating to Las Vegas or buying a second home, with Dr. Jan Duffy providing Las Vegas tours, contracts, and closing support.",
@@ -34,9 +36,8 @@ export const metadata: Metadata = {
     "Las Vegas homes California buyers",
     "Berkshire Hathaway HomeServices relocation",
   ],
-};
-
-const faqSchema = {
+});
+}const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [

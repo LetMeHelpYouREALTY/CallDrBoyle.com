@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/security-policy", {
   title: 'Security Policy',
   description: 'Security policy and responsible disclosure information for heyberkshire.com',
   robots: {
     index: true,
     follow: true,
   },
-}
-
-export default function SecurityPolicyPage() {
+});
+}export default function SecurityPolicyPage() {
   return (
     <div className="min-h-screen bg-white py-12">
       <div className="container mx-auto max-w-4xl px-4">

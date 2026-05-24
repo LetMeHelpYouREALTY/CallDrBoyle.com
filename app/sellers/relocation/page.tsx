@@ -13,9 +13,11 @@ import {
   Calendar,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/sellers/relocation", {
   title: "Relocation Home Sales Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Leaving Las Vegas for a new opportunity? Dr. Jan Duffy helps relocating homeowners sell fast and coordinates with BHHS offices nationwide. Call (702) 500-1942.",
@@ -26,9 +28,8 @@ export const metadata: Metadata = {
     "Berkshire Hathaway relocation services",
     "corporate relocation Nevada",
   ],
-};
-
-export default function RelocationPage() {
+});
+}export default function RelocationPage() {
   return (
     <>
       <Navbar />

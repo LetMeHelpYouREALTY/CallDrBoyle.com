@@ -19,9 +19,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/services", {
   title: "Real Estate Services Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Comprehensive real estate services from Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Buying, selling, luxury, investment, relocation, 55+ communities, and new construction. Call (702) 500-1942.",
@@ -34,9 +36,8 @@ export const metadata: Metadata = {
     "55+ community specialist",
     "California relocation Las Vegas",
   ],
-};
-
-const servicesSchema = {
+});
+}const servicesSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   provider: {

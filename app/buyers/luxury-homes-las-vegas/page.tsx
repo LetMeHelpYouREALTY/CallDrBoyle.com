@@ -15,9 +15,11 @@ import {
   DollarSign,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/buyers/luxury-homes-las-vegas", {
   title: "Luxury Homes Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Las Vegas luxury real estate from $1.2M to $10M+. Guard-gated estates, Strip penthouses, and custom homes. Dr. Jan Duffy provides discrete, expert representation. Call (702) 500-1942.",
@@ -29,9 +31,8 @@ export const metadata: Metadata = {
     "guard gated communities Las Vegas",
     "Berkshire Hathaway luxury homes",
   ],
-};
-
-const faqSchema = {
+});
+}const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [

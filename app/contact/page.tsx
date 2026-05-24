@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield 
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import {
   agentInfo,
   getOfficePostalAddressSchema,
@@ -15,7 +16,8 @@ import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/contact", {
   title: "Contact | Las Vegas Relocation & Second-Home Help",
   description:
     "Contact Dr. Gene Boyle in Irvine for California-to-Las Vegas relocation and second-home planning. Schedule a relocation call or reach Dr. Jan Duffy for Las Vegas tours and closing.",
@@ -26,9 +28,8 @@ export const metadata: Metadata = {
     "Las Vegas realtor contact",
     "schedule real estate appointment",
   ],
-};
-
-const contactSchema = {
+});
+}const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   mainEntity: {

@@ -12,16 +12,12 @@ import {
   Shield,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { SellerPageSeoFaq, SellerPageSeoHead } from "@/components/seo/SellerSubpageSeo";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/sellers/move-up",
+  return generateMarketingMetadata("/sellers/move-up", {
     title: "Move-Up Sellers Las Vegas | Sell and Buy Your Next Home",
     description:
       "Las Vegas move-up sellers: coordinate selling your current home and buying your next with Dr. Jan Duffy, BHHS Nevada Properties.",

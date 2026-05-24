@@ -4,13 +4,15 @@ import DrBoyleCard from "@/components/team/DrBoyleCard";
 import Link from "next/link";
 import { Phone, Mail } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import { agentInfo } from "@/lib/site-config";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/team", {
   title: "Our Team | Las Vegas Relocation & Second-Home Help",
   description:
     "Meet Dr. Gene Boyle, California relocation expert for Las Vegas moves and second homes, and Dr. Jan Duffy, your Las Vegas REALTOR® partner for tours and closing.",
@@ -21,9 +23,8 @@ export const metadata: Metadata = {
     "Las Vegas second home agent",
     "Dr Jan Duffy Las Vegas",
   ],
-};
-
-export default async function TeamPage() {
+});
+}export default async function TeamPage() {
   const boyle = await CallDrBoyle();
   const boyleSchema = generateDrBoylePersonSchema(boyle);
 

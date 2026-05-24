@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import IrvineToLasVegasPageContent from "@/components/relocation/IrvineToLasVegasPageContent";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
-  return buildPageMetadata({
-    host,
-    path: "/irvine-to-las-vegas",
+  return generateMarketingMetadata("/irvine-to-las-vegas", {
     title: "Irvine to Las Vegas Relocation | Dr. Gene Boyle",
     description:
       "Dr. Gene Boyle helps people move from Irvine, California to Las Vegas. Plan in Irvine; Dr. Jan Duffy supports tours and closing in Nevada.",

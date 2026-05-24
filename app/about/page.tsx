@@ -15,6 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { agentInfo, getOfficePostalAddressSchema } from "@/lib/site-config";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
@@ -22,7 +23,8 @@ import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/about", {
   title: "About Our Team | Las Vegas Relocation & Dr. Jan Duffy",
   description:
     "Meet Dr. Gene Boyle, California relocation expert for Las Vegas moves and second homes, and Dr. Jan Duffy, your Las Vegas REALTOR® partner.",
@@ -34,9 +36,8 @@ export const metadata: Metadata = {
     "Henderson real estate agent",
     "Summerlin realtor",
   ],
-};
-
-// Person Schema for Dr. Jan Duffy
+});
+}// Person Schema for Dr. Jan Duffy
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",

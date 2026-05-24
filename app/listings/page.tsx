@@ -18,9 +18,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMarketingMetadata("/listings", {
   title: "Las Vegas Homes for Sale | Home Search | Berkshire Hathaway HomeServices",
   description:
     "Browse all Las Vegas and Henderson homes for sale with live home listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (702) 500-1942.",
@@ -32,9 +34,8 @@ export const metadata: Metadata = {
     "houses for sale Las Vegas",
     "Berkshire Hathaway listings",
   ],
-};
-
-const listingsSchema = {
+});
+}const listingsSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateListing",
   name: "Las Vegas Homes for Sale",

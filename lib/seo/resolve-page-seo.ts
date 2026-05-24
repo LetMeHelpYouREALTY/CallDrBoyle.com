@@ -1,5 +1,6 @@
 import type { FAQItem } from "@/lib/schema";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import { trimMetaDescription } from "@/lib/seo/generate-marketing-metadata";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { getDomainConfig } from "@/lib/domain-config";
 import { SELLER_PAGE_FAQS } from "@/lib/seo/seller-faqs";
@@ -336,7 +337,8 @@ export function buildRegistryMetadata(
       : `${resolved.pageTitle} | ${brand} Las Vegas`);
 
   const description =
-    overrides?.description ?? `${resolved.speakable.summary.slice(0, 155)}…`;
+    overrides?.description ??
+    trimMetaDescription(resolved.speakable.summary);
 
   return {
     path: normalized,
