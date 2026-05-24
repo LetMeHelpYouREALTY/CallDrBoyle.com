@@ -1,6 +1,7 @@
-import { CallDrBoyle } from "@/lib/CallDrBoyle";
-import { agentInfo } from "@/lib/site-config";
-import { getBoyleOfficeAddressParts } from "@/lib/CallDrBoyle";
+import { CallDrBoyle, getBoyleOfficeAddressParts } from "@/lib/CallDrBoyle";
+import { generateWebSiteSearchSchema } from "@/lib/boyle-schema";
+import { agentInfo, janDuffyContact, siteConfig } from "@/lib/site-config";
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import { absoluteUrl } from "./site-url";
 
 /** Site-wide WebSite + dual-agent Organization graph for GEO entity clarity. */
@@ -11,22 +12,14 @@ export async function generateSiteOrganizationGraph(baseUrl: string) {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${baseUrl}#website`,
-        url: baseUrl,
-        name: "Dr. Gene Boyle — Irvine to Las Vegas Relocation",
-        description: boyle.shortBio,
-        publisher: { "@id": `${baseUrl}#organization` },
-        inLanguage: "en-US",
-      },
+      generateWebSiteSearchSchema(baseUrl),
       {
         "@type": "RealEstateAgent",
         "@id": `${baseUrl}#organization`,
-        name: "Dr. Gene Boyle & Dr. Jan Duffy — Las Vegas Relocation Team",
+        name: siteConfig.ogSiteName,
         url: baseUrl,
         description: boyle.shortBio,
-        telephone: agentInfo.phoneFormatted,
+        ...(getSitePhoneSchemaValue() ? { telephone: getSitePhoneSchemaValue() } : {}),
         email: agentInfo.email,
         address: {
           "@type": "PostalAddress",
@@ -40,20 +33,22 @@ export async function generateSiteOrganizationGraph(baseUrl: string) {
           { "@type": "City", name: "Irvine", containedInPlace: { "@type": "State", name: "California" } },
           { "@type": "City", name: "Las Vegas", containedInPlace: { "@type": "State", name: "Nevada" } },
           { "@type": "City", name: "Henderson", containedInPlace: { "@type": "State", name: "Nevada" } },
+          { "@type": "Place", name: "Summerlin" },
+          { "@type": "City", name: "North Las Vegas" },
         ],
         employee: [
           {
             "@type": "Person",
             "@id": `${baseUrl}#dr-gene-boyle`,
             name: boyle.name,
-            jobTitle: boyle.title,
+            jobTitle: "California DRE Salesperson — Irvine relocation planning",
             url: absoluteUrl("/team", baseUrl),
           },
           {
             "@type": "Person",
             "@id": `${baseUrl}#dr-jan-duffy`,
-            name: agentInfo.name,
-            jobTitle: agentInfo.title,
+            name: janDuffyContact.name,
+            jobTitle: "Nevada REALTOR® — Las Vegas tours and closing",
             url: absoluteUrl("/about", baseUrl),
           },
         ],

@@ -1,5 +1,6 @@
 "use client";
 
+import { agentInfo } from "@/lib/site-config";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
@@ -20,7 +21,7 @@ export default function Navbar() {
 
   const mainNavLinks = [
     { href: "/", label: "Home", external: false },
-    { href: "http://drjanduffy.realscout.com/", label: "Properties", external: true },
+    { href: "/listings", label: "Properties", external: false },
     { href: "/neighborhoods", label: "Neighborhoods", external: false },
     { href: "/about", label: "About", external: false },
     { href: "/contact", label: "Contact", external: false },
@@ -44,10 +45,12 @@ export default function Navbar() {
   ];
 
   return (
+    <header>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300 ${
         isScrolled ? "py-2" : "py-3"
       }`}
+      aria-label="Primary"
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
@@ -129,7 +132,7 @@ export default function Navbar() {
             </div>
 
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942" className="flex items-center gap-2">
+              <Link href={agentInfo.phoneTel} className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
                 <span className="hidden xl:inline">(702) 500-1942</span>
                 <span className="xl:hidden">Call</span>
@@ -140,7 +143,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
             <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942">
+              <Link href={agentInfo.phoneTel}>
                 <Phone className="h-4 w-4" />
               </Link>
             </Button>
@@ -203,7 +206,7 @@ export default function Navbar() {
               <div className="pt-4">
                 <Button asChild className="bg-blue-600 hover:bg-blue-700 w-full">
                   <Link
-                    href="tel:+17025001942"
+                    href={agentInfo.phoneTel}
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="h-4 w-4" />
@@ -216,5 +219,6 @@ export default function Navbar() {
         )}
       </div>
     </nav>
+    </header>
   );
 }

@@ -77,11 +77,11 @@ export const FAQ_BY_PAGE_TYPE: Record<string, FAQ[]> = {
     { question: "Why are people moving from California to Las Vegas?",
       answer: "Three big reasons: no state income tax (saves a California family $15K–$50K+/year), home prices 30–50% lower than comparable California markets, and no capital gains tax on home sales. Las Vegas also has 300+ days of sunshine and a 20-minute commute vs. California's 60–90 minutes." },
     { question: "What Las Vegas neighborhoods are most popular with California relocators?",
-      answer: "Summerlin is the #1 choice — master-planned, safe, green, and reminiscent of suburban California. Henderson's Green Valley and MacDonald Ranch are strong seconds. Both offer top-tier amenities, newer construction, and easy airport access for those still traveling back to California for work." },
+      answer: "Summerlin offers master-planned parks and trails west of the Strip. Henderson's Green Valley and Inspirada provide suburban grids with Lake Las Vegas access. Both offer CCSD school districts, newer construction, and Harry Reid International Airport access for California travel." },
     { question: "How does the buying process work if I'm relocating from out of state?",
       answer: "Dr. Jan specializes in relocation buyers. She conducts live video tours, sends detailed neighborhood comparisons, and can represent you through the entire process remotely if needed. Most relocation clients close without ever physically visiting until moving day." },
-    { question: "Is Las Vegas a good place to raise a family?",
-      answer: "Absolutely — especially in master-planned communities. Summerlin, Henderson, and North Las Vegas have excellent parks, rec centers, and highly-rated schools. The cost of living advantage means families can afford more space and better neighborhoods than they could in California or the Pacific Northwest." },
+    { question: "What recreation and parks are available in Las Vegas master-planned areas?",
+      answer: "Summerlin has 150+ parks and Red Rock Canyon access. Henderson communities include trail systems, recreation centers, and golf courses. Dr. Jan maps amenities, HOA coverage, and commute times to your workplace before you tour homes." },
     { question: "What hidden costs should I know about moving to Nevada?",
       answer: "Las Vegas has relatively low property taxes (about 0.5–0.7% of assessed value) but Nevada has higher vehicle registration fees. HOA fees in master-planned communities run $50–$350/month. Dr. Jan gives every relocation client a full cost comparison worksheet before they commit." },
     { question: "How fast can I close if I find the right home?",
@@ -108,6 +108,33 @@ export const FAQ_BY_PAGE_TYPE: Record<string, FAQ[]> = {
 // For key domains where generic pageType FAQs aren't quite right
 
 export const FAQ_DOMAIN_OVERRIDES: Record<string, FAQ[]> = {
+
+  "calldrboyle.com": [
+    {
+      question: "Why are people moving from Irvine, California to Las Vegas?",
+      answer: "Nevada has no personal state income tax (Nevada Department of Taxation), and many Irvine-area buyers seek lower housing costs and larger floor plans. Dr. Gene Boyle plans the move from Irvine; Dr. Jan Duffy handles Las Vegas tours and closing.",
+    },
+    {
+      question: "How long does an Irvine-to-Las-Vegas move take?",
+      answer: "Planning in Irvine typically takes 1–2 weeks to set budget and target areas. Once you are under contract in Nevada, financed purchases often close in 21–30 days. Cash purchases can close faster depending on title and inspection terms.",
+    },
+    {
+      question: "Which Las Vegas neighborhoods do California relocators compare first?",
+      answer: "Summerlin, Henderson, Green Valley, Skye Canyon, and Inspirada are common comparison points for Irvine buyers. We map commute times, HOA fees, home styles, and CCSD school district names before you schedule Nevada showings.",
+    },
+    {
+      question: "Can I buy a Las Vegas home while still living in Irvine?",
+      answer: "Yes. Dr. Jan Duffy offers video tours, neighborhood comparisons, and remote contract support. Many Irvine clients submit offers before their first in-person visit to Las Vegas.",
+    },
+    {
+      question: "What are Nevada property taxes compared to California?",
+      answer: "Nevada property tax rates are generally lower than California's effective rates, though exact amounts depend on assessed value and exemptions. Dr. Gene Boyle provides a side-by-side worksheet before you commit.",
+    },
+    {
+      question: "How do I schedule a relocation call?",
+      answer: "Email Relocation@CallDrBoyle.com or use the contact form to speak with Dr. Gene Boyle in Irvine about your timeline, budget, and Las Vegas target areas.",
+    },
+  ],
 
   "heritagestoneridgevalue.com": [
     { question: "How do I get an accurate Heritage Stonebridge home valuation?",
@@ -158,10 +185,10 @@ export const FAQ_DOMAIN_OVERRIDES: Record<string, FAQ[]> = {
 // ─── LOOKUP FUNCTION ──────────────────────────────────────────────────────
 
 export function getFaqsForDomain(pageType: string, domain: string): FAQ[] {
-  // Domain-specific override takes priority
-  if (FAQ_DOMAIN_OVERRIDES[domain]) {
-    return FAQ_DOMAIN_OVERRIDES[domain];
+  const cleanDomain = domain.replace(/^www\./, "").toLowerCase();
+  const normalizedDomain = cleanDomain === "default" ? "calldrboyle.com" : cleanDomain;
+  if (FAQ_DOMAIN_OVERRIDES[normalizedDomain]) {
+    return FAQ_DOMAIN_OVERRIDES[normalizedDomain];
   }
-  // Fall back to pageType set
   return FAQ_BY_PAGE_TYPE[pageType] ?? FAQ_BY_PAGE_TYPE["search"];
 }

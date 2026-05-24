@@ -23,6 +23,8 @@ import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+import { AeoAnswerLead, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { IRVINE_RELOCATION_KEY_FACTS } from "@/lib/seo/aeo-facts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/about", {
@@ -138,10 +140,15 @@ export default async function AboutPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Meet Your Berkshire Hathaway HomeServices Agent
             </h1>
-            <p className="text-xl text-slate-600">
-              Dr. Jan Duffy has been serving Las Vegas since 2008—backed by the most
-              trusted name in real estate. Whether you're buying, selling, investing, or 
-              relocating, you'll receive expert guidance with integrity and professionalism.
+            <AeoAnswerLead className="mb-6">
+              Dr. Gene Boyle (California DRE #02282581) plans Irvine-to-Las-Vegas relocations from
+              320 Junco, Irvine, CA; Dr. Jan Duffy (Nevada REALTOR® #S.0197614, BHHS Nevada
+              Properties) executes Las Vegas tours, contracts, and closing.
+            </AeoAnswerLead>
+            <AeoKeyFacts title="TL;DR — our team" facts={IRVINE_RELOCATION_KEY_FACTS.slice(0, 4)} />
+            <p className="text-xl text-slate-600 mt-8">
+              Dual-market representation: California planning with Dr. Boyle, Nevada transaction
+              expertise with Dr. Duffy — one coordinated Irvine-to-Las Vegas team.
             </p>
           </div>
 
@@ -213,7 +220,7 @@ export default async function AboutPage() {
                   <h3 className="font-bold text-slate-900 mb-4">Contact Dr. Jan Duffy</h3>
                   <div className="space-y-3">
                     <a
-                      href="tel:+17025001942"
+                      href={agentInfo.phoneTel}
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Phone className="h-5 w-5 mr-3 text-blue-600" />
@@ -463,7 +470,7 @@ export default async function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href={agentInfo.phoneTel}
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />

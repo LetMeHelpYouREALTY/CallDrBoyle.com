@@ -5,7 +5,8 @@ import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListi
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
-import { AeoFaqSection } from "@/lib/seo/aeo-sections";
+import { AeoAnswerLead, AeoFaqSection, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { IRVINE_RELOCATION_KEY_FACTS } from "@/lib/seo/aeo-facts";
 import { CallDrBoyle, RELOCATION_SCHEDULE_PATH } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema, generateRelocationServiceSchema } from "@/lib/boyle-schema";
 import { generateFAQSchema } from "@/lib/schema";
@@ -53,7 +54,8 @@ export default async function IrvineToLasVegasPageContent({
               Irvine, California → Las Vegas, Nevada
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{h1}</h1>
-            <p className="text-xl text-slate-600">{boyle.shortBio}</p>
+            <AeoAnswerLead className="mb-6">{getBoylePositioningStatement(boyle)}</AeoAnswerLead>
+            <AeoKeyFacts title="TL;DR — Irvine to Las Vegas" facts={IRVINE_RELOCATION_KEY_FACTS} />
           </div>
 
       <RealScoutOfficeListings />

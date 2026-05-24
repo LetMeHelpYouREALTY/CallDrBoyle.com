@@ -1,3 +1,4 @@
+import { agentInfo } from "@/lib/site-config";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -26,6 +27,8 @@ import {
   generateDrBoylePersonSchema,
   generateRelocationServiceSchema,
 } from "@/lib/boyle-schema";
+import { AeoAnswerLead, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { IRVINE_RELOCATION_KEY_FACTS } from "@/lib/seo/aeo-facts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/relocation", {
@@ -43,39 +46,39 @@ export async function generateMetadata(): Promise<Metadata> {
 }const popularRelocationAreas = [
   {
     name: "Summerlin",
-    best: "Families, professionals",
-    highlights: "Top-rated schools, 150+ parks, Red Rock Canyon proximity, master-planned living",
-    from: "$500K",
+    best: "Master-planned west Las Vegas",
+    highlights: "150+ parks, Red Rock Canyon access, Downtown Summerlin, CCSD school districts",
+    from: "Contact for current pricing",
   },
   {
     name: "Henderson",
-    best: "Families, retirees",
-    highlights: "Lowest crime rates, excellent schools, community feel, diverse neighborhoods",
-    from: "$450K",
+    best: "Southeast valley, City of Henderson",
+    highlights: "Lake Las Vegas access, Green Valley, Inspirada, established suburban grid",
+    from: "Contact for current pricing",
   },
   {
     name: "Green Valley",
-    best: "Established families",
-    highlights: "Mature landscaping, championship golf, shopping and dining, Henderson location",
-    from: "$480K",
+    best: "Mature Henderson neighborhoods",
+    highlights: "Championship golf, The District shopping, mature landscaping, Henderson location",
+    from: "Contact for current pricing",
   },
   {
     name: "Skye Canyon",
-    best: "Young families",
-    highlights: "Newest construction, mountain trail access, modern amenities, growing area",
-    from: "$500K",
+    best: "Northwest new construction",
+    highlights: "Builder inventory from Lennar and others, trail access, Skye Center amenities",
+    from: "Contact for current pricing",
   },
   {
     name: "Southern Highlands",
-    best: "Luxury buyers, golfers",
-    highlights: "Guard-gated sections, championship golf, mountain views, resort living",
-    from: "$700K",
+    best: "Luxury golf community",
+    highlights: "Guard-gated sections, championship golf, mountain views, larger lots",
+    from: "Contact for current pricing",
   },
   {
     name: "Inspirada",
-    best: "Families, active adults",
-    highlights: "Resort-style pools, extensive trails, new homes, Henderson convenience",
-    from: "$450K",
+    best: "Henderson master-planned",
+    highlights: "Resort-style pools, extensive trails, new construction, Henderson convenience",
+    from: "Contact for current pricing",
   },
 ];
 
@@ -122,7 +125,12 @@ export default async function RelocationPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Moving from Irvine to Las Vegas
             </h1>
-            <p className="text-xl text-slate-600 mb-8">{boyle.shortBio}</p>
+            <AeoAnswerLead className="text-center mb-6">
+              Dr. Gene Boyle plans your Irvine-to-Las-Vegas relocation from California (DRE
+              #02282581); Dr. Jan Duffy handles Las Vegas property tours, offers, and Nevada
+              closing through Berkshire Hathaway HomeServices Nevada Properties.
+            </AeoAnswerLead>
+            <AeoKeyFacts title="TL;DR — Irvine to Las Vegas relocation" facts={IRVINE_RELOCATION_KEY_FACTS} />
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> 50,000+ Agent Network</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Virtual Home Tours</span>
@@ -386,8 +394,8 @@ export default async function RelocationPage() {
                   a: "Absolutely. Dr. Jan provides virtual tours, video walkthroughs, and detailed neighborhood analysis so you can purchase confidently before relocating. Many clients buy their Las Vegas home without ever visiting in person until closing day.",
                 },
                 {
-                  q: "What are the best areas for families relocating to Las Vegas?",
-                  a: "Summerlin, Henderson (especially Green Valley and Inspirada), and Skye Canyon consistently rank highest for families due to excellent schools, low crime, and family-friendly amenities. Dr. Jan can match you with the right area based on your specific priorities—schools, commute, budget, and lifestyle.",
+                  q: "Which Las Vegas areas do California relocators choose most often?",
+                  a: "Summerlin, Henderson (Green Valley and Inspirada), and Skye Canyon are frequent starting points for Irvine-area buyers. Dr. Jan Duffy compares commute routes, HOA structures, home styles, and CCSD school district assignments to match your budget and timeline.",
                 },
                 {
                   q: "How does the cost of living compare to California?",
@@ -402,8 +410,8 @@ export default async function RelocationPage() {
                   a: "Las Vegas has diversified beyond gaming and hospitality. Major growth sectors include healthcare (Intermountain Health, UMC), technology (Switch, various startups), sports (Raiders, Golden Knights, Aces), logistics (Amazon), and professional services. The economy is growing faster than the national average.",
                 },
                 {
-                  q: "Is Las Vegas safe for families?",
-                  a: "Yes, particularly in the suburban communities. Henderson consistently ranks as one of America's safest cities. Summerlin, Green Valley, and Inspirada also have very low crime rates. Dr. Jan can provide detailed crime statistics for any neighborhood you're considering.",
+                  q: "What public resources help me compare Las Vegas areas?",
+                  a: "Clark County and city websites publish park locations, zoning maps, and permit data. CCSD publishes school boundary maps (verify enrollment with the district). Dr. Jan can pair those resources with MLS inventory and HOA documents for the areas you are considering.",
                 },
               ].map((faq, index) => (
                 <div key={index} className="bg-slate-50 rounded-lg p-6">
@@ -424,7 +432,7 @@ export default async function RelocationPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href={agentInfo.phoneTel}
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />

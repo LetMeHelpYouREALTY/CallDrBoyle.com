@@ -4,39 +4,40 @@ import Link from "next/link";
 import { TrendingUp, TrendingDown, Home, Calendar, DollarSign, BarChart, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
+import {
+  formatMarketAsOfLabel,
+  formatMarketAttribution,
+  formatMedianPrice,
+  formatStatNumber,
+  formatYoyChange,
+  marketStats,
+} from "@/data/market-stats";
+import { generateMarketReportSchema } from "@/lib/boyle-schema";
+import { agentInfo } from "@/lib/site-config";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+
+const reportMonthLabel = formatMarketAsOfLabel(marketStats.asOf);
+const reportTitle = `Las Vegas Real Estate Market Report — ${reportMonthLabel}`;
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/market-report", {
-  title: "Las Vegas Real Estate Market Report January 2026 | Berkshire Hathaway HomeServices",
-  description:
-    "Get the latest Las Vegas real estate market statistics for January 2026. Median prices, days on market, inventory levels, and expert analysis from Berkshire Hathaway HomeServices Nevada Properties.",
-  keywords: [
-    "Las Vegas real estate market",
-    "Las Vegas home prices 2026",
-    "Henderson real estate market",
-    "Nevada housing market",
-    "Berkshire Hathaway market report",
-  ],
-});
-}// Report Schema
-const reportSchema = {
-  "@context": "https://schema.org",
-  "@type": "Report",
-  name: "Las Vegas Real Estate Market Report - January 2026",
-  author: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy",
-    worksFor: "Berkshire Hathaway HomeServices Nevada Properties",
-  },
-  datePublished: "2026-01-23",
-  about: {
-    "@type": "Place",
-    name: "Las Vegas, Nevada",
-  },
-};
+    title: `${reportTitle} | Call Dr. Gene Boyle`,
+    description: `Las Vegas market statistics as of ${reportMonthLabel}. Valley-wide median, days on market, and inventory from ${marketStats.source}.`,
+    keywords: [
+      "Las Vegas real estate market",
+      "Las Vegas home prices 2026",
+      "Henderson real estate market",
+      "Nevada housing market",
+      "Berkshire Hathaway market report",
+    ],
+  });
+}
+
+const reportSchema = generateMarketReportSchema(marketStats.asOf, reportTitle);
 
 export default function MarketReportPage() {
+  const yoy = formatYoyChange(marketStats.yoyPriceChangePct);
+
   return (
     <>
       <script
@@ -52,51 +53,48 @@ export default function MarketReportPage() {
               Berkshire Hathaway HomeServices Market Intelligence
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Las Vegas Real Estate Market Report
+              {reportTitle}
             </h1>
             <p className="text-xl text-slate-600">
-              January 2026 | Expert analysis from{" "}
+              {reportMonthLabel} | Expert analysis from{" "}
               <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>
             </p>
+            <p className="text-sm text-slate-500 mt-4">{formatMarketAttribution(marketStats)}</p>
           </div>
 
       <RealScoutOfficeListings />
 
           {/* Key Stats Overview */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 text-center">
-              Las Vegas Market Snapshot | January 2026
+            <h2 className="text-2xl font-bold mb-2 text-center">
+              Las Vegas Market Snapshot | {reportMonthLabel}
             </h2>
+            <p className="text-center text-slate-400 text-sm mb-8">{formatMarketAttribution(marketStats)}</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">$450,000</div>
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">{formatMedianPrice(marketStats.medianPrice)}</div>
                 <div className="text-slate-300 text-sm">Median Home Price</div>
                 <div className="flex items-center justify-center mt-1 text-green-400 text-sm">
                   <TrendingUp className="h-4 w-4 mr-1" />
-                  +4.2% YoY
+                  {formatYoyChange(marketStats.yoyPriceChangePct) !== "—" ? `${formatYoyChange(marketStats.yoyPriceChangePct)} YoY` : "Pending update"}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">28</div>
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
+                  {formatStatNumber(marketStats.avgDaysOnMarket)}
+                </div>
                 <div className="text-slate-300 text-sm">Days on Market</div>
-                <div className="flex items-center justify-center mt-1 text-green-400 text-sm">
-                  <TrendingDown className="h-4 w-4 mr-1" />
-                  -3 days
-                </div>
+                
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">4,850</div>
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">{formatStatNumber(marketStats.activeListings)}</div>
                 <div className="text-slate-300 text-sm">Active Listings</div>
-                <div className="flex items-center justify-center mt-1 text-yellow-400 text-sm">
-                  +12% YoY
-                </div>
+                
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">2.1</div>
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">{marketStats.monthsOfInventory > 0 ? String(marketStats.monthsOfInventory) : "—"}</div>
                 <div className="text-slate-300 text-sm">Months Inventory</div>
-                <div className="flex items-center justify-center mt-1 text-slate-400 text-sm">
-                  Seller's Market
-                </div>
+                
               </div>
             </div>
           </section>
@@ -306,7 +304,7 @@ export default function MarketReportPage() {
               Jan Duffy provides free market consultations.
             </p>
             <a
-              href="tel:+17025001942"
+              href={agentInfo.phoneTel}
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />

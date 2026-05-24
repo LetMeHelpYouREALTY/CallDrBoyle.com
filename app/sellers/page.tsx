@@ -1,3 +1,4 @@
+import { agentInfo } from "@/lib/site-config";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -19,6 +20,8 @@ import {
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+import { AeoAnswerLead, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { SELLERS_KEY_FACTS } from "@/lib/seo/aeo-facts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/sellers", {
@@ -141,6 +144,12 @@ export default function SellersPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Sell Your Las Vegas Home for Top Dollar
             </h1>
+            <AeoAnswerLead className="mb-6">
+              Listing with Berkshire Hathaway HomeServices Nevada Properties puts your home on major
+              portals plus the BHHS referral network — Dr. Jan Duffy prices from current comps and
+              negotiates from offer through closing.
+            </AeoAnswerLead>
+            <AeoKeyFacts title="TL;DR — selling in Las Vegas" facts={SELLERS_KEY_FACTS} />
             <p className="text-xl text-slate-600 mb-8">
               When you list with <strong>Berkshire Hathaway HomeServices</strong>, you get
               world-class marketing, expert pricing, and a name that buyers trust. Dr. Jan Duffy 
@@ -429,7 +438,7 @@ export default function SellersPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href={agentInfo.phoneTel}
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />

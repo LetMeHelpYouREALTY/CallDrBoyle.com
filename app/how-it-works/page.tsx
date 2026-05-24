@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
-import { AeoFaqSection } from "@/lib/seo/aeo-sections";
+import { AeoAnswerLead, AeoFaqSection, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { HOW_IT_WORKS_KEY_FACTS } from "@/lib/seo/aeo-facts";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import { generateFAQSchema } from "@/lib/schema";
@@ -56,7 +57,12 @@ export default async function HowItWorksPage() {
           <h1 className="text-4xl font-bold text-slate-900 mb-6 text-center">
             How Irvine to Las Vegas relocation works
           </h1>
-          <p className="text-lg text-slate-600 text-center mb-12">{boyle.shortBio}</p>
+          <AeoAnswerLead className="text-center mb-6 max-w-3xl mx-auto">
+            An Irvine-to-Las-Vegas move is coordinated in four steps: plan in California with Dr.
+            Gene Boyle, narrow Las Vegas neighborhoods, tour and offer with Dr. Jan Duffy in Nevada,
+            then close while Boyle remains your California point of contact.
+          </AeoAnswerLead>
+          <AeoKeyFacts title="TL;DR — How the dual-agent model works" facts={HOW_IT_WORKS_KEY_FACTS} />
 
       <RealScoutOfficeListings />
           <ol className="space-y-8">

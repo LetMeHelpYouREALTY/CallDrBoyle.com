@@ -6,7 +6,8 @@
  * @see https://developers.google.com/search/docs/appearance/structured-data
  */
 
-import { siteConfig, agentInfo, officeInfo, agentStats } from "./site-config";
+import { siteConfig, agentInfo, geneBoyleContact, officeInfo, agentStats } from "./site-config";
+import { getSitePhoneSchemaValue } from "./site-contact";
 
 // ============================================================================
 // Types
@@ -95,15 +96,15 @@ export function generateRealEstateAgentSchema() {
     logo: `${BASE_URL}/images/dr-jan-duffy.jpg`,
     image: `${BASE_URL}/images/dr-jan-duffy.jpg`,
     description: siteConfig.description,
-    telephone: "+1-702-500-1942",
+    ...(getSitePhoneSchemaValue() ? { telephone: getSitePhoneSchemaValue() } : {}),
     email: agentInfo.email,
     priceRange: "$385K - $10M+",
     address: {
       "@type": "PostalAddress",
-      streetAddress: officeInfo.address.street,
-      addressLocality: officeInfo.address.city,
-      addressRegion: officeInfo.address.state,
-      postalCode: officeInfo.address.zip,
+      streetAddress: geneBoyleContact.address.street,
+      addressLocality: geneBoyleContact.address.city,
+      addressRegion: geneBoyleContact.address.state,
+      postalCode: geneBoyleContact.address.zip,
       addressCountry: "US",
     },
     geo: {
@@ -169,13 +170,7 @@ export function generateRealEstateAgentSchema() {
         sameAs: "https://en.wikipedia.org/wiki/Berkshire_Hathaway_HomeServices",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: agentStats.averageRating.toString(),
-      reviewCount: agentStats.reviewCount.toString(),
-      bestRating: "5",
-      worstRating: "1",
-    },
+    // AggregateRating omitted until owner confirms verifiable first-party review data (Google policy).
     knowsAbout: [
       "Las Vegas real estate",
       "Henderson homes",

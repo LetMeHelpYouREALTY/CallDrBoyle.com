@@ -1,3 +1,4 @@
+import { agentInfo } from "@/lib/site-config";
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import { mailtoHref, siteEmails } from "@/lib/site-emails";
@@ -57,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
                 </li>
                 <li>
                   <strong>Phone:</strong>{' '}
-                  <a href="tel:+17025001942" className="underline">
+                  <a href={agentInfo.phoneTel} className="underline">
                     (702) 500-1942
                   </a>
                 </li>
@@ -256,7 +257,7 @@ export async function generateMetadata(): Promise<Metadata> {
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+17025001942" className="text-blue-600 underline">
+                <a href={agentInfo.phoneTel} className="text-blue-600 underline">
                   (702) 500-1942
                 </a>
               </p>

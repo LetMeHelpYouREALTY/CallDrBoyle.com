@@ -1,5 +1,5 @@
-// Site Configuration - HeyBerkshire.com
-// Berkshire Hathaway HomeServices Nevada Properties
+// Site Configuration — CallDrBoyle.com / calldrboyle.com
+// Co-branded: Dr. Gene Boyle (California) + Dr. Jan Duffy (Nevada)
 
 import { getBoyleOfficeAddressParts } from "./CallDrBoyle";
 import {
@@ -9,45 +9,85 @@ import {
 } from "./agent-jan-duffy";
 import { getGoogleMapsEmbedUrl, publicEnv } from "./site-env/public";
 import { siteEmails } from "./site-emails";
+import {
+  CONTACT_EMAIL,
+  getSitePhoneDisplay,
+  getSitePhoneSchemaValue,
+  getSitePhoneTelHref,
+  LV_OFFICE_ADDRESS,
+  SITE_PHONE,
+} from "./site-contact";
+
+export { CONTACT_EMAIL, LV_OFFICE_ADDRESS, SITE_PHONE };
 
 const boyleOffice = getBoyleOfficeAddressParts();
+const sitePhoneDisplay = getSitePhoneDisplay();
+const sitePhoneTel = getSitePhoneTelHref() ?? "#";
 
 export const siteConfig = {
-  name: "HeyBerkshire",
+  name: "Call Dr. Gene Boyle",
   fullName: "Berkshire Hathaway HomeServices Nevada Properties",
-  tagline: "Private Client Real Estate Advisory",
-  /** Full brand line for titles and OG: Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory */
+  tagline: "Irvine to Las Vegas Relocation",
   brandLine:
-    "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
-  brandName: "Berkshire Hathaway HomeServices",
-  shortName: "BHHS",
+    "Call Dr. Gene Boyle | Irvine to Las Vegas Relocation | Berkshire Hathaway HomeServices Nevada Properties",
+  brandName: "Call Dr. Gene Boyle",
+  shortName: "CallDrBoyle",
   url: publicEnv.siteUrl.replace(/\/$/, ""),
   description:
-    "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
+    "Dr. Gene Boyle helps people move from Irvine, California to Las Vegas, Nevada. Dr. Jan Duffy handles Las Vegas tours, contracts, and closing through Berkshire Hathaway HomeServices Nevada Properties.",
+  /** Consistent og:site_name and entity label for GEO clarity */
+  ogSiteName: "Call Dr. Gene Boyle — Irvine to Las Vegas Relocation",
 };
 
-export const agentInfo = {
+/** Dr. Gene Boyle — California-side relocation contact (Irvine office). */
+export const geneBoyleContact = {
+  name: "Dr. Gene Boyle",
+  title: "California DRE Salesperson",
+  license: "02282581",
+  address: boyleOffice,
+  email: siteEmails.gene,
+  relocationEmail: siteEmails.relocation,
+};
+
+/** Dr. Jan Duffy — Nevada transaction agent (Las Vegas brokerage). */
+export const janDuffyContact = {
   name: janDuffyLicense.name,
   title: "REALTOR®",
   license: getJanDuffyLicenseDisplay(),
   licenseDetails: janDuffyLicense satisfies JanDuffyLicenseDetails,
-  phone: "(702) 500-1942",
-  phoneFormatted: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
-  email: siteEmails.hello,
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
+  /** Las Vegas office — pending owner confirmation for exact street address */
+  officeAddress: LV_OFFICE_ADDRESS,
 };
 
+export const agentInfo = {
+  name: janDuffyContact.name,
+  title: janDuffyContact.title,
+  license: janDuffyContact.license,
+  licenseDetails: janDuffyContact.licenseDetails,
+  phone: sitePhoneDisplay,
+  phoneFormatted: sitePhoneDisplay,
+  phoneTel: sitePhoneTel,
+  email: CONTACT_EMAIL,
+  brokerage: janDuffyContact.brokerage,
+};
+
+/** @deprecated Use geneBoyleContact.address for California NAP; janDuffyContact for Nevada. */
 export const officeInfo = {
-  name: "Berkshire Hathaway HomeServices Nevada Properties",
+  name: janDuffyContact.brokerage,
   address: boyleOffice,
   coordinates: {
     lat: 33.663528,
     lng: -117.719202,
   },
-  phone: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
+  phone: sitePhoneDisplay,
+  phoneTel: sitePhoneTel,
 };
+
+/** Schema.org telephone for Dr. Jan Duffy / site-wide NAP (E.164 when confirmed). */
+export function getAgentTelephoneSchema(): string | undefined {
+  return getSitePhoneSchemaValue();
+}
 
 const officeMapQuery = encodeURIComponent(officeInfo.address.full);
 
@@ -69,42 +109,6 @@ export function getOfficePostalAddressSchema() {
     addressCountry: "US",
   };
 }
-
-// Market Statistics (Updated January 2026)
-export const marketStats = {
-  lastUpdated: "January 2026",
-  lasVegas: {
-    medianPrice: 450000,
-    medianPriceFormatted: "$450,000",
-    yearOverYearChange: "+4.2%",
-    daysOnMarket: 28,
-    activeListings: 4850,
-    closedSales: 2340,
-    inventoryMonths: 2.1,
-  },
-  henderson: {
-    medianPrice: 485000,
-    medianPriceFormatted: "$485,000",
-    yearOverYearChange: "+5.1%",
-    daysOnMarket: 24,
-    activeListings: 1280,
-  },
-  summerlin: {
-    medianPrice: 625000,
-    medianPriceFormatted: "$625,000",
-    yearOverYearChange: "+6.8%",
-    daysOnMarket: 22,
-    luxuryMedian: 1200000,
-    luxuryMedianFormatted: "$1.2M",
-  },
-  luxury: {
-    medianPrice: 1200000,
-    medianPriceFormatted: "$1.2M",
-    activeListings: 890,
-    daysOnMarket: 45,
-    pricePerSqFt: 385,
-  },
-};
 
 // Agent Stats
 export const agentStats = {

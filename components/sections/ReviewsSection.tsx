@@ -116,7 +116,7 @@ export default function ReviewsSection({
                   {review.image ? (
                     <Image
                       src={review.image}
-                      alt={review.name}
+                      alt={`${review.name}, ${review.location} — Las Vegas real estate client testimonial`}
                       fill
                       className="object-cover"
                     />

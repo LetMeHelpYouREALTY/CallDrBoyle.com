@@ -4,14 +4,17 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { agentInfo, getOfficePostalAddressSchema, siteConfig } from "@/lib/site-config";
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+import { MarketStatsBlock } from "@/components/market/MarketStatsBlock";
 
 // Maps pageType → human-readable FAQ section title/subtitle
 const FAQ_SECTION_COPY: Record<
@@ -62,15 +65,10 @@ export default async function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
+    name: siteConfig.ogSiteName,
     url: siteConfig.url,
-    telephone: agentInfo.phoneTel.replace("tel:", ""),
+    ...(getSitePhoneSchemaValue() ? { telephone: getSitePhoneSchemaValue() } : {}),
     address: getOfficePostalAddressSchema(),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "200",
-    },
   };
 
   // ── Schema: FAQPage ──────────────────────────────────────────────────────
@@ -107,9 +105,13 @@ export default async function Home() {
       <main>
         {/* Domain-Aware Hero */}
         <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/Image/hero_bg_1.jpg')" }}
+          <Image
+            src="/Image/hero_bg_1.jpg"
+            alt="Las Vegas Valley skyline — Irvine to Las Vegas relocation with Dr. Gene Boyle"
+            fill
+            priority
+            className="object-cover opacity-30"
+            sizes="100vw"
           />
           <div className="relative z-10 container mx-auto px-4 text-center">
             {config.ctaBadge && (
@@ -216,36 +218,8 @@ export default async function Home() {
           </section>
         )}
 
-        {/* Market Stats */}
-        <section className="py-16 bg-slate-900 text-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">
-                {config.neighborhood} Real Estate Market
-              </h2>
-              <p className="text-slate-400">Current data — updated regularly</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {[
-                { value: "$450K", label: "Median Price", sub: "+4.2% YoY" },
-                { value: "28", label: "Avg Days on Market", sub: "" },
-                { value: "4,850", label: "Active Listings", sub: "" },
-                { value: "2.1", label: "Months Inventory", sub: "" },
-              ].map(({ value, label, sub }) => (
-                <div key={label} className="text-center">
-                  <div className="text-4xl font-bold text-blue-400 mb-1">{value}</div>
-                  <div className="text-slate-300 text-sm">{label}</div>
-                  {sub && <div className="text-green-400 text-xs mt-1">{sub}</div>}
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link href="/market-report" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors">
-                Full Market Report
-              </Link>
-            </div>
-          </div>
-        </section>
+        <MarketStatsBlock heading={`${config.neighborhood} Real Estate Market`} />
+        <MarketReportCta />
         <WhyChooseUs />
         <ReviewsSection />
 
@@ -291,3 +265,19 @@ export default async function Home() {
   );
 }
 
+
+
+function MarketReportCta() {
+  return (
+    <div className="bg-slate-900 pb-8">
+      <div className="container mx-auto px-4 text-center">
+        <Link
+          href="/market-report"
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors"
+        >
+          Full Market Report
+        </Link>
+      </div>
+    </div>
+  );
+}

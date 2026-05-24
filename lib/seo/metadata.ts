@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 import { absoluteUrl, getSiteUrlFromHost } from "./site-url";
 import { getSearchConsoleVerificationMetadata } from "./search-console";
 
@@ -33,7 +34,7 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
       url: canonical,
       type: "website",
       locale: "en_US",
-      siteName: "Call Dr. Gene Boyle — Irvine to Las Vegas Relocation",
+      siteName: siteConfig.ogSiteName,
     },
     twitter: {
       card: "summary_large_image",

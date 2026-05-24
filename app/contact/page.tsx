@@ -16,6 +16,7 @@ import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+import { AeoAnswerLead } from "@/lib/seo/aeo-sections";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/contact", {
@@ -68,6 +69,11 @@ export default async function ContactPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Contact Us
             </h1>
+            <AeoAnswerLead className="mb-6">
+              Call Dr. Gene Boyle in Irvine for California-side relocation planning, or reach Dr.
+              Jan Duffy in Las Vegas for tours, offers, and closing — both licensed REALTOR®
+              partners on one Irvine-to-Las Vegas team.
+            </AeoAnswerLead>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               {boyle.shortBio}
             </p>
@@ -97,7 +103,7 @@ export default async function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone (Call or Text)</h3>
                     <a
-                      href="tel:+17025001942"
+                      href={agentInfo.phoneTel}
                       className="text-2xl font-bold text-blue-600 hover:text-blue-700"
                     >
                       (702) 500-1942
@@ -301,7 +307,7 @@ export default async function ContactPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <a
-                href="tel:+17025001942"
+                href={agentInfo.phoneTel}
                 className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-xl transition-colors"
               >
                 <Phone className="h-8 w-8 mr-4" />

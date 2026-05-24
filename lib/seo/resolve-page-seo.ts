@@ -60,16 +60,16 @@ function segmentAfter(path: string, prefix: string): string | null {
 function neighborhoodFaqs(name: string): FAQItem[] {
   return [
     {
-      question: `What is the median home price in ${name}, Las Vegas?`,
-      answer: `Home prices in ${name} change monthly. Call ${PHONE} for a current market snapshot and recent comparable sales so you can buy or sell with accurate numbers.`,
+      question: `What types of homes are available in ${name}, Las Vegas?`,
+      answer: `${name} offers single-family homes, townhomes, condos, and new construction across multiple price ranges. Call ${PHONE} for a current inventory snapshot before you schedule showings.`,
     },
     {
-      question: `Is ${name} a good place to buy a home in Las Vegas?`,
-      answer: `${name} attracts buyers who want master-planned amenities, strong schools, and access to the wider Las Vegas Valley. Dr. Jan Duffy with Berkshire Hathaway HomeServices helps you compare ${name} to nearby communities before you tour homes.`,
+      question: `Which Las Vegas neighborhoods are most popular with California relocators?`,
+      answer: `Summerlin, Henderson, and Green Valley are frequent choices for Irvine-area buyers who want master-planned amenities and valley access. ${agentInfo.name} compares commute times, HOA structures, and lot sizes to match your budget.`,
     },
     {
       question: `How do I search homes for sale in ${name}?`,
-      answer: `Browse updated listings on this page, then call ${PHONE} to set up personalized home search alerts for ${name} so you see new homes and price changes quickly.`,
+      answer: `Browse updated listings on this page or visit /listings, then call ${PHONE} to set up personalized alerts for ${name} so you see new homes and price changes quickly.`,
     },
   ];
 }
@@ -164,6 +164,74 @@ function sellerPathFaqs(slug: string | null): FAQItem[] {
       question: "What marketing do you provide when I sell my Las Vegas home?",
       answer:
         "Professional photos, virtual tours when appropriate, syndication to Zillow and Realtor.com plus 100+ sites, BHHS network exposure, and targeted digital advertising.",
+    },
+  ];
+}
+
+function aboutFaqs(): FAQItem[] {
+  return [
+    {
+      question: "Who is Dr. Gene Boyle on this site?",
+      answer: `Dr. Gene Boyle is the California-side relocation contact based at 320 Junco, Irvine, CA 92618 (DRE #02282581). He plans Irvine-to-Las-Vegas moves and coordinates timing with the Nevada team.`,
+    },
+    {
+      question: "Who handles Las Vegas property tours and contracts?",
+      answer: `${agentInfo.name} (${agentInfo.license}) with ${agentInfo.brokerage} leads Nevada showings, offers, inspections, and closing support after your relocation plan is set.`,
+    },
+    {
+      question: "Why does this site list two real estate professionals?",
+      answer: "California and Nevada each require local licensed representation. Dr. Boyle handles Irvine planning; Dr. Duffy executes the Las Vegas transaction — one coordinated team across both states.",
+    },
+  ];
+}
+
+function contactFaqs(): FAQItem[] {
+  return [
+    {
+      question: "How do I schedule an Irvine to Las Vegas relocation call?",
+      answer: `Use the contact form or email ${agentInfo.email}. Dr. Gene Boyle schedules California-side planning calls; Dr. Jan Duffy supports Las Vegas tour scheduling once your search criteria are set.`,
+    },
+    {
+      question: "Which email should I use for relocation questions?",
+      answer: "Use Relocation@CallDrBoyle.com for move planning, Gene@CallDrBoyle.com for California-side questions, and Hello@CallDrBoyle.com for general inquiries.",
+    },
+    {
+      question: "Where are the California and Nevada offices?",
+      answer: `Dr. Gene Boyle's California office is 320 Junco, Irvine, CA 92618. Dr. Jan Duffy works through ${agentInfo.brokerage} in Las Vegas — office address on file pending owner confirmation.`,
+    },
+  ];
+}
+
+function neighborhoodsIndexFaqs(): FAQItem[] {
+  return [
+    {
+      question: "Which Las Vegas neighborhoods are most popular with California relocators?",
+      answer: "Summerlin, Henderson, Green Valley, Skye Canyon, and Inspirada are common starting points for Irvine-area buyers comparing master-planned amenities, commute routes, and price ranges.",
+    },
+    {
+      question: "How do Summerlin and Henderson compare for commute times?",
+      answer: "Summerlin sits west of the Strip with Red Rock access; Henderson is southeast with established suburban grids. Actual commute depends on your workplace — we map drive times before you tour.",
+    },
+    {
+      question: "Can I compare neighborhoods before flying to Las Vegas?",
+      answer: `Yes. Dr. Gene Boyle narrows options from Irvine while Dr. Jan Duffy provides video tours and listing alerts. Call ${PHONE} to start with a neighborhood shortlist.`,
+    },
+  ];
+}
+
+function marketReportFaqs(): FAQItem[] {
+  return [
+    {
+      question: "Where does the Las Vegas market report data come from?",
+      answer: "Valley-wide statistics on this page come from GLVAR / Las Vegas REALTORS and display an as-of date. Neighborhood medians may require a custom comp pull — contact us for area-specific numbers.",
+    },
+    {
+      question: "How often is the market report updated?",
+      answer: "The as-of date on each stat block shows when figures were last refreshed. Monthly GLVAR releases typically drive updates — stale numbers are replaced rather than carried forward.",
+    },
+    {
+      question: "Can I get a market report for a specific neighborhood?",
+      answer: `${agentInfo.name} prepares area-specific snapshots for Summerlin, Henderson, and other valley communities. Email ${agentInfo.email} or call ${PHONE} with your target neighborhood.`,
     },
   ];
 }
@@ -287,6 +355,13 @@ async function buildFaqsForPath(path: string, pageTitle: string): Promise<FAQIte
 
   if (normalized === "/faq") {
     return getFaqsForDomain("search", "calldrboyle.com");
+  }
+
+  if (normalized === "/about") return aboutFaqs();
+  if (normalized === "/contact") return contactFaqs();
+  if (normalized === "/neighborhoods") return neighborhoodsIndexFaqs();
+  if (normalized === "/market-report" || normalized === "/market-update") {
+    return marketReportFaqs();
   }
 
   return defaultFaqs(pageTitle);

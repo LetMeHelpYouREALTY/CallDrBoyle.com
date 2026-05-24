@@ -40,8 +40,9 @@ export async function generateMetadata(): Promise<Metadata> {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Our Team</h1>
             <p className="text-lg text-slate-600">
-              Moves from Irvine, California to Las Vegas are coordinated across two specialists:
-              your Irvine contact and your Las Vegas market partner.
+              Dr. Gene Boyle (California DRE #02282581) plans Irvine-to-Las-Vegas relocations from
+              320 Junco, Irvine, CA. Dr. Jan Duffy (Nevada REALTOR® #S.0197614, Berkshire Hathaway
+              HomeServices Nevada Properties) handles Las Vegas tours, contracts, and closing.
             </p>
           </div>
 

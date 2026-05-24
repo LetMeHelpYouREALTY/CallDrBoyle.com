@@ -1,3 +1,4 @@
+import { agentInfo } from "@/lib/site-config";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -20,6 +21,8 @@ import {
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
+import { AeoAnswerLead, AeoKeyFacts } from "@/lib/seo/aeo-sections";
+import { BUYERS_KEY_FACTS } from "@/lib/seo/aeo-facts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/buyers", {
@@ -84,7 +87,7 @@ const buyingSteps = [
 
 const neighborhoods = [
   { name: "Summerlin", price: "$625K", description: "Master-planned community with Red Rock views" },
-  { name: "Henderson", price: "$485K", description: "Family-friendly with low crime rates" },
+  { name: "Henderson", price: "$485K", description: "Lake Las Vegas, Green Valley, Anthem master plans" },
   { name: "Green Valley", price: "$520K", description: "Established with mature landscaping" },
   { name: "The Ridges", price: "$2.5M", description: "Ultra-luxury guard-gated estates" },
   { name: "North Las Vegas", price: "$385K", description: "Affordable new construction" },
@@ -109,6 +112,12 @@ export default function BuyersPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Buy Your Las Vegas Home with Confidence
             </h1>
+            <AeoAnswerLead className="mb-6">
+              A buyer&apos;s agent in Las Vegas costs you nothing in a typical resale — the seller
+              pays the listing-side commission — while giving you MLS access, contract review, and
+              negotiation through closing.
+            </AeoAnswerLead>
+            <AeoKeyFacts title="TL;DR — buying in Las Vegas" facts={BUYERS_KEY_FACTS} />
             <p className="text-xl text-slate-600 mb-8">
               When you work with a <strong>Berkshire Hathaway HomeServices</strong> buyer's agent,
               you're backed by the most trusted name in real estate—and it costs you nothing.
@@ -210,10 +219,9 @@ export default function BuyersPage() {
               Las Vegas Neighborhoods for Home Buyers
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Las Vegas offers diverse neighborhoods for every lifestyle and budget. Whether you're 
-              seeking luxury estates in guard-gated communities, family homes near top-rated schools, 
-              or affordable new construction, Dr. Jan helps you find the perfect neighborhood. Here's 
-              a quick guide to median prices and what each area offers.
+              Las Vegas offers diverse neighborhoods for every budget. Whether you want guard-gated
+              estates, golf-course communities, or newer north-valley construction, Dr. Jan helps
+              you compare inventory, HOA fees, and commute times — not generic rankings.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {neighborhoods.map((neighborhood) => (
@@ -446,7 +454,7 @@ export default function BuyersPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href={agentInfo.phoneTel}
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />

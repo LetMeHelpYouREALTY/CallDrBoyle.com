@@ -3,7 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Shield, Users, Globe, Award, TrendingUp, CheckCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site-config";
+import { agentInfo, siteConfig } from "@/lib/site-config";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
@@ -278,7 +278,7 @@ export default function WhyBerkshireHathawayPage() {
               Ready to work with the most trusted name in real estate? Contact Dr. Jan Duffy today.
             </p>
             <a
-              href="tel:+17025001942"
+              href={agentInfo.phoneTel}
               className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />

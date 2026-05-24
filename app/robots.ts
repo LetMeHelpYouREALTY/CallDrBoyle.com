@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
+import { AI_AND_PREVIEW_CRAWLERS } from "@/lib/seo/ai-crawler-agents";
 import { getSitemapAbsoluteUrl } from "@/lib/seo/search-console";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 
@@ -14,12 +15,11 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
         allow: "/",
         disallow: ["/api/", "/monitoring"],
       },
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "ChatGPT-User", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
-      { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "Claude-Web", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
+      ...AI_AND_PREVIEW_CRAWLERS.map((userAgent) => ({
+        userAgent,
+        allow: "/",
+        disallow: ["/api/", "/monitoring"],
+      })),
     ],
     sitemap: getSitemapAbsoluteUrl(baseUrl),
     host: baseUrl.replace(/^https?:\/\//, ""),

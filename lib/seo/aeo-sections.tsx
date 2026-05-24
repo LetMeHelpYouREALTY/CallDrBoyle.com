@@ -1,4 +1,53 @@
 import type { FAQItem } from "@/lib/schema";
+import type { AeoFact } from "@/lib/seo/aeo-facts";
+
+type AeoKeyFactsProps = {
+  title?: string;
+  facts: AeoFact[];
+};
+
+/** TL;DR / key-facts block for AEO — cite sources for AI extraction. */
+export function AeoKeyFacts({ title = "Key facts", facts }: AeoKeyFactsProps) {
+  return (
+    <aside
+      className="rounded-xl border border-blue-200 bg-blue-50 p-6 mb-10"
+      aria-label={title}
+    >
+      <h2 className="text-lg font-bold text-slate-900 mb-4">{title}</h2>
+      <ul className="space-y-3 text-sm text-slate-700">
+        {facts.map((fact) => (
+          <li key={fact.label}>
+            <strong className="text-slate-900">{fact.label}:</strong> {fact.value}
+            {fact.source ? (
+              <span className="block text-xs text-slate-500 mt-1">
+                Source:{" "}
+                {fact.sourceUrl ? (
+                  <a href={fact.sourceUrl} className="underline hover:text-blue-700">
+                    {fact.source}
+                  </a>
+                ) : (
+                  fact.source
+                )}
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+type AeoAnswerLeadProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+/** Answer-first lead paragraph — first sentence should directly answer the page topic. */
+export function AeoAnswerLead({ children, className = "" }: AeoAnswerLeadProps) {
+  return (
+    <p className={`text-lg text-slate-700 leading-relaxed ${className}`}>{children}</p>
+  );
+}
 
 type AeoFaqSectionProps = {
   title: string;
@@ -20,6 +69,21 @@ export function AeoFaqSection({ title, faqs }: AeoFaqSectionProps) {
           </article>
         ))}
       </div>
+    </section>
+  );
+}
+
+type AeoSectionBlockProps = {
+  /** Question-phrased H2 for AI query matching */
+  heading: string;
+  children: React.ReactNode;
+};
+
+export function AeoSectionBlock({ heading, children }: AeoSectionBlockProps) {
+  return (
+    <section className="mb-10">
+      <h2 className="text-2xl font-bold text-slate-900 mb-4">{heading}</h2>
+      {children}
     </section>
   );
 }

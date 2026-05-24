@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getRealScoutAgentEncodedId } from "@/lib/site-env/public";
 import { REALSCOUT_OFFICE_LISTINGS_DEFAULTS } from "@/lib/realscout-config";
 
@@ -22,14 +23,12 @@ export default function RealScoutOfficeListings() {
               Browse Las Vegas and Henderson homes for sale — listings updated daily
             </p>
           </div>
-          <a
-            href="http://drjanduffy.realscout.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/listings"
             className="mt-4 inline-flex h-10 items-center justify-center rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 md:mt-0"
           >
             View All Properties
-          </a>
+          </Link>
         </div>
 
         <div className="realscout-wrapper">

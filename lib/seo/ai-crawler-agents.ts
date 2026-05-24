@@ -1,0 +1,20 @@
+/** AI, search, and social-preview crawlers explicitly allowed site-wide (robots.txt). */
+export const AI_AND_PREVIEW_CRAWLERS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "Google-Extended",
+  "Google-CloudVertexBot",
+  "anthropic-ai",
+  "Claude-Web",
+  "ClaudeBot",
+  "PerplexityBot",
+  "Applebot-Extended",
+  "Amazonbot",
+  "Meta-ExternalAgent",
+  "DuckAssistBot",
+  "Bytespider",
+  "facebookexternalhit",
+  "Twitterbot",
+  "LinkedInBot",
+] as const;
