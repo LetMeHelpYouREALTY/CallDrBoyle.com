@@ -1,3 +1,5 @@
+"use client";
+
 import Script from "next/script";
 
 /** Load Calendly assets once in root layout; widgets listen for `calendly-loaded`. */
