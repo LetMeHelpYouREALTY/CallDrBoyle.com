@@ -20,6 +20,7 @@ import { getOfficePostalAddressSchema } from "@/lib/site-config";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "California to Las Vegas Relocation | Second Homes",
@@ -260,6 +261,8 @@ export default async function CaliforniaRelocatorPage() {
                   </Link>
                 </div>
               </div>
+
+      <RealScoutOfficeListings />
 
               <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                 <div className="bg-green-600 text-white p-4">

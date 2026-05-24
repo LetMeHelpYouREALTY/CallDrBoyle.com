@@ -16,6 +16,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "First-Time Home Buyers Las Vegas | Berkshire Hathaway HomeServices",
@@ -112,6 +113,8 @@ export default function FirstTimeBuyersPage() {
               Let's Make Homeownership Happen → (702) 500-1942
             </a>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Financing Options */}
           <section className="mb-16 max-w-5xl mx-auto">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
   generateDrBoylePersonSchema,
   generateRelocationServiceSchema,
@@ -69,6 +70,7 @@ export default async function SecondHomeLasVegasPage() {
             <p className="text-xl text-slate-600">{boyle.shortBio}</p>
           </div>
 
+      <RealScoutOfficeListings />
           <RelocationExpertPanel
             profile={boyle}
             heading="Your second-home coordination team"

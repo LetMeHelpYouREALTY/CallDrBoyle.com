@@ -1,5 +1,6 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -71,7 +72,6 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
             </div>
             <div className="text-3xl font-bold text-blue-600">{property.price}</div>
           </div>
-
           {/* Main Image */}
           <div className="relative h-64 md:h-96 rounded-lg overflow-hidden mb-8">
             <Image

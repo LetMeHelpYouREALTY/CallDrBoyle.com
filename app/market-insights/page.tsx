@@ -14,6 +14,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Las Vegas Real Estate Market Insights 2026 | Berkshire Hathaway HomeServices",
@@ -78,6 +79,8 @@ export default function MarketInsightsPage() {
               real estate in 2026 and beyond.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Key Drivers */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

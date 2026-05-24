@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: 'Security Policy',
@@ -17,6 +18,7 @@ export default function SecurityPolicyPage() {
           Security Policy
         </h1>
 
+      <RealScoutOfficeListings />
         <div className="prose prose-lg max-w-none">
           {/* Overview */}
           <section className="mb-12">

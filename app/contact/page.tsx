@@ -13,6 +13,7 @@ import {
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Contact | Las Vegas Relocation & Second-Home Help",
@@ -69,6 +70,8 @@ export default async function ContactPage() {
               {boyle.shortBio}
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           <div className="max-w-6xl mx-auto mb-10">
             <DrBoyleCard profile={boyle} />

@@ -17,6 +17,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices New Construction Las Vegas | Buyer's Guide",
@@ -277,6 +278,8 @@ export default function NewConstructionPage() {
               </div>
             </div>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Why Free Representation */}
           <section className="mb-16 bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

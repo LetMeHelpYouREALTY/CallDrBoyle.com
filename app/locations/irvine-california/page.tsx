@@ -8,6 +8,7 @@ import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = headers().get("host");
@@ -58,6 +59,8 @@ export default async function IrvineCaliforniaPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-4xl font-bold text-slate-900 mb-6">Irvine, California</h1>
           <p className="text-lg text-slate-600 mb-8">{boyle.shortBio}</p>
+
+      <RealScoutOfficeListings />
           <div className="flex items-start gap-3 rounded-xl border border-slate-200 p-6 mb-8">
             <MapPin className="h-5 w-5 text-blue-600 mt-0.5" aria-hidden />
             <div>

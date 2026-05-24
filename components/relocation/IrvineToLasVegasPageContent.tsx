@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
@@ -55,6 +56,7 @@ export default async function IrvineToLasVegasPageContent({
             <p className="text-xl text-slate-600">{boyle.shortBio}</p>
           </div>
 
+      <RealScoutOfficeListings />
           <RelocationExpertPanel profile={boyle} heading="Your Irvine to Las Vegas team" />
 
           <section className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">

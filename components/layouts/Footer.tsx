@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
-import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import { agentInfo, officeInfo } from "@/lib/site-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <>
-      <RealScoutOfficeListings />
-      <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 text-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -232,6 +229,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-    </>
   );
 }

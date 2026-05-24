@@ -4,6 +4,7 @@ import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, DollarSign } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Free Home Valuation Las Vegas | What's Your Home Worth? | Berkshire Hathaway HomeServices",
@@ -95,6 +96,8 @@ export default function HomeValuationPage() {
               of Las Vegas market expertise and $127M+ in closed transactions.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
             {/* Calendly Widget */}

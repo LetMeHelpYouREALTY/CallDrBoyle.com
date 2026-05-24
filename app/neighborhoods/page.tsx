@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Las Vegas Neighborhoods | Berkshire Hathaway HomeServices",
@@ -129,6 +130,8 @@ export default function NeighborhoodsPage() {
               <strong>Berkshire Hathaway HomeServices</strong> neighborhood expert
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Neighborhood Grid */}
           <section className="mb-16 max-w-6xl mx-auto">

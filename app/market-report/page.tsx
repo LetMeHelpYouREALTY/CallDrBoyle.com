@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { TrendingUp, TrendingDown, Home, Calendar, DollarSign, BarChart, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Las Vegas Real Estate Market Report January 2026 | Berkshire Hathaway HomeServices",
@@ -57,6 +58,8 @@ export default function MarketReportPage() {
               <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Key Stats Overview */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">

@@ -14,6 +14,7 @@ import {
   Heart,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Trilogy at Summerlin Homes for Sale | Luxury Resort 55+ Living | Dr. Jan Duffy",
@@ -93,6 +94,8 @@ export default function TrilogySummerlinPage() {
               dining, world-class spa, and contemporary homes.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Quick Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

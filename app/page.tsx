@@ -11,6 +11,7 @@ import { agentInfo, getOfficePostalAddressSchema } from "@/lib/site-config";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 // Maps pageType → human-readable FAQ section title/subtitle
 const FAQ_SECTION_COPY: Record<
@@ -149,6 +150,7 @@ export default async function Home() {
             </div>
           </div>
         </section>
+      <RealScoutOfficeListings />
 
         {/* Value Proposition */}
         <section className="py-16 md:py-20 bg-white">

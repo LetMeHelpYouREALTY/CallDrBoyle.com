@@ -15,6 +15,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { SellerPageSeoFaq, SellerPageSeoHead } from "@/components/seo/SellerSubpageSeo";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = headers().get("host");
@@ -66,6 +67,8 @@ export default function MoveUpSellerPage() {
               Start Your Upgrade → (702) 500-1942
             </a>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Equity Section */}
           <section className="mb-16 bg-green-600 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

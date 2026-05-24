@@ -15,6 +15,7 @@ import {
   DollarSign,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Luxury Homes Las Vegas | Berkshire Hathaway HomeServices",
@@ -102,6 +103,8 @@ export default function LuxuryHomesPage() {
               Schedule a Private Preview → (702) 500-1942
             </a>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Market Performance */}
           <section className="mb-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

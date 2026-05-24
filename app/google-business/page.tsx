@@ -20,6 +20,7 @@ import {
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
   businessInfo,
   gbpDescription,
@@ -106,6 +107,8 @@ export default function GoogleBusinessPage() {
                     </div>
                   </div>
                 </div>
+
+      <RealScoutOfficeListings />
                 
                 {/* Rating & CTA */}
                 <div className="text-center bg-white/10 rounded-xl p-8">

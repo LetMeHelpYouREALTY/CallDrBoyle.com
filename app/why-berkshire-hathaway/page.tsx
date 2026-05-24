@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Shield, Users, Globe, Award, TrendingUp, CheckCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Why Choose Berkshire Hathaway HomeServices | Las Vegas Real Estate",
@@ -57,6 +58,8 @@ export default function WhyBerkshireHathawayPage() {
               same principles that built Warren Buffett's empire.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Warren Buffett Section */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

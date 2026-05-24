@@ -20,6 +20,7 @@ import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "About Our Team | Las Vegas Relocation & Dr. Jan Duffy",
@@ -141,6 +142,8 @@ export default async function AboutPage() {
               relocating, you'll receive expert guidance with integrity and professionalism.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* California relocation contact */}
           <section className="mb-16 max-w-6xl mx-auto">

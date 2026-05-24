@@ -5,8 +5,8 @@ export const REALSCOUT_OFFICE_LISTINGS_DEFAULTS = {
   sortOrder: "STATUS_AND_SIGNIFICANT_CHANGE",
   listingStatus: "For Sale",
   propertyTypes: "SFR",
-  priceMin: "400000",
-  priceMax: "2500000",
+  priceMin: "600000",
+  priceMax: "900000",
 } as const;
 
 export function getRealScoutOfficeListingsMarkup(): string {

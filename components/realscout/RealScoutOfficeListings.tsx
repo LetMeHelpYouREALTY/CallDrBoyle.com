@@ -5,7 +5,11 @@ import { getRealScoutOfficeListingsMarkup } from "@/lib/realscout-config";
 
 export default function RealScoutOfficeListings() {
   return (
-    <section className="bg-slate-50 py-16 md:py-24">
+    <section
+      id="las-vegas-listings"
+      className="scroll-mt-28 border-b border-slate-200 bg-slate-50 py-12 md:py-16"
+      aria-label="Las Vegas homes for sale"
+    >
       <div className="container mx-auto px-4">
         <div className="mb-12 flex flex-col items-center justify-between md:flex-row">
           <div>

@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices Las Vegas Market Update | January 2026",
@@ -78,6 +79,8 @@ export default function MarketUpdatePage() {
               <Calendar className="h-4 w-4 mr-2" />
               Week of January 20, 2026
             </div>
+
+      <RealScoutOfficeListings />
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               Berkshire Hathaway HomeServices Las Vegas Market Update
             </h1>

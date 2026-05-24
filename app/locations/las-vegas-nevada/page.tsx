@@ -8,6 +8,7 @@ import { agentInfo } from "@/lib/site-config";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = headers().get("host");
@@ -60,6 +61,8 @@ export default async function LasVegasNevadaPage() {
             contracts, and closing coordination in the Las Vegas Valley for clients who plan their
             move from Irvine with {boyle.name}.
           </p>
+
+      <RealScoutOfficeListings />
           <p className="text-sm text-slate-500 mb-8">{getJanDuffyLicenseComplianceLine()}</p>
           <p className="mb-4">
             <a href={agentInfo.phoneTel} className="text-blue-600 font-semibold">

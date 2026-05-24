@@ -13,6 +13,7 @@ import {
   Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Divorce & Probate Home Sales Las Vegas | Berkshire Hathaway HomeServices",
@@ -65,6 +66,8 @@ export default function DivorceProbatePage() {
               Confidential Consultation → (702) 500-1942
             </a>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Situations We Help With */}
           <section className="mb-16 max-w-5xl mx-auto">

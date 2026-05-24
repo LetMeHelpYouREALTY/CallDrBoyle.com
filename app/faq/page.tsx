@@ -11,6 +11,7 @@ import {
 } from "@/lib/schema";
 import { agentInfo } from "@/lib/site-config";
 import { CallDrBoyle, RELOCATION_SCHEDULE_PATH } from "@/lib/CallDrBoyle";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
@@ -223,6 +224,8 @@ export default async function FAQPage() {
               <strong>Berkshire Hathaway HomeServices</strong> in Las Vegas
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* FAQ Categories */}
           <div className="max-w-4xl mx-auto space-y-12">

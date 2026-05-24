@@ -8,6 +8,7 @@ import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 import { agentInfo } from "@/lib/site-config";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Our Team | Las Vegas Relocation & Second-Home Help",
@@ -43,6 +44,7 @@ export default async function TeamPage() {
             </p>
           </div>
 
+      <RealScoutOfficeListings />
           <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <DrBoyleCard profile={boyle} />
 

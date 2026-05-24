@@ -19,6 +19,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Real Estate Services Las Vegas | Berkshire Hathaway HomeServices",
@@ -201,6 +202,8 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Core Services Section */}
           <section className="mb-16 max-w-6xl mx-auto">

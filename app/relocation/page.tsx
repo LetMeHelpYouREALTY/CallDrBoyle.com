@@ -20,6 +20,7 @@ import {
 import type { Metadata } from "next";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
   generateDrBoylePersonSchema,
   generateRelocationServiceSchema,
@@ -440,6 +441,8 @@ export default async function RelocationPage() {
             </p>
           </section>
         </div>
+
+      <RealScoutOfficeListings />
 
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>

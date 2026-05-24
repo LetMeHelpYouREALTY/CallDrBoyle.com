@@ -13,6 +13,7 @@ import {
   Sun,
 } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Downsizing in Las Vegas | Berkshire Hathaway HomeServices",
@@ -64,6 +65,8 @@ export default function DownsizingPage() {
               Let's Talk About Your Options → (702) 500-1942
             </a>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Equity Extraction */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

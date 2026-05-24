@@ -7,6 +7,7 @@ import { headers } from "next/headers";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
 import { generateFAQSchema } from "@/lib/schema";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = headers().get("host");
@@ -115,6 +116,8 @@ export default function InvestmentPropertiesPage() {
               <strong>Berkshire Hathaway HomeServices</strong>.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Why Las Vegas */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

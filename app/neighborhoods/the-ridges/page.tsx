@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Shield, Star, Mountain, Home as HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 
 export const metadata: Metadata = {
   title: "Berkshire Hathaway HomeServices The Ridges | Las Vegas Luxury Real Estate",
@@ -90,6 +91,8 @@ export default function TheRidgesPage() {
               <strong>Berkshire Hathaway HomeServices</strong> and Dr. Jan Duffy.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Market Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

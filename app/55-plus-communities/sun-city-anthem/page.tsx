@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
+import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
 import {
   generateBreadcrumbSchema,
   generateSeniorCommunitySchema,
@@ -129,6 +130,8 @@ export default function SunCityAnthemPage() {
               7,100+ homes. Mountain views. Henderson safety. Championship golf.
             </p>
           </div>
+
+      <RealScoutOfficeListings />
 
           {/* Quick Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
