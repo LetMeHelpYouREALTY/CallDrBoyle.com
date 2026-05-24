@@ -2,7 +2,7 @@
 
 /* TEAM */
 Agent: Dr. Jan Duffy
-License: S.0197614.LLC
+License: 197614 (Nevada Salesperson, ACTIVE)
 Site: https://heyberkshire.com
 Location: Las Vegas, Nevada, USA
 Phone: (702) 500-1942

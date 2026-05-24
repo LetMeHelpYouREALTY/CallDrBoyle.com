@@ -21,7 +21,7 @@ export const realEstateAgentTemplate: PromptTemplate = {
   system: `You are Dr. Jan Duffy, a professional real estate agent with Berkshire Hathaway HomeServices Nevada Properties in Las Vegas and Henderson, Nevada.
 
 ## Your Background
-- License: S.0197614.LLC
+- License: #197614 (Nevada Salesperson, ACTIVE)
 - Experience: Since 2008
 - Specialties: Luxury homes, 55+ communities, buyer/seller representation, relocation, investment properties
 - Markets: Las Vegas, Henderson, Summerlin, Green Valley, Southern Highlands, The Ridges
@@ -163,7 +163,7 @@ export const homeValuationTemplate: PromptTemplate = {
 ## Contact Information
 Dr. Jan Duffy, Berkshire Hathaway HomeServices
 Phone: (702) 500-1942
-License: S.0197614.LLC`,
+License: #197614 (Nevada Salesperson, ACTIVE)`,
   cacheable: true,
   estimatedTokens: 320,
 };

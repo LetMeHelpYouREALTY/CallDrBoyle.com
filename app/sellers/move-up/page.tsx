@@ -13,36 +13,39 @@ import {
   Shield,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { SellerPageSeoFaq, SellerPageSeoHead } from "@/components/seo/SellerSubpageSeo";
 
-export const metadata: Metadata = {
-  title: "Move-Up Sellers Las Vegas | Berkshire Hathaway HomeServices",
-  description:
-    "Ready for your next chapter? Dr. Jan Duffy helps Las Vegas homeowners leverage equity into their dream home. Sell and buy seamlessly. Call (702) 500-1942.",
-  keywords: [
-    "move up buyer Las Vegas",
-    "sell and buy Las Vegas",
-    "home equity Las Vegas",
-    "upgrade home Las Vegas",
-    "Berkshire Hathaway HomeServices seller",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const host = headers().get("host");
+  return buildPageMetadata({
+    host,
+    path: "/sellers/move-up",
+    title: "Move-Up Sellers Las Vegas | Sell and Buy Your Next Home",
+    description:
+      "Las Vegas move-up sellers: coordinate selling your current home and buying your next with Dr. Jan Duffy, BHHS Nevada Properties.",
+    keywords: [
+      "move up buyer Las Vegas",
+      "sell and buy Las Vegas",
+      "home equity Las Vegas",
+      "upgrade home Las Vegas",
+    ],
+  });
+}
 
 export default function MoveUpSellerPage() {
   return (
     <>
+      <SellerPageSeoHead
+        pageKey="move-up"
+        path="/sellers/move-up"
+        title="Move-Up Sellers"
+        speakableSummary="Las Vegas homeowners who want to sell and buy a larger home can coordinate both sides of the transaction with professional guidance."
+      />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <div className="max-w-6xl mx-auto mb-6">
-            <nav className="text-sm text-slate-500">
-              <Link href="/" className="hover:text-blue-600">Home</Link>
-              {" / "}
-              <Link href="/sellers" className="hover:text-blue-600">Sellers</Link>
-              {" / "}
-              <span className="text-slate-900">Move-Up Sellers</span>
-            </nav>
-          </div>
 
           {/* Hero */}
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -400,6 +403,7 @@ export default function MoveUpSellerPage() {
             </div>
           </section>
         </div>
+          <SellerPageSeoFaq pageKey="move-up" />
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
       <RealScoutListings />

@@ -10,18 +10,22 @@ import {
   Home, 
   TrendingUp, 
   CheckCircle, 
-  MapPin,
   Shield,
   Star,
   Clock,
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { agentInfo, getOfficePostalAddressSchema } from "@/lib/site-config";
+import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
+import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import DrBoyleCard from "@/components/team/DrBoyleCard";
+import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 
 export const metadata: Metadata = {
-  title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+  title: "About Our Team | Las Vegas Relocation & Dr. Jan Duffy",
   description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 500-1942.",
+    "Meet Dr. Gene Boyle, California relocation expert for Las Vegas moves and second homes, and Dr. Jan Duffy, your Las Vegas REALTOR® partner.",
   keywords: [
     "Dr. Jan Duffy",
     "Berkshire Hathaway HomeServices agent",
@@ -46,18 +50,12 @@ const personSchema = {
   worksFor: {
     "@type": "RealEstateAgent",
     name: "Berkshire Hathaway HomeServices Nevada Properties",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-    },
+    address: getOfficePostalAddressSchema(),
   },
   hasCredential: {
     "@type": "EducationalOccupationalCredential",
     credentialCategory: "Real Estate License",
-    credentialNumber: "S.0197614.LLC",
+    credentialNumber: agentInfo.licenseDetails.licenseNumber,
   },
   knowsAbout: [
     "Las Vegas real estate",
@@ -112,12 +110,20 @@ const areasServed = [
   "Spring Valley",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const boyle = await CallDrBoyle();
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateDrBoylePersonSchema(boyle)),
+        }}
       />
       <Navbar />
       <main className="pt-24 pb-16">
@@ -137,13 +143,32 @@ export default function AboutPage() {
             </p>
           </div>
 
+          {/* California relocation contact */}
+          <section className="mb-16 max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                  Irvine, California to Las Vegas
+                </h2>
+                <p className="text-slate-600 mb-4">{boyle.shortBio}</p>
+                <Link
+                  href="/team"
+                  className="text-blue-600 font-semibold hover:text-blue-700 text-sm"
+                >
+                  Meet the full team →
+                </Link>
+              </div>
+              <DrBoyleCard profile={boyle} className="lg:col-span-1" />
+            </div>
+          </section>
+
           {/* Agent Profile */}
           <section className="mb-16">
             <div className="grid md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Dr. Jan Duffy</h2>
                 <p className="text-lg text-blue-600 mb-6">
-                  REALTOR® | License S.0197614.LLC
+                  REALTOR® | {agentInfo.license}
                 </p>
 
                 <div className="prose prose-lg text-slate-700 mb-8 space-y-4">
@@ -178,6 +203,8 @@ export default function AboutPage() {
                 </div>
 
                 {/* Contact Info */}
+                <p className="text-xs text-slate-500 mb-6">{getJanDuffyLicenseComplianceLine()}</p>
+
                 <div className="bg-slate-50 rounded-lg p-6 mb-8">
                   <h3 className="font-bold text-slate-900 mb-4">Contact Dr. Jan Duffy</h3>
                   <div className="space-y-3">
@@ -195,13 +222,10 @@ export default function AboutPage() {
                       <Mail className="h-5 w-5 mr-3 text-blue-600" />
                       Homes@HeyBerkshire.com
                     </a>
-                    <div className="flex items-start text-slate-700">
-                      <MapPin className="h-5 w-5 mr-3 text-blue-600 mt-0.5" />
-                      <address className="not-italic">
-                        9406 W Lake Mead Blvd, Suite 100<br />
-                        Las Vegas, NV 89134
-                      </address>
-                    </div>
+                    <p className="text-sm text-slate-600 pl-8">
+                      Las Vegas market — coordinated with {boyle.name} (
+                      <span className="font-medium">{boyle.officeAddress}</span>).
+                    </p>
                     <div className="flex items-center text-slate-700">
                       <Clock className="h-5 w-5 mr-3 text-blue-600" />
                       Mon-Fri 9am-6pm, Sat 10am-4pm, Sun by appointment

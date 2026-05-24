@@ -19,34 +19,24 @@ import {
   Globe,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
+import {
+  generateDrBoylePersonSchema,
+  generateRelocationServiceSchema,
+} from "@/lib/boyle-schema";
 
 export const metadata: Metadata = {
-  title: "Relocating to Las Vegas | Berkshire Hathaway HomeServices",
+  title: "Irvine to Las Vegas Relocation | Dr. Gene Boyle",
   description:
-    "Moving to Las Vegas? Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties provides comprehensive relocation services. Schools, neighborhoods, cost of living. Call (702) 500-1942.",
+    "Dr. Gene Boyle helps people move to Las Vegas from Irvine, California, with on-the-ground support from Dr. Jan Duffy in Las Vegas.",
   keywords: [
-    "relocating to Las Vegas",
-    "moving to Las Vegas",
-    "Las Vegas relocation services",
-    "moving to Henderson Nevada",
-    "California to Las Vegas",
-    "Las Vegas relocation agent",
-    "moving from California to Nevada",
-    "Las Vegas real estate relocation",
+    "Irvine to Las Vegas relocation",
+    "move from Irvine to Las Vegas",
+    "relocating from Irvine California",
+    "Las Vegas relocation Irvine",
+    "Dr Gene Boyle Irvine",
   ],
-};
-
-const relocationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Las Vegas Relocation Services",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
-  },
-  areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
-  serviceType: "Relocation Services",
 };
 
 const popularRelocationAreas = [
@@ -103,36 +93,43 @@ const relocationServices = [
   "Property tax comparison by area",
 ];
 
-export default function RelocationPage() {
+export default async function RelocationPage() {
+  const boyle = await CallDrBoyle();
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(relocationSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateRelocationServiceSchema(boyle)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateDrBoylePersonSchema(boyle)),
+        }}
       />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="max-w-4xl mx-auto text-center mb-12">
             <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Berkshire Hathaway HomeServices Nevada Properties
+              Irvine, California → Las Vegas
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Relocating to Las Vegas?
+              Moving from Irvine to Las Vegas
             </h1>
-            <p className="text-xl text-slate-600 mb-8">
-              <strong>Berkshire Hathaway HomeServices</strong> makes your move seamless. With
-              50,000+ agents nationwide, we coordinate your relocation from anywhere in the country.
-              Whether you're moving from California, the Midwest, or across the globe, Dr. Jan Duffy 
-              provides comprehensive relocation services to ensure your transition is stress-free.
-            </p>
+            <p className="text-xl text-slate-600 mb-8">{boyle.shortBio}</p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> 50,000+ Agent Network</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Virtual Home Tours</span>
               <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> School Research</span>
             </div>
           </div>
+
+          <RelocationExpertPanel profile={boyle} heading="Irvine to Las Vegas relocation" />
 
           {/* Why Las Vegas */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
@@ -166,22 +163,21 @@ export default function RelocationPage() {
             </div>
           </section>
 
-          {/* Expert Quote */}
+          {/* Las Vegas partner */}
           <section className="mb-16 max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">
-              Expert Relocation Guidance
+              On-the-ground support in Las Vegas
             </h2>
             <div className="bg-slate-50 rounded-lg p-8">
-              <blockquote className="text-lg text-slate-700 italic mb-4">
-                "Moving to a new city is stressful enough. I handle everything from neighborhood
-                tours to school research to contractor referrals so you can focus on your new
-                beginning. And because Berkshire Hathaway HomeServices has agents nationwide, I can
-                coordinate with your agent back home to make the transition seamless. My goal is to 
-                make Las Vegas feel like home before you even arrive."
-              </blockquote>
-              <cite className="text-slate-900 font-semibold">
-                — Dr. Jan Duffy, BHHS Nevada Properties | Serving Las Vegas Since 2008
-              </cite>
+              <p className="text-lg text-slate-700 mb-4">
+                {boyle.partnership}. {boyle.partnerName} ({boyle.partnerTitle}) handles neighborhood
+                tours, contracts, and closing coordination in the Las Vegas Valley while you plan
+                from California.
+              </p>
+              <p className="text-slate-600 text-sm">
+                Start with {boyle.name} at {boyle.officeAddress}, then transition seamlessly to
+                local execution in Nevada.
+              </p>
             </div>
           </section>
 

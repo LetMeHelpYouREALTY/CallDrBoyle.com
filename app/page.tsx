@@ -8,6 +8,10 @@ import Link from "next/link";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
+import { agentInfo, getOfficePostalAddressSchema } from "@/lib/site-config";
+import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
+import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 
 // Maps pageType → human-readable FAQ section title/subtitle
 const FAQ_SECTION_COPY: Record<
@@ -42,6 +46,7 @@ const FAQ_SECTION_COPY: Record<
 
 export default async function Home() {
   const config = await getPageDomainConfig();
+  const boyle = await CallDrBoyle();
 
   // ── Domain-aware FAQs ────────────────────────────────────────────────────
   const faqs = getFaqsForDomain(config.pageType, config.domain);
@@ -60,13 +65,7 @@ export default async function Home() {
     name: `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
     url: `https://${config.domain !== "default" ? config.domain : "heyberkshire.com"}`,
     telephone: "+17022221964",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-    },
+    address: getOfficePostalAddressSchema(),
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
@@ -97,6 +96,12 @@ export default async function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateDrBoylePersonSchema(boyle)),
+        }}
       />
       <Navbar />
       <main>
@@ -176,6 +181,40 @@ export default async function Home() {
           </div>
         </section>
 
+        {(config.pageType === "lifestyle" ||
+          config.pageType === "search" ||
+          config.domain === "default") && (
+          <section className="py-16 md:py-20 bg-slate-50">
+            <div className="container mx-auto px-4">
+              <RelocationExpertPanel
+                profile={boyle}
+                heading="Irvine, California to Las Vegas"
+              />
+              <nav
+                className="max-w-5xl mx-auto mt-10 flex flex-wrap justify-center gap-4 text-sm"
+                aria-label="Relocation resources"
+              >
+                {[
+                  { href: "/irvine-to-las-vegas", label: "Irvine to Las Vegas" },
+                  { href: "/how-it-works", label: "How it works" },
+                  { href: "/guides/moving-from-irvine-to-las-vegas", label: "Moving guide" },
+                  { href: "/locations/irvine-california", label: "Irvine, CA" },
+                  { href: "/locations/las-vegas-nevada", label: "Las Vegas, NV" },
+                  { href: "/team", label: "Our team" },
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 hover:border-blue-300 hover:text-blue-600"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </section>
+        )}
+
         {/* Market Stats */}
         <section className="py-16 bg-slate-900 text-white">
           <div className="container mx-auto px-4">
@@ -243,7 +282,7 @@ export default async function Home() {
               </Link>
             </div>
             <p className="mt-6 text-blue-200 text-sm">
-              Dr. Jan Duffy | License S.0197614.LLC | Berkshire Hathaway HomeServices Nevada Properties
+              {agentInfo.name} | {agentInfo.license} | Berkshire Hathaway HomeServices Nevada Properties
             </p>
           </div>
         </section>

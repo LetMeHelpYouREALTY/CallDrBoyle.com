@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { agentInfo, officeInfo } from "@/lib/site-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -173,9 +174,10 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-300 text-sm">
-                  9406 W Lake Mead Blvd, Suite 100
+                  {officeInfo.address.street}
                   <br />
-                  Las Vegas, NV 89134
+                  {officeInfo.address.city}, {officeInfo.address.state}{" "}
+                  {officeInfo.address.zip}
                 </span>
               </li>
               <li className="flex items-center">
@@ -217,7 +219,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-slate-500 text-xs mt-4 text-center">
-            Dr. Jan Duffy, REALTOR® | License S.0197614.LLC | Berkshire Hathaway HomeServices Nevada
+            {agentInfo.name}, REALTOR® | {agentInfo.license} | Berkshire Hathaway HomeServices Nevada
             Properties
           </p>
           <p className="text-slate-600 text-xs mt-2 text-center max-w-3xl mx-auto">

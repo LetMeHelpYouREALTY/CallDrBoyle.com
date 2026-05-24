@@ -2,7 +2,6 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
-import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
 import {
@@ -11,6 +10,8 @@ import {
   generateWebPageSchema,
   combineSchemas,
 } from "@/lib/schema";
+import { agentInfo } from "@/lib/site-config";
+import { CallDrBoyle, RELOCATION_SCHEDULE_PATH } from "@/lib/CallDrBoyle";
 
 export const metadata: Metadata = {
   title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
@@ -146,7 +147,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Dr. Jan Duffy?",
-        a: "Call or text (702) 500-1942 or email homes@heyberkshire.com. Office located at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
+        a: "Call or text (702) 500-1942 or email homes@heyberkshire.com for Las Vegas market support.",
       },
       {
         q: "What areas does Dr. Jan cover?",
@@ -156,31 +157,56 @@ const faqCategories = [
   },
 ];
 
-// Flatten all FAQs for schema generation
-const allFaqs = faqCategories.flatMap((category) =>
-  category.faqs.map((faq) => ({
-    question: faq.q,
-    answer: faq.a,
-  }))
-);
+function buildFaqCategoriesWithBoyle(
+  boyle: Awaited<ReturnType<typeof CallDrBoyle>>
+) {
+  return [
+    {
+      title: "Irvine to Las Vegas relocation",
+      faqs: [
+        {
+          q: `How does ${boyle.name} help California buyers?`,
+          a: boyle.shortBio,
+        },
+        {
+          q: "Who handles Las Vegas tours and closing?",
+          a: `${boyle.partnership}. ${boyle.partnerName} (${boyle.partnerTitle}) provides local property tours, contracts, and closing support in Las Vegas.`,
+        },
+        {
+          q: "Where is the California office?",
+          a: `${boyle.name} is based at ${boyle.officeAddress}. ${boyle.primaryCTA} on our contact page (${RELOCATION_SCHEDULE_PATH}).`,
+        },
+      ],
+    },
+    ...faqCategories,
+  ];
+}
 
-// Combined page schemas including all FAQs
-const pageSchemas = combineSchemas(
-  generateBreadcrumbSchema(breadcrumbs),
-  generateWebPageSchema({
-    name: "Frequently Asked Questions | Berkshire Hathaway HomeServices Las Vegas",
-    description:
-      "Comprehensive FAQ about Las Vegas real estate, buying, selling, investing, and working with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
-    url: "/faq",
-    dateModified: "2026-01-25",
-  }),
-  generateFAQSchema(allFaqs)
-);
+export default async function FAQPage() {
+  const boyle = await CallDrBoyle();
+  const categories = buildFaqCategoriesWithBoyle(boyle);
 
-export default function FAQPage() {
+  const allFaqs = categories.flatMap((category) =>
+    category.faqs.map((faq) => ({
+      question: faq.q,
+      answer: faq.a,
+    }))
+  );
+
+  const pageSchemas = combineSchemas(
+    generateBreadcrumbSchema(breadcrumbs),
+    generateWebPageSchema({
+      name: "Frequently Asked Questions | Las Vegas Relocation",
+      description:
+        "FAQ about California to Las Vegas relocation, second homes, and working with Dr. Gene Boyle and Dr. Jan Duffy.",
+      url: "/faq",
+      dateModified: "2026-01-25",
+    }),
+    generateFAQSchema(allFaqs)
+  );
+
   return (
     <>
-      {/* Combined JSON-LD Schema: Breadcrumb + WebPage + FAQPage (all categories) */}
       <SchemaScript schema={pageSchemas} id="faq-page-schema" />
       <Navbar />
       <main className="pt-24 pb-16">
@@ -201,7 +227,7 @@ export default function FAQPage() {
 
           {/* FAQ Categories */}
           <div className="max-w-4xl mx-auto space-y-12">
-            {faqCategories.map((category) => (
+            {categories.map((category) => (
               <section key={category.title}>
                 <h2 className="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">
                   {category.title}
@@ -222,16 +248,15 @@ export default function FAQPage() {
           <section className="mt-16 text-center bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Still Have Questions?</h2>
             <p className="text-xl text-blue-100 mb-8">
-              Dr. Jan Duffy is happy to answer any questions about Las Vegas real estate or working
-              with Berkshire Hathaway HomeServices.
+              {boyle.primaryCTA} with {boyle.name}, or call {agentInfo.phoneFormatted} for Las Vegas
+              support from {boyle.partnerName}.
             </p>
-            <a
-              href="tel:+17025001942"
+            <Link
+              href={RELOCATION_SCHEDULE_PATH}
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
-              <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
-            </a>
+              {boyle.primaryCTA}
+            </Link>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
             </p>

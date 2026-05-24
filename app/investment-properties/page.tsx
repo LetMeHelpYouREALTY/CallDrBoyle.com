@@ -4,20 +4,39 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone, TrendingUp, DollarSign, Building, BarChart, CheckCircle, Calculator } from "lucide-react";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import PageSeoExtras from "@/components/seo/PageSeoExtras";
+import { generateFAQSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Las Vegas Investment Properties | Berkshire Hathaway HomeServices",
-  description:
-    "Invest in Las Vegas real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Rental properties, ROI analysis, 1031 exchanges. No state income tax. Call (702) 500-1942.",
-  keywords: [
-    "Las Vegas investment property",
-    "Las Vegas rental property",
-    "Henderson real estate investing",
-    "Nevada investment homes",
-    "1031 exchange Las Vegas",
-    "cash flow properties Las Vegas",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const host = headers().get("host");
+  return buildPageMetadata({
+    host,
+    path: "/investment-properties",
+    title: "Las Vegas Investment Properties | Rental & ROI",
+    description:
+      "Las Vegas investment property guidance: rental analysis, neighborhoods, and coordination for California buyers investing in Nevada.",
+    keywords: [
+      "Las Vegas investment property",
+      "Las Vegas rental property",
+      "Nevada investment homes",
+    ],
+  });
+}
+
+const investmentFaqs = [
+  {
+    question: "Is Las Vegas a good market for rental investment?",
+    answer:
+      "Many investors consider Las Vegas for rental demand, relative affordability, and Nevada tax advantages. Returns vary by neighborhood, property type, and financing.",
+  },
+  {
+    question: "Can California investors buy Las Vegas rentals remotely?",
+    answer:
+      "Yes. Planning from California with a local Las Vegas partner helps with market selection, tours, and property management referrals.",
+  },
+];
 
 const investmentAreas = [
   {
@@ -67,6 +86,19 @@ const investmentAreas = [
 export default function InvestmentPropertiesPage() {
   return (
     <>
+      <PageSeoExtras
+        path="/investment-properties"
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Investment properties", href: "/investment-properties" },
+        ]}
+        speakable={{
+          headline: "Las Vegas investment properties",
+          summary:
+            "Las Vegas investment property overview for buyers comparing rental income, appreciation, and neighborhood options in Southern Nevada.",
+        }}
+        schemas={[generateFAQSchema(investmentFaqs)]}
+      />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

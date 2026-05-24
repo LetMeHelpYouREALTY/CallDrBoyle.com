@@ -27,6 +27,13 @@ export default function Navbar() {
   ];
 
   const serviceLinks = [
+    { href: "/irvine-to-las-vegas", label: "Irvine to Las Vegas" },
+    { href: "/relocation", label: "Relocation" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/guides/moving-from-irvine-to-las-vegas", label: "Moving Guide" },
+    { href: "/buyers/california-relocator", label: "California Relocation" },
+    { href: "/buyers/second-home-las-vegas", label: "Las Vegas Second Home" },
+    { href: "/team", label: "Our Team" },
     { href: "/buyers", label: "Home Buying" },
     { href: "/sellers", label: "Home Selling" },
     { href: "/luxury-homes", label: "Luxury Homes" },

@@ -5,11 +5,20 @@ import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield 
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
+import {
+  agentInfo,
+  getOfficePostalAddressSchema,
+  officeInfo,
+  officeMapUrls,
+} from "@/lib/site-config";
+import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import DrBoyleCard from "@/components/team/DrBoyleCard";
+import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 
 export const metadata: Metadata = {
-  title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+  title: "Contact | Las Vegas Relocation & Second-Home Help",
   description:
-    "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 500-1942. Las Vegas, Henderson, Summerlin real estate expert.",
+    "Contact Dr. Gene Boyle in Irvine for California-to-Las Vegas relocation and second-home planning. Schedule a relocation call or reach Dr. Jan Duffy for Las Vegas tours and closing.",
   keywords: [
     "contact real estate agent Las Vegas",
     "Berkshire Hathaway contact",
@@ -27,23 +36,24 @@ const contactSchema = {
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
     telephone: "+17025001942",
     email: "homes@heyberkshire.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-      addressCountry: "US",
-    },
+    address: getOfficePostalAddressSchema(),
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const boyle = await CallDrBoyle();
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateDrBoylePersonSchema(boyle)),
+        }}
       />
       <Navbar />
       <main className="pt-24 pb-16">
@@ -54,13 +64,15 @@ export default function ContactPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Contact Dr. Jan Duffy
+              Contact Us
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Questions about Las Vegas real estate? Your{" "}
-              <strong>Berkshire Hathaway HomeServices</strong> expert is here to help. 
-              Schedule an appointment or reach out directly.
+              {boyle.shortBio}
             </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto mb-10">
+            <DrBoyleCard profile={boyle} />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -111,12 +123,11 @@ export default function ContactPage() {
                 <div className="flex items-start bg-slate-50 rounded-lg p-4">
                   <MapPin className="h-6 w-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Office Address</h3>
+                    <h3 className="font-semibold text-slate-900 mb-1">
+                      {boyle.name} — California office
+                    </h3>
                     <address className="not-italic text-slate-700">
-                      Berkshire Hathaway HomeServices<br />
-                      Nevada Properties<br />
-                      9406 W Lake Mead Blvd, Suite 100<br />
-                      Las Vegas, NV 89134
+                      {boyle.officeAddress}
                     </address>
                   </div>
                 </div>
@@ -139,7 +150,7 @@ export default function ContactPage() {
               {/* Google Map Embed */}
               <div className="rounded-xl overflow-hidden shadow-md mb-4">
                 <iframe
-                  src="https://maps.google.com/maps?q=9406+W+Lake+Mead+Blvd+Suite+100,+Las+Vegas,+NV+89134&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src={officeMapUrls.embed}
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
@@ -154,7 +165,7 @@ export default function ContactPage() {
               {/* Map Action Buttons */}
               <div className="flex gap-3 mb-8">
                 <a
-                  href="https://www.google.com/maps/dir//9406+W+Lake+Mead+Blvd+Suite+100,+Las+Vegas,+NV+89134"
+                  href={officeMapUrls.directions}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors"
@@ -163,7 +174,7 @@ export default function ContactPage() {
                   Get Directions
                 </a>
                 <a
-                  href="https://maps.google.com/?q=Berkshire+Hathaway+HomeServices+Nevada+Properties+9406+W+Lake+Mead+Blvd+Las+Vegas+NV"
+                  href={officeMapUrls.view}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-3 rounded-lg font-medium transition-colors"
@@ -176,21 +187,25 @@ export default function ContactPage() {
               <div className="p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-slate-700">
                   <strong>Dr. Jan Duffy, REALTOR®</strong><br />
-                  License S.0197614.LLC<br />
+                  {agentInfo.license}
+                  <br />
+                  {agentInfo.licenseDetails.city}, {agentInfo.licenseDetails.state}{" "}
+                  {agentInfo.licenseDetails.zipCode}
+                  <br />
                   Berkshire Hathaway HomeServices Nevada Properties
                 </p>
               </div>
             </div>
 
             {/* Schedule Appointment - Calendly Widget */}
-            <div>
+            <div id="schedule-relocation">
               <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
                 <div className="bg-blue-600 text-white p-6 text-center">
                   <Calendar className="h-10 w-10 mx-auto mb-3" />
-                  <h2 className="text-2xl font-bold mb-2">Schedule an Appointment</h2>
+                  <h2 className="text-2xl font-bold mb-2">{boyle.primaryCTA}</h2>
                   <p className="text-blue-100">
-                    Book a time that works for you—phone consultation, property showing, 
-                    or in-person meeting at our office.
+                    Book a time with {boyle.name} to discuss your Las Vegas relocation or
+                    second-home goals. {boyle.partnerName} supports tours and closing in Nevada.
                   </p>
                 </div>
                 <CalendlyWidget height="600px" />

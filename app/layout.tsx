@@ -5,26 +5,51 @@ import { headers } from "next/headers";
 import { getDomainConfig } from "@/lib/domain-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { getSiteUrlFromHost } from "@/lib/seo/site-url";
+import { generateSiteOrganizationGraph } from "@/lib/seo/organization-schema";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const domain = headers().get("x-domain") || "";
+  const host = headers().get("host");
+  const domain = host || "";
   const config = getDomainConfig(domain);
-  return {
+  const isBoyleSite = config.domain === "calldrboyle.com" || config.domain === "default";
+
+  if (isBoyleSite) {
+    return buildPageMetadata({
+      host,
+      path: "/",
+      title: "Irvine to Las Vegas Relocation | Dr. Gene Boyle",
+      description: config.description,
+      keywords: config.keywords,
+      ogTitle: config.heroHeadline,
+      ogDescription: config.heroSubheadline,
+    });
+  }
+
+  return buildPageMetadata({
+    host,
+    path: "/",
     title: `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`,
     description: config.description,
     keywords: config.keywords,
-    openGraph: {
-      title: config.heroHeadline,
-      description: config.description,
-      type: "website",
-    },
-  };
+    ogTitle: config.heroHeadline,
+    ogDescription: config.description,
+  });
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const host = headers().get("host");
+  const baseUrl = getSiteUrlFromHost(host);
+  const orgGraph = await generateSiteOrganizationGraph(baseUrl);
+
   return (
     <html lang="en" className={GeistSans.className}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
+        />
         {/* WidgetTracker */}
         <Script id="widget-tracker" strategy="afterInteractive">{`
           (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()

@@ -17,11 +17,15 @@ import {
   TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getOfficePostalAddressSchema } from "@/lib/site-config";
+import { CallDrBoyle } from "@/lib/CallDrBoyle";
+import RelocationExpertPanel from "@/components/relocation/RelocationExpertPanel";
+import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
 
 export const metadata: Metadata = {
-  title: "Relocating from California to Las Vegas | Berkshire Hathaway HomeServices",
+  title: "California to Las Vegas Relocation | Second Homes",
   description:
-    "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 500-1942.",
+    "Dr. Gene Boyle guides California buyers relocating to Las Vegas or buying a second home, with Dr. Jan Duffy providing Las Vegas tours, contracts, and closing support.",
   keywords: [
     "California to Las Vegas relocation",
     "moving from California to Nevada",
@@ -85,18 +89,14 @@ const realEstateAgentSchema = {
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
   telephone: "+17025001942",
   url: "https://heyberkshire.com/buyers/california-relocator",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-    addressLocality: "Las Vegas",
-    addressRegion: "NV",
-    postalCode: "89134",
-  },
+  address: getOfficePostalAddressSchema(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin", "North Las Vegas"],
   priceRange: "$350,000 - $10,000,000+",
 };
 
-export default function CaliforniaRelocatorPage() {
+export default async function CaliforniaRelocatorPage() {
+  const boyle = await CallDrBoyle();
+
   return (
     <>
       <script
@@ -106,6 +106,12 @@ export default function CaliforniaRelocatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateDrBoylePersonSchema(boyle)),
+        }}
       />
       <Navbar />
       <main className="pt-24 pb-16">
@@ -128,20 +134,12 @@ export default function CaliforniaRelocatorPage() {
               37% of Las Vegas Buyers Are From California
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Relocating from California?<br />
-              <span className="text-blue-600">Welcome Home to Las Vegas</span>
+              California to Las Vegas Relocation
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 mb-8">
-              Zero state income tax. 40-60% lower home prices. Same sunshine.
-            </p>
-            <a
-              href="tel:+17025001942"
-              className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
-            >
-              <Phone className="h-5 w-5 mr-2" />
-              Start Your Tax-Free Life → (702) 500-1942
-            </a>
+            <p className="text-xl md:text-2xl text-slate-600 mb-8">{boyle.shortBio}</p>
           </div>
+
+          <RelocationExpertPanel profile={boyle} />
 
           {/* Tax Savings Comparison */}
           <section className="mb-16 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">

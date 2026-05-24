@@ -1,6 +1,15 @@
 // Site Configuration - HeyBerkshire.com
 // Berkshire Hathaway HomeServices Nevada Properties
 
+import { getBoyleOfficeAddressParts } from "./CallDrBoyle";
+import {
+  getJanDuffyLicenseDisplay,
+  janDuffyLicense,
+  type JanDuffyLicenseDetails,
+} from "./agent-jan-duffy";
+
+const boyleOffice = getBoyleOfficeAddressParts();
+
 export const siteConfig = {
   name: "HeyBerkshire",
   fullName: "Berkshire Hathaway HomeServices Nevada Properties",
@@ -10,15 +19,16 @@ export const siteConfig = {
     "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
   brandName: "Berkshire Hathaway HomeServices",
   shortName: "BHHS",
-  url: "https://heyberkshire.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://calldrboyle.com",
   description:
     "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
 };
 
 export const agentInfo = {
-  name: "Dr. Jan Duffy",
+  name: janDuffyLicense.name,
   title: "REALTOR®",
-  license: "S.0197614.LLC",
+  license: getJanDuffyLicenseDisplay(),
+  licenseDetails: janDuffyLicense satisfies JanDuffyLicenseDetails,
   phone: "(702) 500-1942",
   phoneFormatted: "(702) 500-1942",
   phoneTel: "tel:+17025001942",
@@ -28,20 +38,35 @@ export const agentInfo = {
 
 export const officeInfo = {
   name: "Berkshire Hathaway HomeServices Nevada Properties",
-  address: {
-    street: "9406 W Lake Mead Blvd, Suite 100",
-    city: "Las Vegas",
-    state: "NV",
-    zip: "89134",
-    full: "9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
-  },
+  address: boyleOffice,
   coordinates: {
-    lat: 36.1893,
-    lng: -115.2821,
+    lat: 33.663528,
+    lng: -117.719202,
   },
   phone: "(702) 500-1942",
   phoneTel: "tel:+17025001942",
 };
+
+const officeMapQuery = encodeURIComponent(officeInfo.address.full);
+
+/** Google Maps URLs for embed, directions, and external links */
+export const officeMapUrls = {
+  embed: `https://maps.google.com/maps?q=${officeMapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`,
+  directions: `https://www.google.com/maps/dir//${officeMapQuery}`,
+  view: `https://maps.google.com/?q=${officeMapQuery}`,
+};
+
+/** Schema.org PostalAddress for JSON-LD */
+export function getOfficePostalAddressSchema() {
+  return {
+    "@type": "PostalAddress" as const,
+    streetAddress: officeInfo.address.street,
+    addressLocality: officeInfo.address.city,
+    addressRegion: officeInfo.address.state,
+    postalCode: officeInfo.address.zip,
+    addressCountry: "US",
+  };
+}
 
 // Market Statistics (Updated January 2026)
 export const marketStats = {
