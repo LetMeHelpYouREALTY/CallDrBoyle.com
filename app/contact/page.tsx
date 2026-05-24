@@ -11,6 +11,7 @@ import {
   officeInfo,
   officeMapUrls,
 } from "@/lib/site-config";
+import { mailtoHref, siteEmails } from "@/lib/site-emails";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
 import { generateDrBoylePersonSchema } from "@/lib/boyle-schema";
@@ -36,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
     telephone: "+17025001942",
-    email: "homes@heyberkshire.com",
+    email: siteEmails.hello,
     address: getOfficePostalAddressSchema(),
   },
 };
@@ -109,16 +110,36 @@ export default async function ContactPage() {
 
                 <div className="flex items-start bg-slate-50 rounded-lg p-4">
                   <Mail className="h-6 w-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
-                    <a
-                      href="mailto:homes@heyberkshire.com"
-                      className="text-blue-600 hover:text-blue-700 font-medium"
-                    >
-                      Homes@HeyBerkshire.com
-                    </a>
-                    <p className="text-sm text-slate-500 mt-1">
-                      Typically respond within 2 hours
+                  <div className="space-y-3">
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-1">General inquiries</h3>
+                      <a
+                        href={mailtoHref("hello")}
+                        className="text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        {siteEmails.hello}
+                      </a>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-1">Relocation planning</h3>
+                      <a
+                        href={mailtoHref("relocation")}
+                        className="text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        {siteEmails.relocation}
+                      </a>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-1">Dr. Gene Boyle (Irvine)</h3>
+                      <a
+                        href={mailtoHref("gene")}
+                        className="text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        {siteEmails.gene}
+                      </a>
+                    </div>
+                    <p className="text-sm text-slate-500 pt-1">
+                      Typically respond within 2 hours during business hours
                     </p>
                   </div>
                 </div>
@@ -290,13 +311,13 @@ export default async function ContactPage() {
                 </div>
               </a>
               <a
-                href="mailto:homes@heyberkshire.com"
+                href={mailtoHref("relocation")}
                 className="flex items-center justify-center bg-slate-700 hover:bg-slate-800 text-white p-6 rounded-xl transition-colors"
               >
                 <Mail className="h-8 w-8 mr-4" />
                 <div className="text-left">
-                  <div className="font-bold text-lg">Send Email</div>
-                  <div className="text-slate-300">Homes@HeyBerkshire.com</div>
+                  <div className="font-bold text-lg">Relocation Email</div>
+                  <div className="text-slate-300">{siteEmails.relocation}</div>
                 </div>
               </a>
             </div>

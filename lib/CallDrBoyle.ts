@@ -1,4 +1,5 @@
 import { getJanDuffyLicenseDisplay } from "./agent-jan-duffy";
+import { siteEmails } from "./site-emails";
 
 /**
  * Single source of truth for Dr. Gene Boyle profile and relocation messaging.
@@ -33,6 +34,8 @@ export type DrBoyleProfile = {
   license: string;
   licenseDetails: BoyleLicenseDetails;
   officeAddress: string;
+  email: string;
+  relocationEmail: string;
   partnership: string;
   partnerName: string;
   partnerTitle: string;
@@ -66,6 +69,8 @@ const DR_BOYLE_PROFILE: DrBoyleProfile = {
   license: `California DRE Salesperson · License #${LICENSE_DETAILS.licenseId}`,
   licenseDetails: LICENSE_DETAILS,
   officeAddress: "320 Junco, Irvine, CA 92618",
+  email: siteEmails.gene,
+  relocationEmail: siteEmails.relocation,
   partnership: "Works with Dr. Jan Duffy in Las Vegas",
   partnerName: "Dr. Jan Duffy",
   partnerTitle: `REALTOR®, BHHS Nevada Properties · ${getJanDuffyLicenseDisplay()}`,

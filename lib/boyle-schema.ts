@@ -15,6 +15,7 @@ export function generateDrBoylePersonSchema(profile: DrBoyleProfile) {
     name: profile.name,
     jobTitle: profile.title,
     description: profile.shortBio,
+    email: profile.email,
     knowsAbout: profile.serviceAreas,
     address: {
       "@type": "PostalAddress",

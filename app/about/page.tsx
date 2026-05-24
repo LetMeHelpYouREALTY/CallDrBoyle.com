@@ -16,7 +16,8 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { generateMarketingMetadata } from "@/lib/seo/generate-marketing-metadata";
-import { agentInfo, getOfficePostalAddressSchema } from "@/lib/site-config";
+import { agentInfo, getOfficePostalAddressSchema, siteConfig } from "@/lib/site-config";
+import { mailtoHref, siteEmails } from "@/lib/site-emails";
 import { getJanDuffyLicenseComplianceLine } from "@/lib/agent-jan-duffy";
 import { CallDrBoyle } from "@/lib/CallDrBoyle";
 import DrBoyleCard from "@/components/team/DrBoyleCard";
@@ -46,8 +47,8 @@ const personSchema = {
   description:
     "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
   telephone: "+17025001942",
-  email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com/about",
+  email: agentInfo.email,
+  url: `${siteConfig.url}/about`,
   worksFor: {
     "@type": "RealEstateAgent",
     name: "Berkshire Hathaway HomeServices Nevada Properties",
@@ -219,11 +220,11 @@ export default async function AboutPage() {
                       <span className="font-semibold">(702) 500-1942</span>
                     </a>
                     <a
-                      href="mailto:homes@heyberkshire.com"
+                      href={mailtoHref("hello")}
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Mail className="h-5 w-5 mr-3 text-blue-600" />
-                      Homes@HeyBerkshire.com
+                      {agentInfo.email}
                     </a>
                     <p className="text-sm text-slate-600 pl-8">
                       Las Vegas market — coordinated with {boyle.name} (

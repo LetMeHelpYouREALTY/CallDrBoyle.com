@@ -8,6 +8,7 @@ import {
   type JanDuffyLicenseDetails,
 } from "./agent-jan-duffy";
 import { getGoogleMapsEmbedUrl, publicEnv } from "./site-env/public";
+import { siteEmails } from "./site-emails";
 
 const boyleOffice = getBoyleOfficeAddressParts();
 
@@ -33,7 +34,7 @@ export const agentInfo = {
   phone: "(702) 500-1942",
   phoneFormatted: "(702) 500-1942",
   phoneTel: "tel:+17025001942",
-  email: "homes@heyberkshire.com",
+  email: siteEmails.hello,
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
 };
 

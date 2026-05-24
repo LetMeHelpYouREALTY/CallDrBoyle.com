@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { MapPin, User } from "lucide-react";
+import { Mail, MapPin, User } from "lucide-react";
 import {
   getBoyleLicenseComplianceLine,
   getBoylePositioningStatement,
   RELOCATION_SCHEDULE_PATH,
   type DrBoyleProfile,
 } from "@/lib/CallDrBoyle";
+import { mailtoHref } from "@/lib/site-emails";
 
 type DrBoyleCardProps = {
   profile: DrBoyleProfile;
@@ -50,6 +51,24 @@ export default function DrBoyleCard({
       <div className="flex items-start text-slate-700 text-sm mb-4">
         <MapPin className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" aria-hidden />
         <address className="not-italic">{profile.officeAddress}</address>
+      </div>
+
+      <div className="space-y-2 mb-4 text-sm">
+        <a
+          href={mailtoHref("gene")}
+          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+        >
+          <Mail className="h-4 w-4 flex-shrink-0" aria-hidden />
+          {profile.email}
+        </a>
+        <a
+          href={mailtoHref("relocation")}
+          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+        >
+          <Mail className="h-4 w-4 flex-shrink-0" aria-hidden />
+          {profile.relocationEmail}
+          <span className="text-slate-500 font-normal">— relocation</span>
+        </a>
       </div>
 
       <p className="text-sm text-slate-600 mb-4">

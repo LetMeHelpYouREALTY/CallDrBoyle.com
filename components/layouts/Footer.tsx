@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import { agentInfo, officeInfo } from "@/lib/site-config";
+import { mailtoHref, siteEmails } from "@/lib/site-emails";
 import UniversalPageSeo from "@/components/seo/UniversalPageSeo";
 
 export default async function Footer() {
@@ -195,10 +196,19 @@ export default async function Footer() {
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
                 <Link
-                  href="mailto:homes@heyberkshire.com"
+                  href={mailtoHref("hello")}
                   className="text-slate-300 hover:text-white transition-colors text-sm"
                 >
-                  Homes@HeyBerkshire.com
+                  {siteEmails.hello}
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Mail className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
+                <Link
+                  href={mailtoHref("relocation")}
+                  className="text-slate-300 hover:text-white transition-colors text-sm"
+                >
+                  {siteEmails.relocation}
                 </Link>
               </li>
             </ul>

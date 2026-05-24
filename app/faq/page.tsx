@@ -10,6 +10,7 @@ import {
   generateWebPageSchema,
   combineSchemas,
 } from "@/lib/schema";
+import { siteEmails } from "@/lib/site-emails";
 import { agentInfo } from "@/lib/site-config";
 import { CallDrBoyle, RELOCATION_SCHEDULE_PATH } from "@/lib/CallDrBoyle";
 import RealScoutOfficeListings from "@/components/realscout/RealScoutOfficeListings";
@@ -148,7 +149,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Dr. Jan Duffy?",
-        a: "Call or text (702) 500-1942 or email homes@heyberkshire.com for Las Vegas market support.",
+        a: `Call or text (702) 500-1942 or email ${siteEmails.hello} for Las Vegas market support.`,
       },
       {
         q: "What areas does Dr. Jan cover?",

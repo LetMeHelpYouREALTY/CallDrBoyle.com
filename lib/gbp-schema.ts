@@ -2,7 +2,8 @@
 // Supports GBP ranking factors: Relevance, Distance, Prominence
 
 import { janDuffyLicense } from "./agent-jan-duffy";
-import { officeInfo } from "./site-config";
+import { officeInfo, siteConfig } from "./site-config";
+import { siteEmails } from "./site-emails";
 
 export const businessInfo = {
   // NAP - Must match GBP exactly
@@ -18,8 +19,8 @@ export const businessInfo = {
     display: "(702) 500-1942",
     tel: "+17025001942",
   },
-  email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com",
+  email: siteEmails.hello,
+  url: siteConfig.url,
 
   // Business Details
   license: janDuffyLicense.licenseNumber,
@@ -164,7 +165,7 @@ Dr. Jan's approach is simple: treat every client like family, know the market in
 
 55+ active adult community specialization covers Sun City Summerlin (Nevada's largest 55+ community), Sun City Anthem in Henderson, Del Webb Lake Las Vegas, and Solera at Anthem. Investment property expertise spans single-family rentals, multi-family opportunities, and short-term rental analysis across the Las Vegas metro area.
 
-Office located at ${officeInfo.address.full}. Available Monday through Friday 9am-6pm, Saturday 10am-4pm, and Sunday by appointment. Call (702) 500-1942 for a free consultation or visit heyberkshire.com to start your Las Vegas real estate journey today.`,
+Office located at ${officeInfo.address.full}. Available Monday through Friday 9am-6pm, Saturday 10am-4pm, and Sunday by appointment. Call (702) 500-1942 for a free consultation or visit ${siteConfig.url} to start your Las Vegas real estate journey today.`,
 };
 
 // FAQ Schema for GBP Q&A section
@@ -203,7 +204,7 @@ export const gbpFAQs = [
   },
   {
     question: "How do I schedule a consultation with Dr. Jan Duffy?",
-    answer: `Call or text (702) 500-1942 for immediate assistance, or email homes@heyberkshire.com. Office visits available at ${officeInfo.address.full}. Monday-Friday 9am-6pm, Saturday 10am-4pm, Sunday by appointment.`,
+    answer: `Call or text (702) 500-1942 for immediate assistance, or email ${siteEmails.hello}. Office visits available at ${officeInfo.address.full}. Monday-Friday 9am-6pm, Saturday 10am-4pm, Sunday by appointment.`,
   },
   {
     question: "Does Dr. Jan help with investment properties in Las Vegas?",
@@ -216,9 +217,9 @@ export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com/#organization",
+    "@id": `${siteConfig.url}/#organization`,
     name: businessInfo.name,
-    image: "https://heyberkshire.com/images/dr-jan-duffy.jpg",
+    image: `${siteConfig.url}/images/dr-jan-duffy.jpg`,
     url: businessInfo.url,
     telephone: businessInfo.phone.tel,
     email: businessInfo.email,
