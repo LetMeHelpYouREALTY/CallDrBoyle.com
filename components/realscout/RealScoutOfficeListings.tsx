@@ -1,9 +1,11 @@
-"use client";
+import { getRealScoutAgentEncodedId } from "@/lib/site-env/public";
+import { REALSCOUT_OFFICE_LISTINGS_DEFAULTS } from "@/lib/realscout-config";
 
-import { Button } from "@/components/ui/button";
-import { getRealScoutOfficeListingsMarkup } from "@/lib/realscout-config";
-
+/** Server-rendered RealScout office listings — attributes must be in initial HTML. */
 export default function RealScoutOfficeListings() {
+  const agentId = getRealScoutAgentEncodedId();
+  const d = REALSCOUT_OFFICE_LISTINGS_DEFAULTS;
+
   return (
     <section
       id="las-vegas-listings"
@@ -20,23 +22,26 @@ export default function RealScoutOfficeListings() {
               Browse Las Vegas and Henderson homes — search powered by RealScout
             </p>
           </div>
-          <Button asChild variant="outline" className="mt-4 md:mt-0">
-            <a
-              href="http://drjanduffy.realscout.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View All Properties
-            </a>
-          </Button>
+          <a
+            href="http://drjanduffy.realscout.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex h-10 items-center justify-center rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 md:mt-0"
+          >
+            View All Properties
+          </a>
         </div>
 
-        <div
-          className="realscout-wrapper"
-          dangerouslySetInnerHTML={{
-            __html: getRealScoutOfficeListingsMarkup(),
-          }}
-        />
+        <div className="realscout-wrapper">
+          <realscout-office-listings
+            agent-encoded-id={agentId}
+            sort-order={d.sortOrder}
+            listing-status={d.listingStatus}
+            property-types={d.propertyTypes}
+            price-min={d.priceMin}
+            price-max={d.priceMax}
+          />
+        </div>
       </div>
     </section>
   );

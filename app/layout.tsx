@@ -52,6 +52,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={GeistSans.className}>
       <head>
+        <link rel="preconnect" href="https://em.realscout.com" />
+        <link rel="preconnect" href="https://www.realscout.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
@@ -66,9 +68,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           window.widgetTracker("create","WT-XQHVYQWW");
           window.widgetTracker("send","pageview");
         `}</Script>
+        <RealScoutScript />
       </head>
       <body>
-        <RealScoutScript />
         <CalendlyScripts />
         {children}
         <CalendlyBadge text="Schedule a consultation" />

@@ -16,27 +16,38 @@ function parseBool(value: string | undefined, defaultValue = false): boolean {
   return ["1", "true", "yes", "on"].includes(value.toLowerCase());
 }
 
+function isNumericAgentId(value: string): boolean {
+  return /^\d+$/.test(value);
+}
+
+/** RealScout subdomain slugs (e.g. drjanduffy) are not widget agent-encoded-id values. */
+function isRealScoutSubdomainSlug(value: string): boolean {
+  return /^[a-z][a-z0-9-]*$/.test(value);
+}
+
+/** RealScout `agent-encoded-id` — base64-style id (e.g. QWdlbnQtMjI1MDUw). */
+function isRealScoutEncodedAgentId(value: string): boolean {
+  if (isNumericAgentId(value) || isRealScoutSubdomainSlug(value)) return false;
+  return /^[A-Za-z0-9+/=_-]+$/.test(value) && value.length >= 8;
+}
+
+/** RealScout `agent-encoded-id` — not the numeric Follow Up Boss user id or subdomain slug. */
+export function getRealScoutAgentEncodedId(): string {
+  const explicit = readPublic("NEXT_PUBLIC_REALSCOUT_AGENT_ENCODED_ID");
+  if (explicit && isRealScoutEncodedAgentId(explicit)) return explicit;
+
+  const fubNamed = readPublic("FOLLOW_UP_BOSS_AGENT_ID");
+  if (fubNamed && isRealScoutEncodedAgentId(fubNamed)) return fubNamed;
+
+  return DEFAULT_REALSCOUT_AGENT_ENCODED_ID;
+}
+
 /** Google Maps — prefers Next.js name; accepts legacy Vite key from Vercel. */
 export function getGoogleMapsApiKey(): string | undefined {
   return (
     readPublic("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY") ??
     readPublic("VITE_GOOGLE_MAPS_API_KEY")
   );
-}
-
-function isNumericAgentId(value: string): boolean {
-  return /^\d+$/.test(value);
-}
-
-/** RealScout `agent-encoded-id` — not the numeric Follow Up Boss user id. */
-export function getRealScoutAgentEncodedId(): string {
-  const explicit = readPublic("NEXT_PUBLIC_REALSCOUT_AGENT_ENCODED_ID");
-  if (explicit) return explicit;
-
-  const fubNamed = readPublic("FOLLOW_UP_BOSS_AGENT_ID");
-  if (fubNamed && !isNumericAgentId(fubNamed)) return fubNamed;
-
-  return DEFAULT_REALSCOUT_AGENT_ENCODED_ID;
 }
 
 export const publicEnv = {

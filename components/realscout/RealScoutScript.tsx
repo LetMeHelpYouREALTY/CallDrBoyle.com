@@ -6,6 +6,6 @@ const REALSCOUT_WEB_COMPONENTS_URL =
 /** Load once in root layout — required for office-listings custom elements. */
 export default function RealScoutScript() {
   return (
-    <Script src={REALSCOUT_WEB_COMPONENTS_URL} type="module" strategy="afterInteractive" />
+    <Script src={REALSCOUT_WEB_COMPONENTS_URL} type="module" strategy="beforeInteractive" />
   );
 }
