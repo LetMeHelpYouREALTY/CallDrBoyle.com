@@ -23,6 +23,10 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     keywords: input.keywords,
     metadataBase: new URL(baseUrl),
     alternates: { canonical },
+    authors: [{ name: "Dr. Jan Duffy", url: absoluteUrl("/about", baseUrl) }],
+    creator: "Berkshire Hathaway HomeServices Nevada Properties",
+    publisher: "Berkshire Hathaway HomeServices Nevada Properties",
+    category: "Real Estate",
     openGraph: {
       title: input.ogTitle ?? input.title,
       description: input.ogDescription ?? input.description,

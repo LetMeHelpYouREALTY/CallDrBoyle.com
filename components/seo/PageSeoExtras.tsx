@@ -12,6 +12,8 @@ type PageSeoExtrasProps = {
   speakable?: SpeakableBlock;
   schemas?: Record<string, unknown>[];
   path: string;
+  /** When true, emit JSON-LD only (no visible breadcrumb nav). */
+  schemaOnly?: boolean;
 };
 
 export default async function PageSeoExtras({
@@ -19,6 +21,7 @@ export default async function PageSeoExtras({
   speakable,
   schemas = [],
   path,
+  schemaOnly = false,
 }: PageSeoExtrasProps) {
   const host = headers().get("host");
   const baseUrl = getSiteUrlFromHost(host);
@@ -40,22 +43,24 @@ export default async function PageSeoExtras({
   return (
     <>
       <SchemaScript schemas={allSchemas} id={`page-seo-${path.replace(/\//g, "-")}`} />
-      <nav aria-label="Breadcrumb" className="text-sm text-slate-500 mb-6 max-w-5xl mx-auto">
-        <ol className="flex flex-wrap items-center gap-1">
-          {breadcrumbs.map((item, i) => (
-            <li key={item.href} className="flex items-center gap-1">
-              {i > 0 && <span aria-hidden>/</span>}
-              {i === breadcrumbs.length - 1 ? (
-                <span className="text-slate-800 font-medium">{item.name}</span>
-              ) : (
-                <Link href={item.href} className="hover:text-blue-600">
-                  {item.name}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      {!schemaOnly ? (
+        <nav aria-label="Breadcrumb" className="text-sm text-slate-500 mb-6 max-w-5xl mx-auto">
+          <ol className="flex flex-wrap items-center gap-1">
+            {breadcrumbs.map((item, i) => (
+              <li key={item.href} className="flex items-center gap-1">
+                {i > 0 && <span aria-hidden>/</span>}
+                {i === breadcrumbs.length - 1 ? (
+                  <span className="text-slate-800 font-medium">{item.name}</span>
+                ) : (
+                  <Link href={item.href} className="hover:text-blue-600">
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      ) : null}
       {speakable && (
         <p
           id="speakable-summary"

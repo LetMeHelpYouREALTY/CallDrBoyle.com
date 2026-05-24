@@ -11,6 +11,7 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const response = NextResponse.next();
   response.headers.set("x-domain", hostname);
+  response.headers.set("x-pathname", request.nextUrl.pathname);
   return response;
 }
 

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import { agentInfo, officeInfo } from "@/lib/site-config";
+import UniversalPageSeo from "@/components/seo/UniversalPageSeo";
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <>
+      <UniversalPageSeo />
+      <footer className="bg-slate-900 text-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -229,5 +232,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
