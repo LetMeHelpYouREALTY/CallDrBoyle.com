@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/neighborhoods/summerlin", {
   title: "Berkshire Hathaway HomeServices Summerlin | Las Vegas Luxury Real Estate",
   description:
-    "Find Summerlin homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy offers expert guidance in Las Vegas's premier master-planned community. Median price $625K. Call (702) 500-1942.",
+    "Find Summerlin homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy offers expert guidance in Las Vegas's premier master-planned community. Median price $625K. Call (949) 638-3939.",
   keywords: [
     "Berkshire Hathaway HomeServices Summerlin",
     "Summerlin homes for sale",
@@ -377,7 +377,7 @@ export default function SummerlinPage() {
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (949) 638-3939
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties

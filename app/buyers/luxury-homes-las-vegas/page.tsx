@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/buyers/luxury-homes-las-vegas", {
   title: "Luxury Homes Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Las Vegas luxury real estate from $1.2M to $10M+. Guard-gated estates, Strip penthouses, and custom homes. Dr. Jan Duffy provides discrete, expert representation. Call (702) 500-1942.",
+    "Las Vegas luxury real estate from $1.2M to $10M+. Guard-gated estates, Strip penthouses, and custom homes. Dr. Jan Duffy provides discrete, expert representation. Call (949) 638-3939.",
   keywords: [
     "luxury homes Las Vegas",
     "The Ridges Las Vegas",
@@ -102,7 +102,7 @@ export default function LuxuryHomesPage() {
               className="inline-flex items-center bg-slate-900 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-slate-800 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Schedule a Private Preview → (702) 500-1942
+              Schedule a Private Preview → (949) 638-3939
             </a>
           </div>
 
@@ -399,7 +399,7 @@ export default function LuxuryHomesPage() {
                 className="inline-flex items-center justify-center bg-white text-slate-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-slate-100 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                (702) 500-1942
+                (949) 638-3939
               </a>
               <Link
                 href="/contact"

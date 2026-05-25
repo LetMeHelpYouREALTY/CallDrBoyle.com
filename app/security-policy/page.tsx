@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
                 <li>
                   <strong>Phone:</strong>{' '}
                   <a href={agentInfo.phoneTel} className="underline">
-                    (702) 500-1942
+                    (949) 638-3939
                   </a>
                 </li>
                 <li>
@@ -258,7 +258,7 @@ export async function generateMetadata(): Promise<Metadata> {
               <p>
                 Phone:{' '}
                 <a href={agentInfo.phoneTel} className="text-blue-600 underline">
-                  (702) 500-1942
+                  (949) 638-3939
                 </a>
               </p>
             </div>

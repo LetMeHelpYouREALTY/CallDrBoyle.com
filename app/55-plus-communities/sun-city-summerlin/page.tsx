@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/55-plus-communities/sun-city-summerlin", {
   title: "Sun City Summerlin Homes for Sale | Berkshire Hathaway HomeServices",
   description:
-    "Nevada's largest 55+ community. Sun City Summerlin homes from $320K-$850K. 3 golf courses, 4 rec centers, 100+ clubs. Dr. Jan Duffy, BHHS specialist. Call (702) 500-1942.",
+    "Nevada's largest 55+ community. Sun City Summerlin homes from $320K-$850K. 3 golf courses, 4 rec centers, 100+ clubs. Dr. Jan Duffy, BHHS specialist. Call (949) 638-3939.",
   keywords: [
     "Sun City Summerlin homes for sale",
     "Sun City Summerlin Las Vegas",
@@ -301,7 +301,7 @@ export default function SunCitySummerlinPage() {
                 className="inline-flex items-center justify-center bg-white text-amber-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-amber-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (949) 638-3939
               </a>
               <Link
                 href="/contact"

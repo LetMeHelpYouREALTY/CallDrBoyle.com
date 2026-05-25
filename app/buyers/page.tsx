@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/buyers", {
   title: "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 500-1942.",
+    "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (949) 638-3939.",
   keywords: [
     "buy home Las Vegas",
     "Las Vegas home buyer",
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+19496383939",
   },
   areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
   serviceType: "Buyer Representation",
@@ -407,7 +407,7 @@ export default function BuyersPage() {
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
               Get answers to the most common questions from Las Vegas home buyers. If you don't 
-              see your question here, call Dr. Jan Duffy at (702) 500-1942 for a free consultation.
+              see your question here, call Dr. Jan Duffy at (949) 638-3939 for a free consultation.
             </p>
             <div className="space-y-4">
               {[
@@ -458,7 +458,7 @@ export default function BuyersPage() {
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (949) 638-3939
               </a>
               <Link
                 href="/contact"

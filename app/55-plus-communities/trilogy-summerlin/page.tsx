@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/55-plus-communities/trilogy-summerlin", {
   title: "Trilogy at Summerlin Homes for Sale | Luxury Resort 55+ Living | Dr. Jan Duffy",
   description:
-    "Trilogy at Summerlin - luxury resort-style 55+ community. Homes from $500K-$1.1M. On-site farm-to-table restaurant, spa, contemporary designs. Dr. Jan Duffy, BHHS. Call (702) 500-1942.",
+    "Trilogy at Summerlin - luxury resort-style 55+ community. Homes from $500K-$1.1M. On-site farm-to-table restaurant, spa, contemporary designs. Dr. Jan Duffy, BHHS. Call (949) 638-3939.",
   keywords: [
     "Trilogy at Summerlin homes for sale",
     "Trilogy Summerlin Las Vegas",
@@ -407,7 +407,7 @@ export default function TrilogySummerlinPage() {
                 className="inline-flex items-center justify-center bg-white text-rose-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-rose-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (949) 638-3939
               </a>
               <Link
                 href="/contact"

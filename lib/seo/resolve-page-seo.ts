@@ -1,5 +1,6 @@
 import type { FAQItem } from "@/lib/schema";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import { LV_OFFICE_ADDRESS } from "@/lib/site-contact";
 import { trimMetaDescription } from "@/lib/seo/generate-marketing-metadata";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { getDomainConfig } from "@/lib/domain-config";
@@ -197,7 +198,7 @@ function contactFaqs(): FAQItem[] {
     },
     {
       question: "Where are the California and Nevada offices?",
-      answer: `Dr. Gene Boyle's California office is 320 Junco, Irvine, CA 92618. Dr. Jan Duffy works through ${agentInfo.brokerage} in Las Vegas — office address on file pending owner confirmation.`,
+      answer: `Dr. Gene Boyle's California office is 320 Junco, Irvine, CA 92618. Dr. Jan Duffy works through ${agentInfo.brokerage} at ${LV_OFFICE_ADDRESS}.`,
     },
   ];
 }

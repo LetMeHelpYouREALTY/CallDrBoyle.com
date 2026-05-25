@@ -1,12 +1,11 @@
 import { siteEmails } from "./site-emails";
 
-/** Canonical site phone — owner must confirm before go-live. */
-export const SITE_PHONE = "PENDING_OWNER_CONFIRMATION" as const;
-// TODO(SEO): Dr. Jan to confirm canonical CallAction number for calldrboyle.com
+/** Canonical site phone — CallDrBoyle.com NAP (Dr. Gene Boyle, Irvine / relocation line). */
+export const SITE_PHONE = "(949) 638-3939" as const;
 
-/** Dr. Jan Duffy / BHHS Nevada Properties Las Vegas office address. */
-export const LV_OFFICE_ADDRESS = "PENDING_OWNER_CONFIRMATION" as const;
-// TODO(SEO): Dr. Jan to confirm BHHS Nevada Properties Las Vegas office address for NAP/schema
+/** Dr. Jan Duffy / BHHS Nevada Properties Las Vegas office (matches bhhs.com office listing). */
+export const LV_OFFICE_ADDRESS =
+  "1490 Center Crossing Road, Las Vegas, NV 89144" as const;
 
 /** Primary on-domain contact email (Hello@CallDrBoyle.com). */
 export const CONTACT_EMAIL = siteEmails.hello;

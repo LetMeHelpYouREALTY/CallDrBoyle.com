@@ -24,8 +24,8 @@ for (const file of walk(ROOT)) {
   let content = fs.readFileSync(file, "utf8");
   const original = content;
 
-  content = content.replace(/href="tel:\+17025001942"/g, "href={agentInfo.phoneTel}");
-  content = content.replace(/href=\{`tel:\+17025001942`\}/g, "href={agentInfo.phoneTel}");
+  content = content.replace(/href="tel:\+19496383939"/g, "href={agentInfo.phoneTel}");
+  content = content.replace(/href=\{`tel:\+19496383939`\}/g, "href={agentInfo.phoneTel}");
 
   if (content === original) continue;
 

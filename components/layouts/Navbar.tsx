@@ -134,7 +134,7 @@ export default function Navbar() {
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
               <Link href={agentInfo.phoneTel} className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span className="hidden xl:inline">(702) 500-1942</span>
+                <span className="hidden xl:inline">{agentInfo.phoneFormatted}</span>
                 <span className="xl:hidden">Call</span>
               </Link>
             </Button>
@@ -210,7 +210,7 @@ export default function Navbar() {
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="h-4 w-4" />
-                    Call Dr. Jan: (702) 500-1942
+                    Call: {agentInfo.phoneFormatted}
                   </Link>
                 </Button>
               </div>

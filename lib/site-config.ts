@@ -56,7 +56,7 @@ export const janDuffyContact = {
   license: getJanDuffyLicenseDisplay(),
   licenseDetails: janDuffyLicense satisfies JanDuffyLicenseDetails,
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
-  /** Las Vegas office — pending owner confirmation for exact street address */
+  /** Las Vegas office — BHHS Nevada Properties Summerlin Centre campus */
   officeAddress: LV_OFFICE_ADDRESS,
 };
 

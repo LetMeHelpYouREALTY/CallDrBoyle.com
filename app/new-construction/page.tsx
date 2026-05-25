@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/new-construction", {
   title: "Berkshire Hathaway HomeServices New Construction Las Vegas | Buyer's Guide",
   description:
-    "Free buyer representation on new construction homes in Las Vegas. Dr. Jan Duffy helps you navigate builder contracts, negotiate upgrades, and secure incentives. Call (702) 500-1942.",
+    "Free buyer representation on new construction homes in Las Vegas. Dr. Jan Duffy helps you navigate builder contracts, negotiate upgrades, and secure incentives. Call (949) 638-3939.",
   keywords: [
     "Berkshire Hathaway HomeServices new construction Las Vegas",
     "new homes Las Vegas",
@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
       name: "Do I have to register Dr. Jan Duffy as my agent on the first visit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, most builders require your agent to accompany you or be registered on your FIRST visit. If you visit alone and sign the guest registry, you may forfeit your right to free representation. Call (702) 500-1942 to register Dr. Jan Duffy as your buyer's agent before visiting any model home.",
+        text: "Yes, most builders require your agent to accompany you or be registered on your FIRST visit. If you visit alone and sign the guest registry, you may forfeit your right to free representation. Call (949) 638-3939 to register Dr. Jan Duffy as your buyer's agent before visiting any model home.",
       },
     },
     {
@@ -272,7 +272,7 @@ export default function NewConstructionPage() {
                   </h3>
                   <p className="text-amber-800 text-sm">
                     Most builders require agent registration on your <strong>first visit</strong>.
-                    Call <a href={agentInfo.phoneTel} className="font-bold underline">(702) 500-1942</a> to 
+                    Call <a href={agentInfo.phoneTel} className="font-bold underline">(949) 638-3939</a> to 
                     register Dr. Jan Duffy as your buyer's agent before visiting any model home—or you 
                     may lose your right to free professional representation.
                   </p>
@@ -469,7 +469,7 @@ export default function NewConstructionPage() {
                   <p className="text-slate-600">
                     Call{" "}
                     <a href={agentInfo.phoneTel} className="text-blue-600 font-semibold hover:underline">
-                      (702) 500-1942
+                      (949) 638-3939
                     </a>{" "}
                     to register Dr. Jan Duffy as your buyer's agent before any builder visits. We'll 
                     discuss your needs, budget, and preferred locations, then accompany you to model homes.
@@ -593,7 +593,7 @@ export default function NewConstructionPage() {
                   FIRST visit. If you visit alone and sign the guest registry, you may forfeit your
                   right to free representation. Call{" "}
                   <a href={agentInfo.phoneTel} className="text-blue-600 font-semibold hover:underline">
-                    (702) 500-1942
+                    (949) 638-3939
                   </a>{" "}
                   to register Dr. Jan Duffy as your buyer's agent before visiting any model home.
                 </p>
@@ -669,7 +669,7 @@ export default function NewConstructionPage() {
               Ready to Tour New Construction?
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Call <strong>(702) 500-1942</strong> to register Dr. Jan Duffy as your buyer's agent 
+              Call <strong>(949) 638-3939</strong> to register Dr. Jan Duffy as your buyer's agent 
               <strong> before</strong> visiting any model home—or you may lose your right to free 
               professional representation. Current incentive information available.
             </p>
@@ -679,7 +679,7 @@ export default function NewConstructionPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (949) 638-3939
               </a>
               <Link
                 href="/contact"

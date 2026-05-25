@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/luxury-homes", {
   title: "Las Vegas Luxury Homes for Sale | Berkshire Hathaway HomeServices",
   description:
-    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 500-1942.",
+    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (949) 638-3939.",
   keywords: [
     "Las Vegas luxury homes",
     "The Ridges Las Vegas",
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+19496383939",
   },
   areaServed: "Las Vegas, Henderson, Summerlin luxury communities",
   serviceType: "Luxury Real Estate",
@@ -436,7 +436,7 @@ export default function LuxuryHomesPage() {
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (949) 638-3939
               </a>
               <Link
                 href="/contact"

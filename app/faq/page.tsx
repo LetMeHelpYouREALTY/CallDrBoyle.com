@@ -149,7 +149,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Dr. Jan Duffy?",
-        a: `Call or text (702) 500-1942 or email ${siteEmails.hello} for Las Vegas market support.`,
+        a: `Call or text (949) 638-3939 or email ${siteEmails.hello} for Las Vegas market support.`,
       },
       {
         q: "What areas does Dr. Jan cover?",
