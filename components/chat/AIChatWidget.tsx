@@ -1,5 +1,6 @@
 "use client";
 
+import { agentInfo } from "@/lib/site-config";
 import { useState, useRef, useEffect } from "react";
 import { Send, MessageCircle, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -80,7 +81,7 @@ export default function AIChatWidget() {
       const errorMessage: Message = {
         role: "assistant",
         content:
-          "I'm sorry, I'm having trouble connecting right now. Please try again or contact Dr. Jan Duffy directly at (949) 638-3939.",
+          `I'm sorry, I'm having trouble connecting right now. Please try again or contact Dr. Jan Duffy directly at ${agentInfo.phoneFormatted}.`,
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -181,7 +182,7 @@ export default function AIChatWidget() {
               </Button>
             </div>
             <p className="text-xs text-slate-500 mt-2 text-center">
-              Powered by AI • Contact: (949) 638-3939
+              Powered by AI • Contact: {agentInfo.phoneFormatted}
             </p>
           </div>
         </div>

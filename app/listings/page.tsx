@@ -1,3 +1,4 @@
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import { agentInfo } from "@/lib/site-config";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
@@ -26,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/listings", {
   title: "Las Vegas Homes for Sale | Home Search | Berkshire Hathaway HomeServices",
   description:
-    "Browse all Las Vegas and Henderson homes for sale with live home listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call (949) 638-3939.",
+    `Browse all Las Vegas and Henderson homes for sale with live home listings. Search by neighborhood, price, and features. Dr. Jan Duffy, Berkshire Hathaway HomeServices. Call {agentInfo.phoneFormatted}.`,
   keywords: [
     "Las Vegas homes for sale",
     "Henderson real estate",
@@ -44,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+19496383939",
+    telephone: getSitePhoneSchemaValue() ?? "",
   },
   areaServed: [
     { "@type": "City", name: "Las Vegas, NV" },
@@ -487,7 +488,7 @@ export default function ListingsPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/contact"

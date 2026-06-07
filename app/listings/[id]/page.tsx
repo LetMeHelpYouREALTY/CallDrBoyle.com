@@ -137,7 +137,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
                 </p>
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href={agentInfo.phoneTel}>Call (949) 638-3939</a>
+                    <a href={agentInfo.phoneTel}>Call {agentInfo.phoneFormatted}</a>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <a href="/contact">Send Message</a>

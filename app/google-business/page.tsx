@@ -1,3 +1,4 @@
+import { agentInfo } from "@/lib/site-config";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -32,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/google-business", {
     title: "Dr. Jan Duffy, REALTOR® Las Vegas | Berkshire Hathaway HomeServices",
     description:
-      "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (949) 638-3939.",
+      `Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call {agentInfo.phoneFormatted}.`,
     keywords: [
       "Dr. Jan Duffy realtor",
       "Las Vegas real estate agent",

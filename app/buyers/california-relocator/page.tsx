@@ -1,3 +1,4 @@
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -88,7 +89,7 @@ const realEstateAgentSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-  telephone: "+19496383939",
+  telephone: getSitePhoneSchemaValue() ?? "",
   url: `${siteConfig.url}/buyers/california-relocator`,
   address: getOfficePostalAddressSchema(),
   areaServed: ["Las Vegas", "Henderson", "Summerlin", "North Las Vegas"],
@@ -475,7 +476,7 @@ export default async function CaliforniaRelocatorPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call/Text (949) 638-3939
+                Call/Text {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/contact"

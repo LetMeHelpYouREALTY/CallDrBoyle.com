@@ -166,7 +166,7 @@ Dr. Jan's approach is simple: treat every client like family, know the market in
 
 55+ active adult community specialization covers Sun City Summerlin (Nevada's largest 55+ community), Sun City Anthem in Henderson, Del Webb Lake Las Vegas, and Solera at Anthem. Investment property expertise spans single-family rentals, multi-family opportunities, and short-term rental analysis across the Las Vegas metro area.
 
-Office located at ${officeInfo.address.full}. Available Monday through Friday 9am-6pm, Saturday 10am-4pm, and Sunday by appointment. Call (949) 638-3939 for a free consultation or visit ${siteConfig.url} to start your Las Vegas real estate journey today.`,
+Office located at ${officeInfo.address.full}. Available Monday through Friday 9am-6pm, Saturday 10am-4pm, and Sunday by appointment. Call ${getSitePhoneDisplay()} for a free consultation or visit ${siteConfig.url} to start your Las Vegas real estate journey today.`,
 };
 
 // FAQ Schema for GBP Q&A section
@@ -177,7 +177,7 @@ export const gbpFAQs = [
   },
   {
     question: "Does Dr. Jan help buyers relocating from California?",
-    answer: "Yes! California relocation is a specialty. Dr. Jan helps CA buyers understand Nevada's 0% state income tax advantage, compare home values (40-60% lower than comparable CA properties), and find the perfect Las Vegas neighborhood. Call (949) 638-3939 for California relocation assistance.",
+    answer: `Yes! California relocation is a specialty. Dr. Jan helps CA buyers understand Nevada's 0% state income tax advantage, compare home values (40-60% lower than comparable CA properties), and find the perfect Las Vegas neighborhood. Call ${getSitePhoneDisplay()} for California relocation assistance.`,
   },
   {
     question: "What 55+ communities does Dr. Jan specialize in?",
@@ -189,7 +189,7 @@ export const gbpFAQs = [
   },
   {
     question: "How does Dr. Jan help with probate or divorce real estate sales?",
-    answer: "Dr. Jan handles sensitive transactions with discretion and professionalism. For probate sales, she coordinates with estate attorneys and ensures court compliance. For divorce sales, she provides neutral representation and works with both parties' attorneys. Call (949) 638-3939 for a confidential consultation.",
+    answer: `Dr. Jan handles sensitive transactions with discretion and professionalism. For probate sales, she coordinates with estate attorneys and ensures court compliance. For divorce sales, she provides neutral representation and works with both parties' attorneys. Call ${getSitePhoneDisplay()} for a confidential consultation.`,
   },
   {
     question: "What is the average home price in Las Vegas in 2026?",
@@ -205,11 +205,11 @@ export const gbpFAQs = [
   },
   {
     question: "How do I schedule a consultation with Dr. Jan Duffy?",
-    answer: `Call or text (949) 638-3939 for immediate assistance, or email ${siteEmails.hello}. Office visits available at ${officeInfo.address.full}. Monday-Friday 9am-6pm, Saturday 10am-4pm, Sunday by appointment.`,
+    answer: `Call or text ${getSitePhoneDisplay()} for immediate assistance, or email ${siteEmails.hello}. Office visits available at ${officeInfo.address.full}. Monday-Friday 9am-6pm, Saturday 10am-4pm, Sunday by appointment.`,
   },
   {
     question: "Does Dr. Jan help with investment properties in Las Vegas?",
-    answer: "Yes! Dr. Jan provides investment property consulting including rental property analysis, cap rate calculations, short-term rental regulations, and multi-family opportunities across the Las Vegas Valley. Contact (949) 638-3939 for investment property guidance.",
+    answer: `Yes! Dr. Jan provides investment property consulting including rental property analysis, cap rate calculations, short-term rental regulations, and multi-family opportunities across the Las Vegas Valley. Contact ${getSitePhoneDisplay()} for investment property guidance.`,
   },
 ];
 

@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/55-plus-communities/heritage-stonebridge", {
   title: "Heritage at Stonebridge Homes for Sale | Guard-Gated 55+ Summerlin | Dr. Jan Duffy",
   description:
-    "Heritage at Stonebridge - boutique guard-gated 55+ community in Summerlin. Homes from $400K-$750K. Near Downtown Summerlin, Red Rock Canyon. Dr. Jan Duffy, BHHS. Call (949) 638-3939.",
+    `Heritage at Stonebridge - boutique guard-gated 55+ community in Summerlin. Homes from $400K-$750K. Near Downtown Summerlin, Red Rock Canyon. Dr. Jan Duffy, BHHS. Call {agentInfo.phoneFormatted}.`,
   keywords: [
     "Heritage at Stonebridge homes for sale",
     "Heritage Stonebridge Summerlin",
@@ -405,7 +405,7 @@ export default function HeritageAtStonebridgePage() {
                 className="inline-flex items-center justify-center bg-white text-purple-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-purple-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/contact"

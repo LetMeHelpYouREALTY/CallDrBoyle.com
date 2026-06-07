@@ -1,3 +1,4 @@
+import { getSitePhoneDisplay } from "@/lib/site-contact";
 // GBP Posts - Weekly posts for freshness signal
 // Posts are a modest but real ranking factor (a few percent)
 
@@ -30,7 +31,7 @@ export const gbpPostTemplates: GBPPost[] = [
 
 Whether you're buying your first home in Henderson, selling in Summerlin, or looking at 55+ communities like Sun City, now is a great time to make your move.
 
-Call Dr. Jan Duffy at (949) 638-3939 for a free market analysis of your home or neighborhood.`,
+Call Dr. Jan Duffy at ${getSitePhoneDisplay()} for a free market analysis of your home or neighborhood.`,
     cta: {
       text: "Get Free Market Analysis",
       url: "https://heyberkshire.com/home-valuation",
@@ -51,7 +52,7 @@ Call Dr. Jan Duffy at (949) 638-3939 for a free market analysis of your home or 
 
 A $1.2M California home could buy you a luxury property in Summerlin or The Ridges. Dr. Jan Duffy specializes in California-to-Nevada relocations and can help you maximize your equity.
 
-Call (949) 638-3939 for a free California equity comparison.`,
+Call ${getSitePhoneDisplay()} for a free California equity comparison.`,
     cta: {
       text: "California Relocation Guide",
       url: "https://heyberkshire.com/buyers/california-relocator",
@@ -72,7 +73,7 @@ Call (949) 638-3939 for a free California equity comparison.`,
 
 Each offers different amenities, price points, and lifestyles. Dr. Jan Duffy specializes in 55+ communities and can help you find the perfect fit.
 
-Schedule a community tour: (949) 638-3939`,
+Schedule a community tour: ${getSitePhoneDisplay()}`,
     cta: {
       text: "Explore 55+ Communities",
       url: "https://heyberkshire.com/55-plus-communities",
@@ -98,7 +99,7 @@ Popular first-time buyer neighborhoods:
 - Mountains Edge (median $475K)
 - Centennial Hills (median $495K)
 
-Call (949) 638-3939 to start your homeownership journey.`,
+Call ${getSitePhoneDisplay()} to start your homeownership journey.`,
     cta: {
       text: "First-Time Buyer Guide",
       url: "https://heyberkshire.com/buyers/first-time-buyers",
@@ -123,7 +124,7 @@ Current seller stats:
 ⏱️ 28 days average time to sell
 💰 98.5% list-to-sale ratio
 
-Get a free home valuation from Dr. Jan Duffy: (949) 638-3939`,
+Get a free home valuation from Dr. Jan Duffy: ${getSitePhoneDisplay()}`,
     cta: {
       text: "Get Free Home Valuation",
       url: "https://heyberkshire.com/home-valuation",
@@ -148,7 +149,7 @@ Why luxury buyers choose Las Vegas:
 ✅ World-class dining, entertainment, golf
 ✅ 40-60% lower than comparable CA/NY properties
 
-Confidential luxury home search: (949) 638-3939`,
+Confidential luxury home search: ${getSitePhoneDisplay()}`,
     cta: {
       text: "Luxury Home Search",
       url: "https://heyberkshire.com/buyers/luxury-homes-las-vegas",
@@ -192,7 +193,7 @@ ${clientName}, thank you for sharing your experience. I take all feedback seriou
 
 ${resolution}
 
-Real estate transactions can be complex, and I'm committed to learning from every experience. If you'd like to discuss this further, please call me directly at (949) 638-3939.
+Real estate transactions can be complex, and I'm committed to learning from every experience. If you'd like to discuss this further, please call me directly at ${getSitePhoneDisplay()}.
 
 - Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties
 `,

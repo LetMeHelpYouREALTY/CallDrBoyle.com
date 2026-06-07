@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/sellers/divorce-probate", {
   title: "Divorce & Probate Home Sales Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Sensitive real estate situations handled with discretion. Dr. Jan Duffy helps with divorce sales, probate, estate liquidation, and court-ordered sales. Call (949) 638-3939.",
+    `Sensitive real estate situations handled with discretion. Dr. Jan Duffy helps with divorce sales, probate, estate liquidation, and court-ordered sales. Call {agentInfo.phoneFormatted}.`,
   keywords: [
     "divorce home sale Las Vegas",
     "probate real estate Las Vegas",
@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
               className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Confidential Consultation → (949) 638-3939
+              Confidential Consultation → {agentInfo.phoneFormatted}
             </a>
           </div>
 
@@ -516,7 +516,7 @@ export async function generateMetadata(): Promise<Metadata> {
                 className="inline-flex items-center justify-center bg-white text-slate-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-slate-100 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/contact"

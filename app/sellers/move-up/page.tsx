@@ -61,7 +61,7 @@ export default function MoveUpSellerPage() {
               className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Start Your Upgrade → (949) 638-3939
+              Start Your Upgrade → {agentInfo.phoneFormatted}
             </a>
           </div>
 
@@ -391,7 +391,7 @@ export default function MoveUpSellerPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/home-valuation"

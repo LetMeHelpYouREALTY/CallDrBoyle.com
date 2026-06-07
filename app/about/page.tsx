@@ -1,3 +1,4 @@
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
@@ -48,7 +49,7 @@ const personSchema = {
   jobTitle: "REALTOR®",
   description:
     "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
-  telephone: "+19496383939",
+  telephone: getSitePhoneSchemaValue() ?? "",
   email: agentInfo.email,
   url: `${siteConfig.url}/about`,
   worksFor: {
@@ -224,7 +225,7 @@ export default async function AboutPage() {
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Phone className="h-5 w-5 mr-3 text-blue-600" />
-                      <span className="font-semibold">(949) 638-3939</span>
+                      <span className="font-semibold">{agentInfo.phoneFormatted}</span>
                     </a>
                     <a
                       href={mailtoHref("hello")}
@@ -474,7 +475,7 @@ export default async function AboutPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/contact"

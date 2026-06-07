@@ -1,3 +1,4 @@
+import { getSitePhoneSchemaValue } from "@/lib/site-contact";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield } from "lucide-react";
@@ -37,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
   mainEntity: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+19496383939",
+    telephone: getSitePhoneSchemaValue() ?? "",
     email: siteEmails.hello,
     address: getOfficePostalAddressSchema(),
   },
@@ -106,7 +107,7 @@ export default async function ContactPage() {
                       href={agentInfo.phoneTel}
                       className="text-2xl font-bold text-blue-600 hover:text-blue-700"
                     >
-                      (949) 638-3939
+                      {agentInfo.phoneFormatted}
                     </a>
                     <p className="text-sm text-slate-500 mt-1">
                       Available 7 days a week, 9am-6pm
@@ -313,7 +314,7 @@ export default async function ContactPage() {
                 <Phone className="h-8 w-8 mr-4" />
                 <div className="text-left">
                   <div className="font-bold text-lg">Call Now</div>
-                  <div className="text-blue-100">(949) 638-3939</div>
+                  <div className="text-blue-100">{agentInfo.phoneFormatted}</div>
                 </div>
               </a>
               <a
@@ -346,7 +347,7 @@ export default async function ContactPage() {
                 },
                 {
                   q: "How quickly can you respond to inquiries?",
-                  a: "I typically respond to calls, texts, and emails within 2 hours during business hours (9am-6pm daily). For urgent matters, calling or texting (949) 638-3939 is the fastest way to reach me.",
+                  a: `I typically respond to calls, texts, and emails within 2 hours during business hours (9am-6pm daily). For urgent matters, calling or texting ${agentInfo.phoneFormatted} is the fastest way to reach me.`,
                 },
                 {
                   q: "Do you charge for consultations?",

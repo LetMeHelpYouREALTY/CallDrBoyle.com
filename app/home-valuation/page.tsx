@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateMarketingMetadata("/home-valuation", {
   title: "Free Home Valuation Las Vegas | What's Your Home Worth? | Berkshire Hathaway HomeServices",
   description:
-    "Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis for Summerlin, Henderson, Green Valley & all Las Vegas neighborhoods. Call (949) 638-3939.",
+    `Get a free, accurate home valuation in Las Vegas from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Expert CMA analysis for Summerlin, Henderson, Green Valley & all Las Vegas neighborhoods. Call {agentInfo.phoneFormatted}.`,
   keywords: [
     "home valuation Las Vegas",
     "what is my home worth Las Vegas",
@@ -187,7 +187,7 @@ export default function HomeValuationPage() {
                   className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-bold transition-colors"
                 >
                   <Phone className="h-5 w-5 mr-2" />
-                  (949) 638-3939
+                  {agentInfo.phoneFormatted}
                 </a>
               </div>
             </div>
@@ -475,7 +475,7 @@ export default function HomeValuationPage() {
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (949) 638-3939
+                Call {agentInfo.phoneFormatted}
               </a>
               <Link
                 href="/sellers"
