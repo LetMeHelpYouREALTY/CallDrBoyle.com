@@ -13,6 +13,7 @@ import { publicEnv } from "@/lib/site-env/public";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 import { generateSiteOrganizationGraph } from "@/lib/seo/organization-schema";
+import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = headers().get("host");
@@ -71,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <RealScoutScript />
       </head>
       <body>
+        <GlobalHeroBanner />
         <CalendlyScripts />
         {children}
         <CalendlyBadge text="Schedule a consultation" />
