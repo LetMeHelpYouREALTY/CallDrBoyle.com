@@ -5,7 +5,7 @@ import { getSitemapAbsoluteUrl } from "@/lib/seo/search-console";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const baseUrl = getSiteUrlFromHost(host);
 
   return {
