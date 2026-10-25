@@ -58,7 +58,7 @@ export async function generateMarketingMetadata(
   path: string,
   overrides: MarketingMetadataOverrides = {}
 ): Promise<Metadata> {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const resolved = await resolvePageSeo(path);
 
   const { robots, openGraph, twitter, alternates, ...restOverrides } = overrides;

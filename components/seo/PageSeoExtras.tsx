@@ -23,7 +23,7 @@ export default async function PageSeoExtras({
   path,
   schemaOnly = false,
 }: PageSeoExtrasProps) {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const baseUrl = getSiteUrlFromHost(host);
 
   const breadcrumbSchema = generateBreadcrumbSchema(

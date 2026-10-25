@@ -15,13 +15,13 @@ type UniversalPageSeoProps = {
  * and a compact visible Q&A block for answer engines.
  */
 export default async function UniversalPageSeo({ path: pathProp }: UniversalPageSeoProps) {
-  const headerPath = headers().get("x-pathname");
+  const headerPath = (await headers()).get("x-pathname");
   const path = pathProp ?? headerPath ?? "/";
 
   const resolvedBase = await resolvePageSeo(path);
   if (!resolvedBase) return null;
 
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const resolved = enrichWithDomainKeywords(resolvedBase, host);
 
   const serviceSchema = generateServiceSchema({
