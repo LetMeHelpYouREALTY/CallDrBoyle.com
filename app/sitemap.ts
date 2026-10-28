@@ -5,7 +5,7 @@ import { SITEMAP_PATHS } from "@/lib/seo/sitemap-paths";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const baseUrl = getSiteUrlFromHost(host);
 
   return SITEMAP_PATHS.map((entry) => ({
