@@ -1,7 +1,10 @@
 import { headers } from "next/headers";
 import PageSeoExtras from "@/components/seo/PageSeoExtras";
 import { AeoFaqSection } from "@/lib/seo/aeo-sections";
-import { enrichWithDomainKeywords, resolvePageSeo } from "@/lib/seo/resolve-page-seo";
+import {
+  enrichWithDomainKeywords,
+  resolvePageSeo,
+} from "@/lib/seo/resolve-page-seo";
 import { generateFAQSchema, generateServiceSchema } from "@/lib/schema";
 import { agentInfo } from "@/lib/site-config";
 
@@ -14,14 +17,16 @@ type UniversalPageSeoProps = {
  * Site-wide SEO / GEO / AEO layer: breadcrumbs, FAQ + WebPage schema, speakable summary,
  * and a compact visible Q&A block for answer engines.
  */
-export default async function UniversalPageSeo({ path: pathProp }: UniversalPageSeoProps) {
-  const headerPath = headers().get("x-pathname");
+export default async function UniversalPageSeo({
+  path: pathProp,
+}: UniversalPageSeoProps) {
+  const headerPath = (await headers()).get("x-pathname");
   const path = pathProp ?? headerPath ?? "/";
 
   const resolvedBase = await resolvePageSeo(path);
   if (!resolvedBase) return null;
 
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const resolved = enrichWithDomainKeywords(resolvedBase, host);
 
   const serviceSchema = generateServiceSchema({
@@ -31,7 +36,9 @@ export default async function UniversalPageSeo({ path: pathProp }: UniversalPage
   });
 
   const schemas = [
-    ...(resolved.injectSchema ? [generateFAQSchema(resolved.faqs), serviceSchema] : []),
+    ...(resolved.injectSchema
+      ? [generateFAQSchema(resolved.faqs), serviceSchema]
+      : []),
   ];
 
   return (
@@ -56,9 +63,9 @@ export default async function UniversalPageSeo({ path: pathProp }: UniversalPage
       ) : null}
 
       <p className="sr-only" id="geo-entity-mention">
-        {agentInfo.name}, REALTOR® with {agentInfo.brokerage}. Licensed Nevada real estate
-        services for Las Vegas, Henderson, Summerlin, and Irvine, California relocation to Las
-        Vegas.
+        {agentInfo.name}, REALTOR® with {agentInfo.brokerage}. Licensed Nevada
+        real estate services for Las Vegas, Henderson, Summerlin, and Irvine,
+        California relocation to Las Vegas.
       </p>
     </div>
   );
