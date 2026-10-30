@@ -146,8 +146,8 @@ export default async function Home() {
                 <span>Las Vegas Experience</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">4.9★</span>
-                <span>Client Rating</span>
+                <span className="font-semibold text-white">5.0★</span>
+                <span>Realtor.com (50 reviews)</span>
               </div>
             </div>
           </div>
