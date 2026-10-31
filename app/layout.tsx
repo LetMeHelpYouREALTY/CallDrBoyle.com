@@ -13,6 +13,7 @@ import { publicEnv } from "@/lib/site-env/public";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 import { generateSiteOrganizationGraph } from "@/lib/seo/organization-schema";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = (await headers()).get("host");
@@ -83,6 +84,7 @@ export default async function RootLayout({
           <GoogleAnalytics measurementId={gaMeasurementId} />
         ) : null}
         <Analytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   );
