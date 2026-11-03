@@ -15,10 +15,11 @@ import { getSiteUrlFromHost } from "@/lib/seo/site-url";
 import { generateSiteOrganizationGraph } from "@/lib/seo/organization-schema";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const domain = host || "";
   const config = getDomainConfig(domain);
-  const isBoyleSite = config.domain === "calldrboyle.com" || config.domain === "default";
+  const isBoyleSite =
+    config.domain === "calldrboyle.com" || config.domain === "default";
 
   if (isBoyleSite) {
     return buildPageMetadata({
@@ -43,8 +44,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const host = headers().get("host");
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const host = (await headers()).get("host");
   const baseUrl = getSiteUrlFromHost(host);
   const orgGraph = await generateSiteOrganizationGraph(baseUrl);
   const gaMeasurementId = publicEnv.gaMeasurementId;
@@ -74,7 +79,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <CalendlyScripts />
         {children}
         <CalendlyBadge text="Schedule a consultation" />
-        {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
+        {gaMeasurementId ? (
+          <GoogleAnalytics measurementId={gaMeasurementId} />
+        ) : null}
         <Analytics />
       </body>
     </html>

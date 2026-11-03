@@ -17,7 +17,7 @@ function mergeMetadata(
   extras: Pick<
     Partial<Metadata>,
     "openGraph" | "twitter" | "robots" | "alternates"
-  >
+  >,
 ): Metadata {
   const merged: Metadata = { ...base };
 
@@ -47,7 +47,9 @@ export function trimMetaDescription(text: string, max = 160): string {
   if (cleaned.length <= max) return cleaned;
   const truncated = cleaned.slice(0, max - 1);
   const lastSpace = truncated.lastIndexOf(" ");
-  return (lastSpace > 80 ? truncated.slice(0, lastSpace) : truncated).trim() + "…";
+  return (
+    (lastSpace > 80 ? truncated.slice(0, lastSpace) : truncated).trim() + "…"
+  );
 }
 
 /**
@@ -56,12 +58,13 @@ export function trimMetaDescription(text: string, max = 160): string {
  */
 export async function generateMarketingMetadata(
   path: string,
-  overrides: MarketingMetadataOverrides = {}
+  overrides: MarketingMetadataOverrides = {},
 ): Promise<Metadata> {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const resolved = await resolvePageSeo(path);
 
-  const { robots, openGraph, twitter, alternates, ...restOverrides } = overrides;
+  const { robots, openGraph, twitter, alternates, ...restOverrides } =
+    overrides;
   const metadataExtras = { robots, openGraph, twitter, alternates };
 
   if (!resolved) {
@@ -84,7 +87,7 @@ export async function generateMarketingMetadata(
   const enriched = enrichWithDomainKeywords(resolved, host);
   const mergedKeywords = restOverrides.keywords
     ? Array.from(
-        new Set([...restOverrides.keywords, ...enriched.keywords])
+        new Set([...restOverrides.keywords, ...enriched.keywords]),
       ).slice(0, 15)
     : enriched.keywords;
 

@@ -46,8 +46,8 @@ export const defaultReviews: Review[] = [
 
 // Aggregate rating stats
 export const aggregateRating = {
-  ratingValue: 4.9,
-  reviewCount: 500,
+  ratingValue: 5.0,
+  reviewCount: 50,
   bestRating: 5,
   worstRating: 1,
 };
@@ -69,7 +69,7 @@ export default function ReviewsSection({
   reviews = defaultReviews,
   title = "What Our Clients Say",
   subtitle = "Real testimonials from satisfied clients across Las Vegas and Henderson",
-  googleReviewsUrl = "https://g.page/r/heyberkshire/review",
+  googleReviewsUrl = "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
   className = "",
 }: ReviewsSectionProps) {
   return (
@@ -95,10 +95,10 @@ export default function ReviewsSection({
               ))}
             </div>
             <span className="text-lg font-semibold text-slate-900">
-              {aggregateRating.ratingValue}
+              {aggregateRating.ratingValue.toFixed(1)}
             </span>
             <span className="text-slate-600">
-              ({aggregateRating.reviewCount}+ reviews)
+              ({aggregateRating.reviewCount} Realtor.com reviews)
             </span>
           </div>
         </div>
